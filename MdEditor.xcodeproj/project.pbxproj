@@ -9,21 +9,47 @@
 /* Begin PBXBuildFile section */
 		8548CB3729EE5CA100518090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3629EE5CA100518090 /* AppDelegate.swift */; };
 		8548CB3929EE5CA100518090 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3829EE5CA100518090 /* SceneDelegate.swift */; };
-		8548CB3B29EE5CA100518090 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3A29EE5CA100518090 /* ViewController.swift */; };
-		8548CB3E29EE5CA100518090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB3C29EE5CA100518090 /* Main.storyboard */; };
+		8548CB3B29EE5CA100518090 /* MdEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3A29EE5CA100518090 /* MdEditorViewController.swift */; };
 		8548CB4029EE5CA400518090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB3F29EE5CA400518090 /* Assets.xcassets */; };
 		8548CB4329EE5CA400518090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB4129EE5CA400518090 /* LaunchScreen.storyboard */; };
+		8548CB4B29EE5D8200518090 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB4A29EE5D8200518090 /* README.md */; };
+		8548CB4D29EE5DB500518090 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB4C29EE5DB500518090 /* .gitignore */; };
+		8548CB5329EE5F3300518090 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB4E29EE5F3300518090 /* swiftgen.yml */; };
+		8548CB5429EE5F3300518090 /* Assets.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB5029EE5F3300518090 /* Assets.stencil */; };
+		8548CB5529EE5F3300518090 /* Strings.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB5129EE5F3300518090 /* Strings.stencil */; };
+		8548CB5629EE5F3300518090 /* swiftgen.sh in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB5229EE5F3300518090 /* swiftgen.sh */; };
+		8548CB5B29EE609500518090 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8548CB5D29EE609500518090 /* Localizable.strings */; };
+		8548CB6229EE642D00518090 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6029EE642D00518090 /* Assets.swift */; };
+		8548CB6329EE642D00518090 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6129EE642D00518090 /* Strings.swift */; };
+		8548CB6729EE688200518090 /* MdEditorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6629EE688200518090 /* MdEditorInteractor.swift */; };
+		8548CB6929EE689600518090 /* MdEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6829EE689600518090 /* MdEditorPresenter.swift */; };
+		8548CB6B29EE68A600518090 /* MdEditorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6A29EE68A600518090 /* MdEditorWorker.swift */; };
+		8548CB6D29EE68DE00518090 /* MdEditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6C29EE68DE00518090 /* MdEditorModel.swift */; };
+		8548CB6F29EE68EB00518090 /* MdEditorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6E29EE68EB00518090 /* MdEditorBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8548CB3329EE5CA100518090 /* MdEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MdEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8548CB3629EE5CA100518090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8548CB3829EE5CA100518090 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8548CB3A29EE5CA100518090 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8548CB3D29EE5CA100518090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8548CB3A29EE5CA100518090 /* MdEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdEditorViewController.swift; sourceTree = "<group>"; };
 		8548CB3F29EE5CA400518090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8548CB4229EE5CA400518090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8548CB4429EE5CA400518090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8548CB4A29EE5D8200518090 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8548CB4C29EE5DB500518090 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8548CB4E29EE5F3300518090 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		8548CB5029EE5F3300518090 /* Assets.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Assets.stencil; sourceTree = "<group>"; };
+		8548CB5129EE5F3300518090 /* Strings.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Strings.stencil; sourceTree = "<group>"; };
+		8548CB5229EE5F3300518090 /* swiftgen.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = swiftgen.sh; sourceTree = "<group>"; };
+		8548CB5C29EE609500518090 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8548CB6029EE642D00518090 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		8548CB6129EE642D00518090 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		8548CB6629EE688200518090 /* MdEditorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdEditorInteractor.swift; sourceTree = "<group>"; };
+		8548CB6829EE689600518090 /* MdEditorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdEditorPresenter.swift; sourceTree = "<group>"; };
+		8548CB6A29EE68A600518090 /* MdEditorWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdEditorWorker.swift; sourceTree = "<group>"; };
+		8548CB6C29EE68DE00518090 /* MdEditorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdEditorModel.swift; sourceTree = "<group>"; };
+		8548CB6E29EE68EB00518090 /* MdEditorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MdEditorBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +66,8 @@
 		8548CB2A29EE5CA100518090 = {
 			isa = PBXGroup;
 			children = (
+				8548CB4C29EE5DB500518090 /* .gitignore */,
+				8548CB4A29EE5D8200518090 /* README.md */,
 				8548CB3529EE5CA100518090 /* MdEditor */,
 				8548CB3429EE5CA100518090 /* Products */,
 			);
@@ -56,15 +84,66 @@
 		8548CB3529EE5CA100518090 /* MdEditor */ = {
 			isa = PBXGroup;
 			children = (
-				8548CB3629EE5CA100518090 /* AppDelegate.swift */,
 				8548CB3829EE5CA100518090 /* SceneDelegate.swift */,
-				8548CB3A29EE5CA100518090 /* ViewController.swift */,
-				8548CB3C29EE5CA100518090 /* Main.storyboard */,
-				8548CB3F29EE5CA400518090 /* Assets.xcassets */,
-				8548CB4129EE5CA400518090 /* LaunchScreen.storyboard */,
-				8548CB4429EE5CA400518090 /* Info.plist */,
+				8548CB3629EE5CA100518090 /* AppDelegate.swift */,
+				8548CB5829EE5F6000518090 /* SwiftGen */,
+				8548CB5729EE5F4C00518090 /* SupportingFiles */,
+				8548CB6529EE683C00518090 /* MdEditorScene */,
 			);
 			path = MdEditor;
+			sourceTree = "<group>";
+		};
+		8548CB4F29EE5F3300518090 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				8548CB5029EE5F3300518090 /* Assets.stencil */,
+				8548CB5129EE5F3300518090 /* Strings.stencil */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		8548CB5729EE5F4C00518090 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8548CB4429EE5CA400518090 /* Info.plist */,
+				8548CB3F29EE5CA400518090 /* Assets.xcassets */,
+				8548CB4129EE5CA400518090 /* LaunchScreen.storyboard */,
+				8548CB5F29EE617A00518090 /* Autogenerated */,
+				8548CB5D29EE609500518090 /* Localizable.strings */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		8548CB5829EE5F6000518090 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				8548CB5229EE5F3300518090 /* swiftgen.sh */,
+				8548CB4E29EE5F3300518090 /* swiftgen.yml */,
+				8548CB4F29EE5F3300518090 /* Templates */,
+			);
+			path = SwiftGen;
+			sourceTree = "<group>";
+		};
+		8548CB5F29EE617A00518090 /* Autogenerated */ = {
+			isa = PBXGroup;
+			children = (
+				8548CB6029EE642D00518090 /* Assets.swift */,
+				8548CB6129EE642D00518090 /* Strings.swift */,
+			);
+			path = Autogenerated;
+			sourceTree = "<group>";
+		};
+		8548CB6529EE683C00518090 /* MdEditorScene */ = {
+			isa = PBXGroup;
+			children = (
+				8548CB3A29EE5CA100518090 /* MdEditorViewController.swift */,
+				8548CB6629EE688200518090 /* MdEditorInteractor.swift */,
+				8548CB6829EE689600518090 /* MdEditorPresenter.swift */,
+				8548CB6A29EE68A600518090 /* MdEditorWorker.swift */,
+				8548CB6C29EE68DE00518090 /* MdEditorModel.swift */,
+				8548CB6E29EE68EB00518090 /* MdEditorBuilder.swift */,
+			);
+			path = MdEditorScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +153,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8548CB4729EE5CA400518090 /* Build configuration list for PBXNativeTarget "MdEditor" */;
 			buildPhases = (
+				8548CB5E29EE612000518090 /* SwiftGen */,
+				8548CB6429EE662400518090 /* SwiftLint */,
 				8548CB2F29EE5CA100518090 /* Sources */,
 				8548CB3029EE5CA100518090 /* Frameworks */,
 				8548CB3129EE5CA100518090 /* Resources */,
@@ -125,42 +206,98 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8548CB4D29EE5DB500518090 /* .gitignore in Resources */,
+				8548CB5529EE5F3300518090 /* Strings.stencil in Resources */,
 				8548CB4329EE5CA400518090 /* LaunchScreen.storyboard in Resources */,
 				8548CB4029EE5CA400518090 /* Assets.xcassets in Resources */,
-				8548CB3E29EE5CA100518090 /* Main.storyboard in Resources */,
+				8548CB5629EE5F3300518090 /* swiftgen.sh in Resources */,
+				8548CB5B29EE609500518090 /* Localizable.strings in Resources */,
+				8548CB4B29EE5D8200518090 /* README.md in Resources */,
+				8548CB5329EE5F3300518090 /* swiftgen.yml in Resources */,
+				8548CB5429EE5F3300518090 /* Assets.stencil in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8548CB5E29EE612000518090 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/MdEditor/SupportingFiles/Autogenerated/Strings.swift",
+				"$(SRCROOT)/MdEditor/SupportingFiles/Autogenerated/Assets.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "MdEditor/SwiftGen/swiftgen.sh\n";
+		};
+		8548CB6429EE662400518090 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8548CB2F29EE5CA100518090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8548CB3B29EE5CA100518090 /* ViewController.swift in Sources */,
+				8548CB6929EE689600518090 /* MdEditorPresenter.swift in Sources */,
+				8548CB6B29EE68A600518090 /* MdEditorWorker.swift in Sources */,
+				8548CB3B29EE5CA100518090 /* MdEditorViewController.swift in Sources */,
 				8548CB3729EE5CA100518090 /* AppDelegate.swift in Sources */,
+				8548CB6729EE688200518090 /* MdEditorInteractor.swift in Sources */,
+				8548CB6329EE642D00518090 /* Strings.swift in Sources */,
+				8548CB6D29EE68DE00518090 /* MdEditorModel.swift in Sources */,
+				8548CB6229EE642D00518090 /* Assets.swift in Sources */,
 				8548CB3929EE5CA100518090 /* SceneDelegate.swift in Sources */,
+				8548CB6F29EE68EB00518090 /* MdEditorBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8548CB3C29EE5CA100518090 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8548CB3D29EE5CA100518090 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8548CB4129EE5CA400518090 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8548CB4229EE5CA400518090 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8548CB5D29EE609500518090 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8548CB5C29EE609500518090 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -289,12 +426,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G2VF2J7D53;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MdEditor/Info.plist;
+				INFOPLIST_FILE = MdEditor/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,12 +453,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G2VF2J7D53;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MdEditor/Info.plist;
+				INFOPLIST_FILE = MdEditor/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
