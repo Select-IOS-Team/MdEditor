@@ -10,7 +10,7 @@ import UIKit
 /// Вью контроллер сцены меню текстового редактора.
 protocol IMdEditorViewController: AnyObject {
 	/// Отображает данные, соответствующие переданной модели.
-	func render(viewData: MdEditorModel.ViewData)
+	func render(viewData: MdEditorModel.ViewData) 
 }
 
 /// Вью контроллер сцены меню текстового редактора.
