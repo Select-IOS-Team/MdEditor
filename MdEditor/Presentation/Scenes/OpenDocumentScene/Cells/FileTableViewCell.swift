@@ -18,6 +18,7 @@ final class FileTableViewCell: UITableViewCell {
 		static let contentHorizontalInset: CGFloat = 16
 		static let contentSpace: CGFloat = 12
 		static let fileImageViewSize: CGFloat = 32
+		static let additionalTextColor = Palette.additionalText
 	}
 
 	typealias ConfigurationModel = OpenDocumentModel.OpenDocumentViewData.FileViewModel
@@ -35,6 +36,7 @@ final class FileTableViewCell: UITableViewCell {
 	}()
 	private lazy var fileTitleLabel: UILabel = {
 		let label = UILabel()
+		label.textColor = Constants.additionalTextColor
 		label.numberOfLines = Constants.titleLabelNumberOfLines
 		return label
 	}()
