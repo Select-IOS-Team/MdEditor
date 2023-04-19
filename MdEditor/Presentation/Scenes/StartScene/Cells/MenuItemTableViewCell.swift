@@ -71,7 +71,7 @@ extension MenuItemTableViewCell: IConfigurableTableCell {
 
 	func configure(with model: ConfigurationModel) {
 		titleLabel.text = model.title
-		iconImageView.image = UIImage(asset: .init(name: model.iconName))
+		iconImageView.image = ImageAsset(name: model.iconName).image
 	}
 }
 

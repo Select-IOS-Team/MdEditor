@@ -75,7 +75,7 @@ extension FileTableViewCell: IConfigurableTableCell {
 
 	func configure(with model: ConfigurationModel) {
 		fileTitleLabel.text = model.fileTitle
-		fileImageView.image = UIImage(asset: .init(name: model.fileImageName))
+		fileImageView.image = ImageAsset(name: model.fileImageName).image
 	}
 }
 
