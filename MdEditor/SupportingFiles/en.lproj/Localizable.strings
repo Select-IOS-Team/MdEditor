@@ -7,6 +7,9 @@
 */
 
 "StartScene.Title" = "Main";
+"StartScene.Images.AddFile" = "addFile";
+"StartScene.Images.OpenFolder" = "openFolder";
+"StartScene.Images.About" = "about";
 
-"OpenDocument.Images.Folder" = "folder.fill";
-"OpenDocument.Images.File" = "doc";
+"OpenDocument.Images.Folder" = "folder";
+"OpenDocument.Images.File" = "document";

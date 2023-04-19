@@ -50,6 +50,19 @@ final class MenuItemTableViewCell: UITableViewCell {
 		iconImageView.image = nil
 		titleLabel.text = nil
 	}
+
+	override func setSelected(_ selected: Bool, animated: Bool) {
+		super.setSelected(selected, animated: animated)
+		if selected {
+			UIView.animate(withDuration: 0.15, animations: {
+				self.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+			}, completion: { _ in
+				UIView.animate(withDuration: 0.15) {
+					self.transform = .identity
+				}
+			})
+		}
+	}
 }
 
 // MARK: - IConfigurableTableCell
@@ -58,7 +71,7 @@ extension MenuItemTableViewCell: IConfigurableTableCell {
 
 	func configure(with model: ConfigurationModel) {
 		titleLabel.text = model.title
-		iconImageView.image = UIImage(systemName: model.iconName)
+		iconImageView.image = UIImage(asset: .init(name: model.iconName))
 	}
 }
 

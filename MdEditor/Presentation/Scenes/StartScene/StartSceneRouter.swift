@@ -30,7 +30,7 @@ final class StartSceneRouter: IStartSceneRouter {
 		case .open:
 			destinationViewController = OpenDocumentAssembly.assemble() as UIViewController
 		default:
-			destinationViewController = UIViewController()
+			return
 		}
 
 		guard let startSceneViewController = viewController as? StartSceneViewController else { return }
