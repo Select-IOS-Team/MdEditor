@@ -146,7 +146,7 @@ extension StartSceneViewController: UITableViewDataSource {
 extension StartSceneViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		interactor.didTapMenuItem(at: indexPath.row)
+		router.routeToViewController(menuItem: viewData.menuItems[indexPath.row].menuItem)
 	}
 }
 

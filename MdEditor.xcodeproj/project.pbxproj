@@ -36,6 +36,14 @@
 		8548CB6D29EE68DE00518090 /* StartSceneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6C29EE68DE00518090 /* StartSceneModel.swift */; };
 		8548CB6F29EE68EB00518090 /* StartSceneAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6E29EE68EB00518090 /* StartSceneAssembly.swift */; };
 		8548CBB929F019E400518090 /* SampleFiles in Resources */ = {isa = PBXBuildFile; fileRef = 8548CBB829F019E300518090 /* SampleFiles */; };
+		8548CBC629F0237700518090 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBBC29F0237700518090 /* FileTableViewCell.swift */; };
+		8548CBC729F0237700518090 /* FileExplorerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBBE29F0237700518090 /* FileExplorerWorker.swift */; };
+		8548CBC929F0237700518090 /* OpenDocumentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC029F0237700518090 /* OpenDocumentInteractor.swift */; };
+		8548CBCA29F0237700518090 /* OpenDocumentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC129F0237700518090 /* OpenDocumentWorker.swift */; };
+		8548CBCB29F0237700518090 /* OpenDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC229F0237700518090 /* OpenDocumentViewController.swift */; };
+		8548CBCC29F0237700518090 /* OpenDocumentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC329F0237700518090 /* OpenDocumentPresenter.swift */; };
+		8548CBCD29F0237700518090 /* OpenDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC429F0237700518090 /* OpenDocumentModel.swift */; };
+		8548CBCE29F0237700518090 /* OpenDocumentAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC529F0237700518090 /* OpenDocumentAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +89,14 @@
 		8548CB6C29EE68DE00518090 /* StartSceneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneModel.swift; sourceTree = "<group>"; };
 		8548CB6E29EE68EB00518090 /* StartSceneAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneAssembly.swift; sourceTree = "<group>"; };
 		8548CBB829F019E300518090 /* SampleFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SampleFiles; sourceTree = "<group>"; };
+		8548CBBC29F0237700518090 /* FileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
+		8548CBBE29F0237700518090 /* FileExplorerWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExplorerWorker.swift; sourceTree = "<group>"; };
+		8548CBC029F0237700518090 /* OpenDocumentInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentInteractor.swift; sourceTree = "<group>"; };
+		8548CBC129F0237700518090 /* OpenDocumentWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentWorker.swift; sourceTree = "<group>"; };
+		8548CBC229F0237700518090 /* OpenDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentViewController.swift; sourceTree = "<group>"; };
+		8548CBC329F0237700518090 /* OpenDocumentPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentPresenter.swift; sourceTree = "<group>"; };
+		8548CBC429F0237700518090 /* OpenDocumentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentModel.swift; sourceTree = "<group>"; };
+		8548CBC529F0237700518090 /* OpenDocumentAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +129,7 @@
 		5E9BF21029EF96D700DC1AFD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8548CBBA29F0237700518090 /* OpenDocumentScene */,
 				8548CB6529EE683C00518090 /* StartScene */,
 			);
 			path = Scenes;
@@ -257,6 +274,29 @@
 				8548CB6E29EE68EB00518090 /* StartSceneAssembly.swift */,
 			);
 			path = StartScene;
+			sourceTree = "<group>";
+		};
+		8548CBBA29F0237700518090 /* OpenDocumentScene */ = {
+			isa = PBXGroup;
+			children = (
+				8548CBBB29F0237700518090 /* Cells */,
+				8548CBC029F0237700518090 /* OpenDocumentInteractor.swift */,
+				8548CBC129F0237700518090 /* OpenDocumentWorker.swift */,
+				8548CBC229F0237700518090 /* OpenDocumentViewController.swift */,
+				8548CBC329F0237700518090 /* OpenDocumentPresenter.swift */,
+				8548CBC429F0237700518090 /* OpenDocumentModel.swift */,
+				8548CBC529F0237700518090 /* OpenDocumentAssembly.swift */,
+				8548CBBE29F0237700518090 /* FileExplorerWorker.swift */,
+			);
+			path = OpenDocumentScene;
+			sourceTree = "<group>";
+		};
+		8548CBBB29F0237700518090 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8548CBBC29F0237700518090 /* FileTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,22 +468,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				8548CB6929EE689600518090 /* StartScenePresenter.swift in Sources */,
+				8548CBCB29F0237700518090 /* OpenDocumentViewController.swift in Sources */,
+				8548CBC629F0237700518090 /* FileTableViewCell.swift in Sources */,
 				8548CB6B29EE68A600518090 /* StartSceneRouter.swift in Sources */,
 				5E9BF21429EF98A800DC1AFD /* DynamicTableView.swift in Sources */,
 				8548CB3B29EE5CA100518090 /* StartSceneViewController.swift in Sources */,
 				8548CB3729EE5CA100518090 /* AppDelegate.swift in Sources */,
+				8548CBC929F0237700518090 /* OpenDocumentInteractor.swift in Sources */,
 				8548CB6729EE688200518090 /* StartSceneInteractor.swift in Sources */,
 				5E9BF22229EFB40900DC1AFD /* IConfigurableCollectionCell.swift in Sources */,
+				8548CBCE29F0237700518090 /* OpenDocumentAssembly.swift in Sources */,
+				8548CBCA29F0237700518090 /* OpenDocumentWorker.swift in Sources */,
 				5E9BF21729EF99A000DC1AFD /* MenuItemTableViewCell.swift in Sources */,
 				8548CB6329EE642D00518090 /* Strings.swift in Sources */,
 				5E9BF21929EF9B7200DC1AFD /* ConfigurableTableCell.swift in Sources */,
+				8548CBCD29F0237700518090 /* OpenDocumentModel.swift in Sources */,
 				5E9BF22029EFB3CD00DC1AFD /* RecentFileCollectionViewCell.swift in Sources */,
+				8548CBC729F0237700518090 /* FileExplorerWorker.swift in Sources */,
 				5E9BF21D29EF9BA500DC1AFD /* UITableView+Extension.swift in Sources */,
 				8548CB6D29EE68DE00518090 /* StartSceneModel.swift in Sources */,
 				8548CB6229EE642D00518090 /* Assets.swift in Sources */,
 				8548CB3929EE5CA100518090 /* SceneDelegate.swift in Sources */,
 				8548CB6F29EE68EB00518090 /* StartSceneAssembly.swift in Sources */,
 				5E9BF22429EFB6B600DC1AFD /* UICollectionView+Extension.swift in Sources */,
+				8548CBCC29F0237700518090 /* OpenDocumentPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

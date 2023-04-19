@@ -50,9 +50,9 @@ private extension StartSceneModel.ViewData {
 			)
 		]
 		let menuItems: [StartSceneModel.ViewData.MenuItem] = [
-			StartSceneModel.ViewData.MenuItem(iconName: "doc.badge.plus", title: "New"),
-			StartSceneModel.ViewData.MenuItem(iconName: "folder", title: "Open"),
-			StartSceneModel.ViewData.MenuItem(iconName: "info.bubble", title: "About")
+			StartSceneModel.ViewData.MenuItem(iconName: "doc.badge.plus", title: "New", menuItem: .new),
+			StartSceneModel.ViewData.MenuItem(iconName: "folder", title: "Open", menuItem: .open),
+			StartSceneModel.ViewData.MenuItem(iconName: "info.bubble", title: "About", menuItem: .about)
 		]
 		return StartSceneModel.ViewData(recentFileItems: recentFileItems, menuItems: menuItems)
 	}

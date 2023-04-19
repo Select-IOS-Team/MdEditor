@@ -7,3 +7,6 @@
 */
 
 "StartScene.Title" = "Главная";
+
+"OpenDocument.Images.Folder" = "folder.fill";
+"OpenDocument.Images.File" = "doc";
