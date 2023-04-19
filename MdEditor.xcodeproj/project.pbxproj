@@ -35,7 +35,7 @@
 		8548CB6B29EE68A600518090 /* StartSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6A29EE68A600518090 /* StartSceneRouter.swift */; };
 		8548CB6D29EE68DE00518090 /* StartSceneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6C29EE68DE00518090 /* StartSceneModel.swift */; };
 		8548CB6F29EE68EB00518090 /* StartSceneAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6E29EE68EB00518090 /* StartSceneAssembly.swift */; };
-		8548CBB629F0137400518090 /* SampleFiles in Resources */ = {isa = PBXBuildFile; fileRef = 8548CBB529F0137400518090 /* SampleFiles */; };
+		8548CBB729F016B300518090 /* SampleFiles in Resources */ = {isa = PBXBuildFile; fileRef = 8548CBB529F0137400518090 /* SampleFiles */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8548CBB729F016B300518090 /* SampleFiles in Resources */,
 				8548CB4D29EE5DB500518090 /* .gitignore in Resources */,
 				8548CB5529EE5F3300518090 /* Strings.stencil in Resources */,
 				8548CB4329EE5CA400518090 /* LaunchScreen.storyboard in Resources */,
@@ -364,7 +365,6 @@
 				8548CB5B29EE609500518090 /* Localizable.strings in Resources */,
 				8548CB4B29EE5D8200518090 /* README.md in Resources */,
 				8548CB5329EE5F3300518090 /* swiftgen.yml in Resources */,
-				8548CBB629F0137400518090 /* SampleFiles in Resources */,
 				8548CB5429EE5F3300518090 /* Assets.stencil in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
