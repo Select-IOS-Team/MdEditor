@@ -88,6 +88,7 @@ private extension FileTableViewCell {
 	func setupUI() {
 		contentView.addSubview(fileImageView)
 		contentView.addSubview(fileTitleLabel)
+		contentView.isUserInteractionEnabled = false
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCell))
 		tapGestureRecognizer.isEnabled = true

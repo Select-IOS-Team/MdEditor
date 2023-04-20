@@ -9,7 +9,7 @@ import Foundation
 
 /// Интерактор сцены открытия файлов и папок.
 protocol IOpenDocumentInteractor: AnyObject {
-	func didCellTapped(indexPath: IndexPath)
+	var root: String { get set }
 	func fetchFileStruct()
 }
 
@@ -37,9 +37,6 @@ class OpenDocumentInteractor: IOpenDocumentInteractor {
 	// swiftlint: enable line_length
 
 	// MARK: - Internal Methods
-
-	func didCellTapped(indexPath: IndexPath) {
-	}
 
 	func fetchFileStruct() {
 		guard let data = fileExplorerWorker?.fillFiles(path: root) else { return }

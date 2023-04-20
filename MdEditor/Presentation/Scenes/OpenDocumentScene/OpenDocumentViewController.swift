@@ -19,7 +19,8 @@ class OpenDocumentViewController: UIViewController {
 
 	// MARK: - Private properties
 
-	private let interactor: IOpenDocumentInteractor?
+	let interactor: IOpenDocumentInteractor?
+	private let router: IOpenDocumentRouter
 	private lazy var tableView = makeTableView()
 
 	// MARK: - Internal properties
@@ -28,8 +29,9 @@ class OpenDocumentViewController: UIViewController {
 
 	// MARK: - Lifecycle
 
-	init(interactor: IOpenDocumentInteractor) {
+	init(interactor: IOpenDocumentInteractor, router: IOpenDocumentRouter) {
 		self.interactor = interactor
+		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -41,6 +43,16 @@ class OpenDocumentViewController: UIViewController {
 		super.viewDidLoad()
 		setupUI()
 		interactor?.fetchFileStruct()
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.navigationItem.backBarButtonItem = UIBarButtonItem(
+			title: "",
+			style: UIBarButtonItem.Style.plain,
+			target: nil,
+			action: nil
+		)
 	}
 }
 
@@ -69,7 +81,10 @@ extension OpenDocumentViewController: UITableViewDataSource {
 extension OpenDocumentViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		self.interactor?.didCellTapped(indexPath: indexPath)
+		let model = viewData[indexPath.row]
+		tableView.deselectRow(at: indexPath, animated: true)
+		tableView.scrollsToTop = true
+		self.router.routeToViewController(menuItem: model.menuItem, root: model.fullName, title: model.name)
 	}
 }
 

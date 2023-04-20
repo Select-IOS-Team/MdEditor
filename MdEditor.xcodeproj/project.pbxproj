@@ -47,6 +47,7 @@
 		8548CBD129F07A6600518090 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBD029F07A6500518090 /* Palette.swift */; };
 		8548CBD329F07AB000518090 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBD229F07AB000518090 /* UIColor+Hex.swift */; };
 		8548CBD529F07AF800518090 /* UIColor+Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBD429F07AF800518090 /* UIColor+Dynamic.swift */; };
+		8548CBD729F0825E00518090 /* OpenDocumentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBD629F0825E00518090 /* OpenDocumentRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		8548CBD029F07A6500518090 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		8548CBD229F07AB000518090 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		8548CBD429F07AF800518090 /* UIColor+Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Dynamic.swift"; sourceTree = "<group>"; };
+		8548CBD629F0825E00518090 /* OpenDocumentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocumentRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 				8548CBC329F0237700518090 /* OpenDocumentPresenter.swift */,
 				8548CBC429F0237700518090 /* OpenDocumentModel.swift */,
 				8548CBC529F0237700518090 /* OpenDocumentAssembly.swift */,
+				8548CBD629F0825E00518090 /* OpenDocumentRouter.swift */,
 				8548CBBE29F0237700518090 /* FileExplorerWorker.swift */,
 			);
 			path = OpenDocumentScene;
@@ -505,6 +508,7 @@
 				5E9BF22029EFB3CD00DC1AFD /* RecentFileCollectionViewCell.swift in Sources */,
 				8548CBC729F0237700518090 /* FileExplorerWorker.swift in Sources */,
 				5E9BF21D29EF9BA500DC1AFD /* UITableView+Extension.swift in Sources */,
+				8548CBD729F0825E00518090 /* OpenDocumentRouter.swift in Sources */,
 				8548CBD129F07A6600518090 /* Palette.swift in Sources */,
 				8548CB6D29EE68DE00518090 /* StartSceneModel.swift in Sources */,
 				8548CB6229EE642D00518090 /* Assets.swift in Sources */,

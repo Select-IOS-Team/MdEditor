@@ -22,7 +22,10 @@ class OpenDocumentWorker: IOpenDocumentWorker {
 		data.forEach { item in
 			let fileViewModel = OpenDocumentModel.OpenDocumentViewData.FileViewModel(
 				fileTitle: item.fileName,
-				fileImageName: item.fileIsDir ? L10n.OpenDocument.Images.folder : L10n.OpenDocument.Images.file
+				fileImageName: item.fileIsDir ? L10n.OpenDocument.Images.folder : L10n.OpenDocument.Images.file,
+				name: item.fileName,
+				fullName: item.filePath,
+				menuItem: item.fileIsDir ? .folder : .document
 			)
 			response.append(fileViewModel)
 		}

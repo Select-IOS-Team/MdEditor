@@ -13,6 +13,9 @@ enum OpenDocumentModel {
 		struct FileViewModel: Equatable {
 			let fileTitle: String
 			let fileImageName: String
+			let name: String
+			let fullName: String
+			let menuItem: MenuItemsOpenDocumentsScene
 		}
 		let filesViewModel: [FileViewModel]
 	}

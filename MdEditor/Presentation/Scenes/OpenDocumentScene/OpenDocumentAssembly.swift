@@ -19,8 +19,13 @@ enum OpenDocumentAssembly {
 			convertToResponseWorker: convertToResponseWorker,
 			fileExplorerWorker: fileExplorerWorker
 		)
-		let openDocumentViewController = OpenDocumentViewController(interactor: openDocumentInteractor)
+		let openDocumentRouter = OpenDocumentRouter()
+		let openDocumentViewController = OpenDocumentViewController(
+			interactor: openDocumentInteractor,
+			router: openDocumentRouter
+		)
 		openDocumentPresenter.viewController = openDocumentViewController
+		openDocumentRouter.viewController = openDocumentViewController
 
 		return openDocumentViewController
 	}

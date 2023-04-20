@@ -10,7 +10,7 @@ import UIKit
 
 /// Роутер стартовой сцены.
 protocol IStartSceneRouter {
-	func routeToViewController(menuItem: MenuItems)
+	func routeToViewController(menuItem: MenuItemsStartScene)
 }
 
 /// Роутер стартовой сцены.
@@ -22,7 +22,7 @@ final class StartSceneRouter: IStartSceneRouter {
 
 	// MARK: - IStartSceneRouter
 
-	func routeToViewController(menuItem: MenuItems) {
+	func routeToViewController(menuItem: MenuItemsStartScene) {
 
 		var destinationViewController = UIViewController()
 
@@ -44,7 +44,7 @@ final class StartSceneRouter: IStartSceneRouter {
 	}
 }
 
-enum MenuItems {
+enum MenuItemsStartScene {
 	case new
 	case open
 	case about
