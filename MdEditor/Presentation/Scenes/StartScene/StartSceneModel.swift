@@ -23,7 +23,13 @@ enum StartSceneModel {
 		struct MenuItem {
 			let iconName: String
 			let title: String
-			let menuItem: MenuItemsStartScene
+			let menuType: MenuItemType
+		}
+
+		enum MenuItemType {
+			case new
+			case open
+			case about
 		}
 
 		let recentFileItems: [RecentFileItem]

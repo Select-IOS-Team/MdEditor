@@ -9,19 +9,19 @@ import Foundation
 
 /// Презентер, подготавливающий модель вью для OpenDocumentViewController.
 protocol IOpenDocumentPresenter {
-	func presentData(response: [OpenDocumentModel.OpenDocumentViewData.FileViewModel])
+	func presentData(response: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel])
 }
 
 /// Класс презентера
-class OpenDocumentPresenter: IOpenDocumentPresenter {
+final class OpenDocumentPresenter: IOpenDocumentPresenter {
 
 	// MARK: - Internal Properties
 
 	weak var viewController: IOpenDocumentViewController?
 
-	// MARK: - Internal Methods
+	// MARK: - IOpenDocumentPresenter
 
-	func presentData(response: [OpenDocumentModel.OpenDocumentViewData.FileViewModel]) {
+	func presentData(response: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel]) {
 		viewController?.render(viewData: response)
 	}
 }

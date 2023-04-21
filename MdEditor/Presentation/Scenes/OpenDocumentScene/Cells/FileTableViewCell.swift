@@ -18,25 +18,18 @@ final class FileTableViewCell: UITableViewCell {
 		static let contentHorizontalInset: CGFloat = 16
 		static let contentSpace: CGFloat = 12
 		static let fileImageViewSize: CGFloat = 32
-		static let additionalTextColor = Palette.additionalText
 	}
 
-	typealias ConfigurationModel = OpenDocumentModel.OpenDocumentViewData.FileViewModel
-
-	// MARK: - Internal properties
-
-	var completionCheckboxTapAction: (() -> Void)?
+	typealias ConfigurationModel = OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel
 
 	// MARK: - Private properties
 
 	private lazy var fileImageView: UIImageView = {
 		let imageView = UIImageView()
-		imageView.isUserInteractionEnabled = true
 		return imageView
 	}()
 	private lazy var fileTitleLabel: UILabel = {
 		let label = UILabel()
-		label.textColor = Constants.additionalTextColor
 		label.numberOfLines = Constants.titleLabelNumberOfLines
 		return label
 	}()
@@ -46,6 +39,7 @@ final class FileTableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		setupUI()
+		setupLayout()
 		configureUI()
 	}
 
@@ -58,17 +52,6 @@ final class FileTableViewCell: UITableViewCell {
 		fileImageView.image = nil
 		fileTitleLabel.text = nil
 	}
-
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		setupLayout()
-	}
-
-	override func sizeThatFits(_ size: CGSize) -> CGSize {
-		setupLayout()
-		let height = max(Constants.contentViewHeight, fileTitleLabel.frame.height)
-		return CGSize(width: contentView.frame.width, height: height)
-	}
 }
 
 // MARK: - IConfigurableTableCell
@@ -76,8 +59,8 @@ final class FileTableViewCell: UITableViewCell {
 extension FileTableViewCell: IConfigurableTableCell {
 
 	func configure(with model: ConfigurationModel) {
-		fileTitleLabel.text = model.fileTitle
-		fileImageView.image = ImageAsset(name: model.fileImageName).image
+		fileTitleLabel.text = model.title
+		fileImageView.image = ImageAsset(name: model.imageName).image
 	}
 }
 
@@ -89,31 +72,22 @@ private extension FileTableViewCell {
 		contentView.addSubview(fileImageView)
 		contentView.addSubview(fileTitleLabel)
 		contentView.isUserInteractionEnabled = false
-
-		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCell))
-		tapGestureRecognizer.isEnabled = true
-		contentView.addGestureRecognizer(tapGestureRecognizer)
 	}
 
 	func setupLayout() {
-		fileImageView.snp.makeConstraints { make -> Void in
-			make.width.height.equalTo(Constants.fileImageViewSize)
-			make.leading.equalToSuperview().offset(Constants.contentHorizontalInset)
-			make.top.equalToSuperview().offset(Constants.contentSpace)
+		fileImageView.snp.makeConstraints {
+			$0.width.height.equalTo(Constants.fileImageViewSize)
+			$0.leading.equalToSuperview().offset(Constants.contentHorizontalInset)
+			$0.centerY.equalToSuperview()
 		}
-		fileTitleLabel.snp.makeConstraints { make -> Void in
-			make.width.height.equalTo(Constants.fileImageViewSize)
-			make.leading.equalTo(fileImageView.snp.trailing).offset(Constants.contentHorizontalInset)
-			make.trailing.equalToSuperview()
-			make.top.equalToSuperview().offset(Constants.contentSpace)
+		fileTitleLabel.snp.makeConstraints {
+			$0.leading.equalTo(fileImageView.snp.trailing).offset(Constants.contentSpace)
+			$0.trailing.equalToSuperview()
+			$0.centerY.equalToSuperview()
 		}
 	}
 
 	func configureUI() {
 		selectionStyle = .none
-	}
-
-	@objc
-	func didTapCell() {
 	}
 }

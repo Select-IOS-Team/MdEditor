@@ -148,7 +148,7 @@ extension StartSceneViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + Constants.delayBeforeRouting) { [ weak self ] in
 			guard let self else { return }
-			self.router.routeToViewController(menuItem: self.viewData.menuItems[indexPath.row].menuItem)
+			self.router.routeToViewController(menuItem: self.viewData.menuItems[indexPath.row].menuType)
 		}
 	}
 }

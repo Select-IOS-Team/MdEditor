@@ -10,13 +10,19 @@ import Foundation
 /// Модель вью
 enum OpenDocumentModel {
 	struct OpenDocumentViewData: Equatable {
-		struct FileViewModel: Equatable {
-			let fileTitle: String
-			let fileImageName: String
+		struct DirectoryObjectViewModel: Equatable {
+			let title: String
+			let imageName: String
 			let name: String
 			let fullName: String
-			let menuItem: MenuItemsOpenDocumentsScene
+			let menuItem: DirectoryObjectType
 		}
-		let filesViewModel: [FileViewModel]
+
+		enum DirectoryObjectType {
+			case folder
+			case document
+		}
+
+		let objectsViewModel: [DirectoryObjectViewModel]
 	}
 }

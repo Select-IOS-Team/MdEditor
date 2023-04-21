@@ -11,8 +11,8 @@ import Foundation
 enum OpenDocumentAssembly {
 	static func assemble() -> OpenDocumentViewController {
 
-		let fileExplorerWorker: IFileExplorerWorker = FileExplorerWorker()
-		let convertToResponseWorker: IOpenDocumentWorker = OpenDocumentWorker()
+		let fileExplorerWorker = FileExplorerManager()
+		let convertToResponseWorker = OpenDocumentWorker()
 		let openDocumentPresenter = OpenDocumentPresenter()
 		let openDocumentInteractor = OpenDocumentInteractor(
 			presenter: openDocumentPresenter,

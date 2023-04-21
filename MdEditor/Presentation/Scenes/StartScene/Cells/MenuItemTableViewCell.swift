@@ -19,7 +19,6 @@ final class MenuItemTableViewCell: UITableViewCell {
 		static let contentHorizontalInset: CGFloat = 16
 		static let contentSpace: CGFloat = 12
 		static let iconImageViewSize: CGFloat = 32
-		static let additionalTextColor = Palette.additionalText
 	}
 
 	typealias ConfigurationModel = StartSceneModel.ViewData.MenuItem
@@ -29,7 +28,6 @@ final class MenuItemTableViewCell: UITableViewCell {
 	private lazy var iconImageView = UIImageView()
 	private lazy var titleLabel: UILabel = {
 		let label = UILabel()
-		label.textColor = Constants.additionalTextColor
 		label.numberOfLines = Constants.titleLabelNumberOfLines
 		return label
 	}()

@@ -9,8 +9,7 @@ import Foundation
 
 /// Интерактор сцены открытия файлов и папок.
 protocol IOpenDocumentInteractor: AnyObject {
-	var root: String { get set }
-	func fetchFileStruct()
+	func fetchDirectoryObjects(currentPath: String)
 }
 
 /// Класс интерактора
@@ -18,29 +17,27 @@ class OpenDocumentInteractor: IOpenDocumentInteractor {
 
 	// MARK: - Private Properties
 
-	private let presenter: IOpenDocumentPresenter?
-	private let convertToResponseWorker: IOpenDocumentWorker?
-	private let fileExplorerWorker: IFileExplorerWorker?
-
-	// MARK: - Internal Properties
-
-	var root = "SampleFiles"
+	private let presenter: IOpenDocumentPresenter
+	private let convertToResponseWorker: IOpenDocumentWorker
+	private let fileExplorerWorker: IFileExplorerManager
 
 	// MARK: - Lifecycle
 
-	// swiftlint: disable line_length
-	init(presenter: IOpenDocumentPresenter, convertToResponseWorker: IOpenDocumentWorker, fileExplorerWorker: IFileExplorerWorker) {
+	init(
+		presenter: IOpenDocumentPresenter,
+		convertToResponseWorker: IOpenDocumentWorker,
+		fileExplorerWorker: IFileExplorerManager
+	) {
 		self.presenter = presenter
 		self.convertToResponseWorker = convertToResponseWorker
 		self.fileExplorerWorker = fileExplorerWorker
 	}
-	// swiftlint: enable line_length
 
-	// MARK: - Internal Methods
+	// MARK: - IFileExplorerWorker
 
-	func fetchFileStruct() {
-		guard let data = fileExplorerWorker?.fillFiles(path: root) else { return }
-		guard let response = convertToResponseWorker?.prepareViewModel(data: data) else { return }
-		presenter?.presentData(response: response)
+	func fetchDirectoryObjects(currentPath: String) {
+		let data = fileExplorerWorker.fillDirectoryObjects(path: currentPath)
+		let response = convertToResponseWorker.prepareViewModel(data: data)
+		presenter.presentData(response: response)
 	}
 }

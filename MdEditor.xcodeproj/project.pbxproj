@@ -37,7 +37,7 @@
 		8548CB6F29EE68EB00518090 /* StartSceneAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB6E29EE68EB00518090 /* StartSceneAssembly.swift */; };
 		8548CBB929F019E400518090 /* SampleFiles in Resources */ = {isa = PBXBuildFile; fileRef = 8548CBB829F019E300518090 /* SampleFiles */; };
 		8548CBC629F0237700518090 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBBC29F0237700518090 /* FileTableViewCell.swift */; };
-		8548CBC729F0237700518090 /* FileExplorerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBBE29F0237700518090 /* FileExplorerWorker.swift */; };
+		8548CBC729F0237700518090 /* FileExplorerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBBE29F0237700518090 /* FileExplorerManager.swift */; };
 		8548CBC929F0237700518090 /* OpenDocumentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC029F0237700518090 /* OpenDocumentInteractor.swift */; };
 		8548CBCA29F0237700518090 /* OpenDocumentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC129F0237700518090 /* OpenDocumentWorker.swift */; };
 		8548CBCB29F0237700518090 /* OpenDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CBC229F0237700518090 /* OpenDocumentViewController.swift */; };
@@ -94,7 +94,7 @@
 		8548CB6E29EE68EB00518090 /* StartSceneAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneAssembly.swift; sourceTree = "<group>"; };
 		8548CBB829F019E300518090 /* SampleFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SampleFiles; sourceTree = "<group>"; };
 		8548CBBC29F0237700518090 /* FileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
-		8548CBBE29F0237700518090 /* FileExplorerWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExplorerWorker.swift; sourceTree = "<group>"; };
+		8548CBBE29F0237700518090 /* FileExplorerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExplorerManager.swift; sourceTree = "<group>"; };
 		8548CBC029F0237700518090 /* OpenDocumentInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentInteractor.swift; sourceTree = "<group>"; };
 		8548CBC129F0237700518090 /* OpenDocumentWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentWorker.swift; sourceTree = "<group>"; };
 		8548CBC229F0237700518090 /* OpenDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocumentViewController.swift; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 				8548CBC429F0237700518090 /* OpenDocumentModel.swift */,
 				8548CBC529F0237700518090 /* OpenDocumentAssembly.swift */,
 				8548CBD629F0825E00518090 /* OpenDocumentRouter.swift */,
-				8548CBBE29F0237700518090 /* FileExplorerWorker.swift */,
+				8548CBBE29F0237700518090 /* FileExplorerManager.swift */,
 			);
 			path = OpenDocumentScene;
 			sourceTree = "<group>";
@@ -506,7 +506,7 @@
 				5E9BF21929EF9B7200DC1AFD /* ConfigurableTableCell.swift in Sources */,
 				8548CBCD29F0237700518090 /* OpenDocumentModel.swift in Sources */,
 				5E9BF22029EFB3CD00DC1AFD /* RecentFileCollectionViewCell.swift in Sources */,
-				8548CBC729F0237700518090 /* FileExplorerWorker.swift in Sources */,
+				8548CBC729F0237700518090 /* FileExplorerManager.swift in Sources */,
 				5E9BF21D29EF9BA500DC1AFD /* UITableView+Extension.swift in Sources */,
 				8548CBD729F0825E00518090 /* OpenDocumentRouter.swift in Sources */,
 				8548CBD129F07A6600518090 /* Palette.swift in Sources */,

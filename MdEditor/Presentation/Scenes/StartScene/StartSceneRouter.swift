@@ -10,7 +10,7 @@ import UIKit
 
 /// Роутер стартовой сцены.
 protocol IStartSceneRouter {
-	func routeToViewController(menuItem: MenuItemsStartScene)
+	func routeToViewController(menuItem: StartSceneModel.ViewData.MenuItemType)
 }
 
 /// Роутер стартовой сцены.
@@ -22,7 +22,7 @@ final class StartSceneRouter: IStartSceneRouter {
 
 	// MARK: - IStartSceneRouter
 
-	func routeToViewController(menuItem: MenuItemsStartScene) {
+	func routeToViewController(menuItem: StartSceneModel.ViewData.MenuItemType) {
 
 		var destinationViewController = UIViewController()
 
@@ -42,10 +42,4 @@ final class StartSceneRouter: IStartSceneRouter {
 	private func navigateToOpenDocumentViewController(source: StartSceneViewController, destination: UIViewController) {
 		source.show(destination, sender: nil)
 	}
-}
-
-enum MenuItemsStartScene {
-	case new
-	case open
-	case about
 }

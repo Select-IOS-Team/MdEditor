@@ -10,26 +10,28 @@ import SnapKit
 
 /// Вью контроллер сцены выбора файлов и папок.
 protocol IOpenDocumentViewController: AnyObject {
+	var currentPath: String { get set }
 	/// Отображает данные, соответствующие переданной модели.
-	func render(viewData: [OpenDocumentModel.OpenDocumentViewData.FileViewModel])
+	func render(viewData: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel])
 }
 
 /// Вью контроллер сцены выбора файлов и папок.
-class OpenDocumentViewController: UIViewController {
+final class OpenDocumentViewController: UIViewController {
 
 	// MARK: - Private properties
 
-	let interactor: IOpenDocumentInteractor?
-	private let router: IOpenDocumentRouter
+	let interactor: IOpenDocumentInteractor
+	var router: (IOpenDocumentRoutingLogic & IOpenDocumentDataPassing)
 	private lazy var tableView = makeTableView()
 
 	// MARK: - Internal properties
 
-	var viewData: [OpenDocumentModel.OpenDocumentViewData.FileViewModel] = []
+	var currentPath = "SampleFiles"
+	var viewData: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel] = []
 
 	// MARK: - Lifecycle
 
-	init(interactor: IOpenDocumentInteractor, router: IOpenDocumentRouter) {
+	init(interactor: IOpenDocumentInteractor, router: (IOpenDocumentRoutingLogic & IOpenDocumentDataPassing)) {
 		self.interactor = interactor
 		self.router = router
 		super.init(nibName: nil, bundle: nil)
@@ -41,18 +43,15 @@ class OpenDocumentViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupUI()
-		interactor?.fetchFileStruct()
-	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
 		self.navigationItem.backBarButtonItem = UIBarButtonItem(
 			title: "",
 			style: UIBarButtonItem.Style.plain,
 			target: nil,
 			action: nil
 		)
+		setupUI()
+		setupLayout()
+		interactor.fetchDirectoryObjects(currentPath: currentPath)
 	}
 }
 
@@ -82,17 +81,15 @@ extension OpenDocumentViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let model = viewData[indexPath.row]
-		tableView.deselectRow(at: indexPath, animated: true)
-		tableView.scrollsToTop = true
-		self.router.routeToViewController(menuItem: model.menuItem, root: model.fullName, title: model.name)
+		router.dataStore = OpenDocumentRoutingDTO(title: model.title, currentPath: model.fullName)
+		router.routeToViewController(menuItem: model.menuItem)
 	}
 }
 
 // MARK: - IOpenDocumentViewController
 
 extension OpenDocumentViewController: IOpenDocumentViewController {
-
-	func render(viewData: [OpenDocumentModel.OpenDocumentViewData.FileViewModel]) {
+	func render(viewData: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel]) {
 		self.viewData = viewData
 		tableView.reloadData()
 	}
@@ -112,9 +109,11 @@ private extension OpenDocumentViewController {
 
 	func setupUI() {
 		view.addSubview(tableView)
-		tableView.snp.makeConstraints { make -> Void in
-			make.width.equalToSuperview()
-			make.height.equalToSuperview()
+	}
+
+	func setupLayout() {
+		tableView.snp.makeConstraints {
+			$0.edges.equalToSuperview()
 		}
 	}
 }
