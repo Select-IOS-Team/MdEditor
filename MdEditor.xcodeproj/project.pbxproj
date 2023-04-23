@@ -155,6 +155,7 @@
 		5E9BF21229EF97B800DC1AFD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				850690F629F4F9C000C378B2 /* Managers */,
 				8548CBCF29F07A4900518090 /* Theme */,
 				5E9BF21B29EF9B9100DC1AFD /* Extensions */,
 				5E9BF21A29EF9B8300DC1AFD /* Protocols */,
@@ -198,6 +199,14 @@
 				5E9BF21329EF98A800DC1AFD /* DynamicTableView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		850690F629F4F9C000C378B2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8548CBBE29F0237700518090 /* FileExplorerManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		8548CB2A29EE5CA100518090 = {
@@ -298,7 +307,6 @@
 				8548CBC429F0237700518090 /* OpenDocumentModel.swift */,
 				8548CBC529F0237700518090 /* OpenDocumentAssembly.swift */,
 				8548CBD629F0825E00518090 /* OpenDocumentRouter.swift */,
-				8548CBBE29F0237700518090 /* FileExplorerManager.swift */,
 			);
 			path = OpenDocumentScene;
 			sourceTree = "<group>";

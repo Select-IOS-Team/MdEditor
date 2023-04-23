@@ -9,7 +9,7 @@ import Foundation
 
 /// Сборщик сцены OpenDocumentScene.
 enum OpenDocumentAssembly {
-	static func assemble() -> OpenDocumentViewController {
+	static func assemble(currentPath: String) -> OpenDocumentViewController {
 
 		let fileExplorerWorker = FileExplorerManager()
 		let convertToResponseWorker = OpenDocumentWorker()
@@ -19,6 +19,7 @@ enum OpenDocumentAssembly {
 			convertToResponseWorker: convertToResponseWorker,
 			fileExplorerWorker: fileExplorerWorker
 		)
+		openDocumentInteractor.currentPath = currentPath
 		let openDocumentRouter = OpenDocumentRouter()
 		let openDocumentViewController = OpenDocumentViewController(
 			interactor: openDocumentInteractor,
@@ -27,6 +28,8 @@ enum OpenDocumentAssembly {
 		openDocumentPresenter.viewController = openDocumentViewController
 		openDocumentRouter.viewController = openDocumentViewController
 
+		guard let title = currentPath.split(separator: "/").last else { return openDocumentViewController }
+		openDocumentViewController.title = title.description
 		return openDocumentViewController
 	}
 }

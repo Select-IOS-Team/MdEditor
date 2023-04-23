@@ -18,7 +18,7 @@ final class StartSceneRouter: IStartSceneRouter {
 
 	// MARK: - Internal properties
 
-	weak var viewController: IStartSceneViewController?
+	weak var viewController: UIViewController?
 
 	// MARK: - IStartSceneRouter
 
@@ -28,18 +28,18 @@ final class StartSceneRouter: IStartSceneRouter {
 
 		switch menuItem {
 		case .open:
-			destinationViewController = OpenDocumentAssembly.assemble() as UIViewController
+			destinationViewController = OpenDocumentAssembly.assemble(currentPath: "SampleFiles") as UIViewController
 		default:
 			return
 		}
 
-		guard let startSceneViewController = viewController as? StartSceneViewController else { return }
+		guard let startSceneViewController = viewController else { return }
 		navigateToOpenDocumentViewController(source: startSceneViewController, destination: destinationViewController)
 	}
 
 	// MARK: - Private methods
 
-	private func navigateToOpenDocumentViewController(source: StartSceneViewController, destination: UIViewController) {
+	private func navigateToOpenDocumentViewController(source: UIViewController, destination: UIViewController) {
 		source.show(destination, sender: nil)
 	}
 }

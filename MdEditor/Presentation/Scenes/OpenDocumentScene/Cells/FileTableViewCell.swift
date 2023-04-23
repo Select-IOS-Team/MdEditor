@@ -75,6 +75,12 @@ private extension FileTableViewCell {
 	}
 
 	func setupLayout() {
+
+		contentView.snp.makeConstraints {
+			$0.edges.equalToSuperview()
+			$0.height.lessThanOrEqualTo(Constants.contentViewHeight)
+		}
+
 		fileImageView.snp.makeConstraints {
 			$0.width.height.equalTo(Constants.fileImageViewSize)
 			$0.leading.equalToSuperview().offset(Constants.contentHorizontalInset)
@@ -82,7 +88,7 @@ private extension FileTableViewCell {
 		}
 		fileTitleLabel.snp.makeConstraints {
 			$0.leading.equalTo(fileImageView.snp.trailing).offset(Constants.contentSpace)
-			$0.trailing.equalToSuperview()
+			$0.trailing.equalToSuperview().inset(Constants.contentHorizontalInset)
 			$0.centerY.equalToSuperview()
 		}
 	}

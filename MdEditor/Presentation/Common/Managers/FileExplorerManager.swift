@@ -35,7 +35,7 @@ final class FileExplorerManager: IFileExplorerManager {
 
 	// MARK: - Internal Properties
 
-	var objects: [DirectoryObject] = []
+	private var objects: [DirectoryObject] = []
 
 	// MARK: - Internal Methods
 
@@ -56,7 +56,8 @@ final class FileExplorerManager: IFileExplorerManager {
 					documents.append(file)
 				}
 			}
-		} catch {
+		} catch let error as NSError {
+			fatalError(error.localizedDescription)
 		}
 
 		objects.append(contentsOf: folders)
@@ -77,8 +78,8 @@ final class FileExplorerManager: IFileExplorerManager {
 			guard let fileIsDir = attributes[FileAttributeKey.type] as? FileAttributeType else { return nil }
 			file.isFolder = fileIsDir == FileAttributeType.typeDirectory
 			return file
-		} catch {
+		} catch let error as NSError {
+			fatalError(error.localizedDescription)
 		}
-		return nil
 	}
 }

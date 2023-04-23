@@ -10,32 +10,24 @@ import UIKit
 
 /// Роутер  сцены открытия файлов и каталогов.
 protocol IOpenDocumentRoutingLogic {
-	func routeToViewController(menuItem: OpenDocumentModel.OpenDocumentViewData.DirectoryObjectType)
-}
-
-protocol IOpenDocumentDataPassing {
-	var dataStore: OpenDocumentRoutingDTO? { get set }
+	func routeToViewController(menuItem: OpenDocumentModel.OpenDocumentViewData.DirectoryObjectType, currentPath: String)
 }
 
 /// Роутер  сцены открытия файлов и каталогов.
-final class OpenDocumentRouter: IOpenDocumentRoutingLogic, IOpenDocumentDataPassing {
+final class OpenDocumentRouter: IOpenDocumentRoutingLogic {
 
 	// MARK: - Internal properties
 
-	weak var viewController: IOpenDocumentViewController?
-	var dataStore: OpenDocumentRoutingDTO?
+	weak var viewController: UIViewController?
 
 	// MARK: - IStartSceneRouter
 
-	func routeToViewController(menuItem: OpenDocumentModel.OpenDocumentViewData.DirectoryObjectType) {
+	func routeToViewController(menuItem: OpenDocumentModel.OpenDocumentViewData.DirectoryObjectType, currentPath: String) {
 
 		switch menuItem {
 		case .folder:
-			guard let dataStore = dataStore else { return }
-			let destinationViewController = OpenDocumentAssembly.assemble()
-			guard let sourceDocumentViewController = viewController as? OpenDocumentViewController else { return }
-
-			passDataToViewController(source: dataStore, destination: destinationViewController)
+			let destinationViewController = OpenDocumentAssembly.assemble(currentPath: currentPath)
+			guard let sourceDocumentViewController = viewController else { return }
 			navigateToViewController(source: sourceDocumentViewController, destination: destinationViewController)
 		default:
 			return
@@ -44,18 +36,7 @@ final class OpenDocumentRouter: IOpenDocumentRoutingLogic, IOpenDocumentDataPass
 
 	// MARK: - Private methods
 
-	private func navigateToViewController(source: OpenDocumentViewController, destination: OpenDocumentViewController) {
+	private func navigateToViewController(source: UIViewController, destination: OpenDocumentViewController) {
 		source.show(destination, sender: nil)
 	}
-
-	private func passDataToViewController(source: OpenDocumentRoutingDTO, destination: OpenDocumentViewController) {
-
-		destination.title = source.title
-		destination.currentPath = source.currentPath
-	  }
-}
-
-struct OpenDocumentRoutingDTO {
-	let title: String
-	let currentPath: String
 }
