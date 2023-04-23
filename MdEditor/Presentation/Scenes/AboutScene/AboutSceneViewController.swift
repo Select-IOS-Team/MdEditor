@@ -56,12 +56,12 @@ final class AboutSceneViewController: UIViewController {
 	}
 }
 
-// MARK: - IStartSceneViewController
+// MARK: - IAboutSceneViewController
 
 extension AboutSceneViewController: IAboutSceneViewController {
 
 	func render(viewData: AboutSceneModel.ViewData) {
-		self.aboutLabel.text = viewData.information
+		aboutLabel.text = viewData.information
 	}
 }
 

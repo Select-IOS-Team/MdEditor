@@ -24,21 +24,20 @@ final class AboutSceneInteractor: IAboutSceneInteractor {
 
 	// MARK: - Lificycle
 
-	// swiftlint: disable line_length
-	init(presenter: IAboutScenePresenter, fileExplorerManager: IFileExplorerManager, convertToResponseWorker: IAboutSceneWorker) {
+	init(
+		presenter: IAboutScenePresenter,
+		fileExplorerManager: IFileExplorerManager,
+		convertToResponseWorker: IAboutSceneWorker
+	) {
 		self.presenter = presenter
 		self.fileExplorerManager = fileExplorerManager
 		self.convertToResponseWorker = convertToResponseWorker
 	}
-	// swiftlint: enable line_length
 
 	// MARK: - IAboutSceneInteractor
 
 	func fetchData() {
-		guard let file = fileExplorerManager.getAboutFile(
-			fileName: "SampleFiles/.about",
-			fileExtension: "md"
-		) else { return }
+		guard let file = fileExplorerManager.getAboutFile() else { return }
 		let response = convertToResponseWorker.prepareViewModel(data: file)
 		presenter.presentData(response: response)
 	}

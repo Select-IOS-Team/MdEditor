@@ -13,7 +13,7 @@ protocol IAboutSceneWorker {
 }
 
 /// Класс воркера
-class AboutSceneWorker: IAboutSceneWorker {
+final class AboutSceneWorker: IAboutSceneWorker {
 
 	// MARK: - Internal Methods
 

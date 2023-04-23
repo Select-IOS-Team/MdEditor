@@ -38,7 +38,7 @@ struct DirectoryObject {
 protocol IFileExplorerManager {
 	func fillDirectoryObjects(path: String) -> [DirectoryObject]
 	func getDirectoryObject(url: URL) -> DirectoryObject?
-	func getAboutFile(fileName: String, fileExtension: String) -> DirectoryObject?
+	func getAboutFile() -> DirectoryObject?
 }
 
 /// Класс файл менеджера
@@ -100,8 +100,11 @@ final class FileExplorerManager: IFileExplorerManager {
 		}
 	}
 
-	func getAboutFile(fileName: String, fileExtension: String) -> DirectoryObject? {
-			guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else { return nil }
+	func getAboutFile() -> DirectoryObject? {
+		guard let url = Bundle.main.url(
+			forResource: StringConstants.aboutPath,
+			withExtension: StringConstants.aboutExtension
+		) else { return nil }
 			return getDirectoryObject(url: url)
 		}
 }
