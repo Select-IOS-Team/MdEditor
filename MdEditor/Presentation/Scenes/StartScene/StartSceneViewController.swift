@@ -24,6 +24,7 @@ private enum Constants {
 		bottom: 10,
 		trailing: 10
 	)
+	static let delayBeforeRouting: Double = 0.2
 }
 
 /// Вью контроллер стартовой сцены.
@@ -135,7 +136,6 @@ extension StartSceneViewController: UITableViewDataSource {
 			type: MenuItemTableViewCell.self,
 			for: indexPath
 		) else { return UITableViewCell() }
-
 		cell.configure(with: viewData.menuItems[indexPath.row])
 		return cell
 	}
@@ -146,7 +146,10 @@ extension StartSceneViewController: UITableViewDataSource {
 extension StartSceneViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		interactor.didTapMenuItem(at: indexPath.row)
+		DispatchQueue.main.asyncAfter(deadline: .now() + Constants.delayBeforeRouting) { [ weak self ] in
+			guard let self else { return }
+			self.router.routeToViewController(menuItem: self.viewData.menuItems[indexPath.row].menuType)
+		}
 	}
 }
 

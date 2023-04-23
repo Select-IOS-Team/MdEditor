@@ -50,6 +50,19 @@ final class MenuItemTableViewCell: UITableViewCell {
 		iconImageView.image = nil
 		titleLabel.text = nil
 	}
+
+	override func setSelected(_ selected: Bool, animated: Bool) {
+		super.setSelected(selected, animated: animated)
+		if selected {
+			UIView.animate(withDuration: 0.15, animations: {
+				self.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+			}, completion: { _ in
+				UIView.animate(withDuration: 0.15) {
+					self.transform = .identity
+				}
+			})
+		}
+	}
 }
 
 // MARK: - IConfigurableTableCell
@@ -58,7 +71,7 @@ extension MenuItemTableViewCell: IConfigurableTableCell {
 
 	func configure(with model: ConfigurationModel) {
 		titleLabel.text = model.title
-		iconImageView.image = UIImage(systemName: model.iconName)
+		iconImageView.image = model.icon.image
 	}
 }
 
@@ -72,10 +85,8 @@ private extension MenuItemTableViewCell {
 	}
 
 	func setupLayout() {
-		contentView.snp.makeConstraints {
-			$0.edges.equalToSuperview()
-			$0.height.greaterThanOrEqualTo(Constants.contentViewMinimumHeight)
-		}
+		contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.contentViewMinimumHeight).isActive = true
+
 		iconImageView.snp.makeConstraints {
 			$0.centerY.equalToSuperview()
 			$0.leading.equalToSuperview().inset(Constants.contentHorizontalInset)
