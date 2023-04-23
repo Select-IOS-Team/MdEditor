@@ -74,8 +74,8 @@ private extension AboutSceneViewController {
 	}
 
 	func setupLayout() {
-		aboutLabel.snp.makeConstraints { make -> Void in
-			make.leading.trailing.top.bottom.equalToSuperview()
+		aboutLabel.snp.makeConstraints {
+			$0.edges.equalToSuperview()
 		}
 	}
 }
