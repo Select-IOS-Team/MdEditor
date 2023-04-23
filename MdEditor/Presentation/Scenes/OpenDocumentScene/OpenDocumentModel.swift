@@ -9,10 +9,13 @@ import Foundation
 
 /// Модель вью
 enum OpenDocumentModel {
-	struct OpenDocumentViewData: Equatable {
-		struct DirectoryObjectViewModel: Equatable {
+
+	struct OpenDocumentViewData {
+
+		struct DirectoryObjectViewModel {
+
 			let name: String
-			let imageName: String
+			let image: ImageAsset
 			let fullName: String
 			let menuItem: DirectoryObjectType
 		}

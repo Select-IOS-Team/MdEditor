@@ -25,7 +25,7 @@ final class OpenDocumentWorker: IOpenDocumentWorker {
 		data.forEach { item in
 			let fileViewModel = OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel(
 				name: item.name,
-				imageName: item.isFolder ? L10n.OpenDocument.Images.folder : L10n.OpenDocument.Images.file,
+				image: item.isFolder ? Asset.folder : Asset.document,
 				fullName: item.path,
 				menuItem: item.isFolder ? .folder : .document
 			)

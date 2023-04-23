@@ -21,7 +21,7 @@ enum StartSceneModel {
 		}
 
 		struct MenuItem {
-			let iconName: String
+			let icon: ImageAsset
 			let title: String
 			let menuType: MenuItemType
 		}

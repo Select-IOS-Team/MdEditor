@@ -60,7 +60,7 @@ extension FileTableViewCell: IConfigurableTableCell {
 
 	func configure(with model: ConfigurationModel) {
 		fileTitleLabel.text = model.name
-		fileImageView.image = ImageAsset(name: model.imageName).image
+		fileImageView.image = model.image.image
 	}
 }
 
