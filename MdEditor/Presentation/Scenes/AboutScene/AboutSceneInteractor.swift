@@ -20,25 +20,22 @@ final class AboutSceneInteractor: IAboutSceneInteractor {
 
 	private let presenter: IAboutScenePresenter
 	private let fileExplorerManager: IFileExplorerManager
-	private let convertToResponseWorker: IAboutSceneWorker
 
 	// MARK: - Lificycle
 
 	init(
 		presenter: IAboutScenePresenter,
-		fileExplorerManager: IFileExplorerManager,
-		convertToResponseWorker: IAboutSceneWorker
+		fileExplorerManager: IFileExplorerManager
 	) {
 		self.presenter = presenter
 		self.fileExplorerManager = fileExplorerManager
-		self.convertToResponseWorker = convertToResponseWorker
 	}
 
 	// MARK: - IAboutSceneInteractor
 
 	func fetchData() {
-		guard let file = fileExplorerManager.getAboutFile() else { return }
-		let response = convertToResponseWorker.prepareViewModel(data: file)
+		guard let aboutFile = fileExplorerManager.getAboutFile() else { return }
+		let response = AboutSceneModel.ViewData(information: aboutFile.getFileText(fullPath: aboutFile.path))
 		presenter.presentData(response: response)
 	}
 }

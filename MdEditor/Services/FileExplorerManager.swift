@@ -105,7 +105,7 @@ final class FileExplorerManager: IFileExplorerManager {
 	func getAboutFile() -> DirectoryObject? {
 		guard let url = Bundle.main.url(
 			forResource: StringConstants.aboutPath,
-			withExtension: StringConstants.aboutExtension
+			withExtension: StringConstants.mdExtension
 		) else { return nil }
 		return getDirectoryObject(url: url)
 	}

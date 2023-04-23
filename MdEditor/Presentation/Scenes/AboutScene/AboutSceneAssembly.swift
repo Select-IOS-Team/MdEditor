@@ -11,13 +11,8 @@ import Foundation
 enum AboutSceneAssembly {
 	static func assemble() -> AboutSceneViewController {
 		let fileExplorerManager = FileExplorerManager()
-		let convertToResponseWorker = AboutSceneWorker()
 		let presenter = AboutScenePresenter()
-		let interactor = AboutSceneInteractor(
-			presenter: presenter,
-			fileExplorerManager: fileExplorerManager,
-			convertToResponseWorker: convertToResponseWorker
-		)
+		let interactor = AboutSceneInteractor(presenter: presenter, fileExplorerManager: fileExplorerManager)
 		let viewController = AboutSceneViewController(interactor: interactor)
 
 		presenter.viewController = viewController
