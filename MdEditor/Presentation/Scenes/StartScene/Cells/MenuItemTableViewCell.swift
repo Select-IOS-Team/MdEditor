@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-final class MenuItemTableViewCell: UITableViewCell {
+final class MenuItemTableViewCell: UITableViewCell, IZoomingPressStateAnimatable {
 
 	// MARK: - Nested types
 
@@ -49,19 +49,6 @@ final class MenuItemTableViewCell: UITableViewCell {
 		super.prepareForReuse()
 		iconImageView.image = nil
 		titleLabel.text = nil
-	}
-
-	override func setSelected(_ selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
-		if selected {
-			UIView.animate(withDuration: 0.15, animations: {
-				self.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
-			}, completion: { _ in
-				UIView.animate(withDuration: 0.15) {
-					self.transform = .identity
-				}
-			})
-		}
 	}
 }
 
