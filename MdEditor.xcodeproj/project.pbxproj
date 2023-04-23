@@ -16,6 +16,12 @@
 		5E9BF22029EFB3CD00DC1AFD /* RecentFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BF21F29EFB3CD00DC1AFD /* RecentFileCollectionViewCell.swift */; };
 		5E9BF22229EFB40900DC1AFD /* IConfigurableCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BF22129EFB40900DC1AFD /* IConfigurableCollectionCell.swift */; };
 		5E9BF22429EFB6B600DC1AFD /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BF22329EFB6B600DC1AFD /* UICollectionView+Extension.swift */; };
+		850690FF29F5312E00C378B2 /* AboutSceneAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850690F929F5312E00C378B2 /* AboutSceneAssembly.swift */; };
+		8506910029F5312E00C378B2 /* AboutSceneWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850690FA29F5312E00C378B2 /* AboutSceneWorker.swift */; };
+		8506910129F5312E00C378B2 /* AboutScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850690FB29F5312E00C378B2 /* AboutScenePresenter.swift */; };
+		8506910229F5312E00C378B2 /* AboutSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850690FC29F5312E00C378B2 /* AboutSceneViewController.swift */; };
+		8506910329F5312E00C378B2 /* AboutSceneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850690FD29F5312E00C378B2 /* AboutSceneModel.swift */; };
+		8506910429F5312E00C378B2 /* AboutSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850690FE29F5312E00C378B2 /* AboutSceneInteractor.swift */; };
 		8548CB3729EE5CA100518090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3629EE5CA100518090 /* AppDelegate.swift */; };
 		8548CB3929EE5CA100518090 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3829EE5CA100518090 /* SceneDelegate.swift */; };
 		8548CB3B29EE5CA100518090 /* StartSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3A29EE5CA100518090 /* StartSceneViewController.swift */; };
@@ -71,6 +77,12 @@
 		5E9BF21F29EFB3CD00DC1AFD /* RecentFileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentFileCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E9BF22129EFB40900DC1AFD /* IConfigurableCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IConfigurableCollectionCell.swift; sourceTree = "<group>"; };
 		5E9BF22329EFB6B600DC1AFD /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		850690F929F5312E00C378B2 /* AboutSceneAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSceneAssembly.swift; sourceTree = "<group>"; };
+		850690FA29F5312E00C378B2 /* AboutSceneWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSceneWorker.swift; sourceTree = "<group>"; };
+		850690FB29F5312E00C378B2 /* AboutScenePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutScenePresenter.swift; sourceTree = "<group>"; };
+		850690FC29F5312E00C378B2 /* AboutSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSceneViewController.swift; sourceTree = "<group>"; };
+		850690FD29F5312E00C378B2 /* AboutSceneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSceneModel.swift; sourceTree = "<group>"; };
+		850690FE29F5312E00C378B2 /* AboutSceneInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSceneInteractor.swift; sourceTree = "<group>"; };
 		8548CB3329EE5CA100518090 /* MdEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MdEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8548CB3629EE5CA100518090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8548CB3829EE5CA100518090 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +149,7 @@
 		5E9BF21029EF96D700DC1AFD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				850690F829F5312E00C378B2 /* AboutScene */,
 				8548CBBA29F0237700518090 /* OpenDocumentScene */,
 				8548CB6529EE683C00518090 /* StartScene */,
 			);
@@ -206,6 +219,19 @@
 				8548CBBE29F0237700518090 /* FileExplorerManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		850690F829F5312E00C378B2 /* AboutScene */ = {
+			isa = PBXGroup;
+			children = (
+				850690F929F5312E00C378B2 /* AboutSceneAssembly.swift */,
+				850690FA29F5312E00C378B2 /* AboutSceneWorker.swift */,
+				850690FB29F5312E00C378B2 /* AboutScenePresenter.swift */,
+				850690FC29F5312E00C378B2 /* AboutSceneViewController.swift */,
+				850690FD29F5312E00C378B2 /* AboutSceneModel.swift */,
+				850690FE29F5312E00C378B2 /* AboutSceneInteractor.swift */,
+			);
+			path = AboutScene;
 			sourceTree = "<group>";
 		};
 		8548CB2A29EE5CA100518090 = {
@@ -499,6 +525,7 @@
 				8548CBCB29F0237700518090 /* OpenDocumentViewController.swift in Sources */,
 				8548CBC629F0237700518090 /* FileTableViewCell.swift in Sources */,
 				8548CBD329F07AB000518090 /* UIColor+Hex.swift in Sources */,
+				850690FF29F5312E00C378B2 /* AboutSceneAssembly.swift in Sources */,
 				8548CB6B29EE68A600518090 /* StartSceneRouter.swift in Sources */,
 				8548CBD529F07AF800518090 /* UIColor+Dynamic.swift in Sources */,
 				5E9BF21429EF98A800DC1AFD /* DynamicTableView.swift in Sources */,
@@ -508,6 +535,7 @@
 				8548CB6729EE688200518090 /* StartSceneInteractor.swift in Sources */,
 				5E9BF22229EFB40900DC1AFD /* IConfigurableCollectionCell.swift in Sources */,
 				8548CBCE29F0237700518090 /* OpenDocumentAssembly.swift in Sources */,
+				8506910429F5312E00C378B2 /* AboutSceneInteractor.swift in Sources */,
 				8548CBCA29F0237700518090 /* OpenDocumentWorker.swift in Sources */,
 				5E9BF21729EF99A000DC1AFD /* MenuItemTableViewCell.swift in Sources */,
 				8548CB6329EE642D00518090 /* Strings.swift in Sources */,
@@ -515,12 +543,16 @@
 				8548CBCD29F0237700518090 /* OpenDocumentModel.swift in Sources */,
 				5E9BF22029EFB3CD00DC1AFD /* RecentFileCollectionViewCell.swift in Sources */,
 				8548CBC729F0237700518090 /* FileExplorerManager.swift in Sources */,
+				8506910129F5312E00C378B2 /* AboutScenePresenter.swift in Sources */,
 				5E9BF21D29EF9BA500DC1AFD /* UITableView+Extension.swift in Sources */,
+				8506910229F5312E00C378B2 /* AboutSceneViewController.swift in Sources */,
 				8548CBD729F0825E00518090 /* OpenDocumentRouter.swift in Sources */,
 				8548CBD129F07A6600518090 /* Palette.swift in Sources */,
+				8506910029F5312E00C378B2 /* AboutSceneWorker.swift in Sources */,
 				8548CB6D29EE68DE00518090 /* StartSceneModel.swift in Sources */,
 				8548CB6229EE642D00518090 /* Assets.swift in Sources */,
 				8548CB3929EE5CA100518090 /* SceneDelegate.swift in Sources */,
+				8506910329F5312E00C378B2 /* AboutSceneModel.swift in Sources */,
 				8548CB6F29EE68EB00518090 /* StartSceneAssembly.swift in Sources */,
 				5E9BF22429EFB6B600DC1AFD /* UICollectionView+Extension.swift in Sources */,
 				8548CBCC29F0237700518090 /* OpenDocumentPresenter.swift in Sources */,
