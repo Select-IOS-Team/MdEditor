@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Протокол, добавляющий вью возможность включения анимированного масштабирования при нажатии.
 public protocol IZoomingPressStateAnimatable: AnyObject {
 	/// Включение зуммирования при нажатии на UIView.
 	@discardableResult

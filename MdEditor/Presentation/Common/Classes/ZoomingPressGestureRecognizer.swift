@@ -12,7 +12,7 @@ private extension CGFloat {
 }
 
 private extension CATransform3D {
-	static let minScale = CATransform3DMakeScale(0.95, 0.95, 1)
+	static let minScale = CATransform3DMakeScale(0.97, 0.97, 1)
 	static let maxScale = CATransform3DMakeScale(1, 1, 1)
 }
 
@@ -20,14 +20,16 @@ private extension TimeInterval {
 	static let animation100ms: TimeInterval = 0.1
 }
 
+/// UIGestureRecognizer, добавляющий анимированное масштабирование при нажатии на вью.
 final class ZoomingPressGestureRecognizer: UIGestureRecognizer {
 
-	// Dependencies
+	// MARK: - Private properties
+
 	private var initialTouchPoint: CGPoint?
 	private var animator: UIViewPropertyAnimator?
 	private var tapAction: (() -> Void)?
 
-	// MARK: - Initializers
+	// MARK: - Lifecycle
 
 	convenience init(tapAction: (() -> Void)? = nil) {
 		self.init()
@@ -36,11 +38,6 @@ final class ZoomingPressGestureRecognizer: UIGestureRecognizer {
 		addTarget(self, action: #selector(handleTouch(_:)))
 		cancelsTouchesInView = false
 	}
-}
-
-// MARK: - Lifecycle
-
-extension ZoomingPressGestureRecognizer {
 
 	override func canPrevent(_ preventedGestureRecognizer: UIGestureRecognizer) -> Bool {
 		return false
@@ -83,7 +80,7 @@ extension ZoomingPressGestureRecognizer {
 	}
 }
 
-// MARK: - Private
+// MARK: - Private methods
 
 extension ZoomingPressGestureRecognizer {
 
