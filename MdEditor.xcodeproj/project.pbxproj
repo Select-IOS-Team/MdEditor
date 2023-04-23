@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5E5EB57629EFFAA0000EC9E5 /* CheckingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB57529EFFAA0000EC9E5 /* CheckingTest.swift */; };
+		5E7EE7CC29F5116D00BD700C /* ZoomingPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EE7CB29F5116D00BD700C /* ZoomingPressGestureRecognizer.swift */; };
+		5E7EE7CE29F5124100BD700C /* IZoomingPressStateAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EE7CD29F5124100BD700C /* IZoomingPressStateAnimatable.swift */; };
 		5E9BF20E29EF06DC00DC1AFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E9BF20D29EF06DC00DC1AFD /* SnapKit */; };
 		5E9BF21429EF98A800DC1AFD /* DynamicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BF21329EF98A800DC1AFD /* DynamicTableView.swift */; };
 		5E9BF21729EF99A000DC1AFD /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BF21629EF99A000DC1AFD /* MenuItemTableViewCell.swift */; };
@@ -63,6 +65,8 @@
 /* Begin PBXFileReference section */
 		5E5EB57329EFFA9F000EC9E5 /* MdEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MdEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5EB57529EFFAA0000EC9E5 /* CheckingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingTest.swift; sourceTree = "<group>"; };
+		5E7EE7CB29F5116D00BD700C /* ZoomingPressGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomingPressGestureRecognizer.swift; sourceTree = "<group>"; };
+		5E7EE7CD29F5124100BD700C /* IZoomingPressStateAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IZoomingPressStateAnimatable.swift; sourceTree = "<group>"; };
 		5E9BF20F29EF085B00DC1AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E9BF21329EF98A800DC1AFD /* DynamicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTableView.swift; sourceTree = "<group>"; };
 		5E9BF21629EF99A000DC1AFD /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -134,6 +138,14 @@
 			path = MdEditorTests;
 			sourceTree = "<group>";
 		};
+		5E7EE7CF29F512A800BD700C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5E7EE7CB29F5116D00BD700C /* ZoomingPressGestureRecognizer.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		5E9BF21029EF96D700DC1AFD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,9 +167,10 @@
 		5E9BF21229EF97B800DC1AFD /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				8548CBCF29F07A4900518090 /* Theme */,
+				5E7EE7CF29F512A800BD700C /* Classes */,
 				5E9BF21B29EF9B9100DC1AFD /* Extensions */,
 				5E9BF21A29EF9B8300DC1AFD /* Protocols */,
+				8548CBCF29F07A4900518090 /* Theme */,
 				5E9BF21E29EF9C4200DC1AFD /* Views */,
 			);
 			path = Common;
@@ -177,6 +190,7 @@
 			children = (
 				5E9BF21829EF9B7200DC1AFD /* ConfigurableTableCell.swift */,
 				5E9BF22129EFB40900DC1AFD /* IConfigurableCollectionCell.swift */,
+				5E7EE7CD29F5124100BD700C /* IZoomingPressStateAnimatable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -502,6 +516,7 @@
 				8548CB6B29EE68A600518090 /* StartSceneRouter.swift in Sources */,
 				8548CBD529F07AF800518090 /* UIColor+Dynamic.swift in Sources */,
 				5E9BF21429EF98A800DC1AFD /* DynamicTableView.swift in Sources */,
+				5E7EE7CE29F5124100BD700C /* IZoomingPressStateAnimatable.swift in Sources */,
 				8548CB3B29EE5CA100518090 /* StartSceneViewController.swift in Sources */,
 				8548CB3729EE5CA100518090 /* AppDelegate.swift in Sources */,
 				8548CBC929F0237700518090 /* OpenDocumentInteractor.swift in Sources */,
@@ -517,6 +532,7 @@
 				8548CBC729F0237700518090 /* FileExplorerManager.swift in Sources */,
 				5E9BF21D29EF9BA500DC1AFD /* UITableView+Extension.swift in Sources */,
 				8548CBD729F0825E00518090 /* OpenDocumentRouter.swift in Sources */,
+				5E7EE7CC29F5116D00BD700C /* ZoomingPressGestureRecognizer.swift in Sources */,
 				8548CBD129F07A6600518090 /* Palette.swift in Sources */,
 				8548CB6D29EE68DE00518090 /* StartSceneModel.swift in Sources */,
 				8548CB6229EE642D00518090 /* Assets.swift in Sources */,

@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-final class RecentFileCollectionViewCell: UICollectionViewCell {
+final class RecentFileCollectionViewCell: UICollectionViewCell, IZoomingPressStateAnimatable {
 
 	// MARK: - Nested types
 

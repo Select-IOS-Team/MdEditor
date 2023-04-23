@@ -24,7 +24,6 @@ private enum Constants {
 		bottom: 10,
 		trailing: 10
 	)
-	static let delayBeforeRouting: Double = 0.2
 }
 
 /// Вью контроллер стартовой сцены.
@@ -49,7 +48,6 @@ final class StartSceneViewController: UIViewController {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .collectionViewCompositionalLayout)
 		collectionView.registerCell(type: RecentFileCollectionViewCell.self)
 		collectionView.dataSource = self
-		collectionView.delegate = self
 		collectionView.allowsSelection = true
 		return collectionView
 	}()
@@ -59,7 +57,6 @@ final class StartSceneViewController: UIViewController {
 		tableView.separatorStyle = .none
 		tableView.isScrollEnabled = false
 		tableView.dataSource = self
-		tableView.delegate = self
 		return tableView
 	}()
 
@@ -110,16 +107,8 @@ extension StartSceneViewController: UICollectionViewDataSource {
 		) else { return UICollectionViewCell() }
 
 		cell.configure(with: viewData.recentFileItems[indexPath.item])
+		cell.enableZoomingPressStateAnimation(tapAction: nil)
 		return cell
-	}
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension StartSceneViewController: UICollectionViewDelegate {
-
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		interactor.didTapRecentFile(at: indexPath.item)
 	}
 }
 
@@ -136,20 +125,12 @@ extension StartSceneViewController: UITableViewDataSource {
 			type: MenuItemTableViewCell.self,
 			for: indexPath
 		) else { return UITableViewCell() }
+
 		cell.configure(with: viewData.menuItems[indexPath.row])
-		return cell
-	}
-}
-
-// MARK: - UITableViewDelegate
-
-extension StartSceneViewController: UITableViewDelegate {
-
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		DispatchQueue.main.asyncAfter(deadline: .now() + Constants.delayBeforeRouting) { [ weak self ] in
-			guard let self else { return }
-			self.router.routeToViewController(menuItem: self.viewData.menuItems[indexPath.row].menuType)
+		cell.enableZoomingPressStateAnimation { [weak self] in
+			self?.handleMenuItemTap(at: indexPath.row)
 		}
+		return cell
 	}
 }
 
@@ -180,6 +161,10 @@ private extension StartSceneViewController {
 	func configureUI() {
 		view.backgroundColor = .white
 		title = L10n.StartScene.title
+	}
+
+	func handleMenuItemTap(at index: Int) {
+		router.routeToViewController(menuItem: viewData.menuItems[index].menuType)
 	}
 }
 
