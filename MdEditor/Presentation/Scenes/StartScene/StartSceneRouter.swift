@@ -28,7 +28,7 @@ final class StartSceneRouter: IStartSceneRouter {
 
 		switch menuItem {
 		case .open:
-			destinationViewController = OpenDocumentAssembly.assemble(currentPath: "SampleFiles") as UIViewController
+			destinationViewController = OpenDocumentAssembly.assemble(currentPath: StringConstants.root) as UIViewController
 		case .about:
 			destinationViewController = AboutSceneAssembly.assemble() as UIViewController
 		default:
