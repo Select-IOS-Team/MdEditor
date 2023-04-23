@@ -22,12 +22,23 @@ struct DirectoryObject {
 	var fullname: String {
 		return "\(path)/\(name)"
 	}
+
+	func getFileText(fullPath: String) -> String {
+		var text = ""
+		do {
+			text = try String(contentsOfFile: fullPath, encoding: String.Encoding.utf8)
+		} catch {
+		}
+
+		return text
+	}
 }
 
 /// Файл менеджер
 protocol IFileExplorerManager {
 	func fillDirectoryObjects(path: String) -> [DirectoryObject]
 	func getDirectoryObject(url: URL) -> DirectoryObject?
+	func getAboutFile() -> DirectoryObject?
 }
 
 /// Класс файл менеджера
@@ -54,8 +65,10 @@ final class FileExplorerManager: IFileExplorerManager {
 
 		do {
 			let items = try fileManager.contentsOfDirectory(at: urlPath, includingPropertiesForKeys: nil)
-			items.forEach { item in
-				guard let file = getDirectoryObject(url: item) else { return }
+			for item in items {
+				guard let isHidden = try item.resourceValues(forKeys: [.isHiddenKey]).isHidden else { continue }
+				guard !isHidden else { continue }
+				guard let file = getDirectoryObject(url: item) else { continue }
 				if file.isFolder {
 					folders.append(file)
 				} else {
@@ -87,5 +100,13 @@ final class FileExplorerManager: IFileExplorerManager {
 		} catch let error as NSError {
 			fatalError(error.localizedDescription)
 		}
+	}
+
+	func getAboutFile() -> DirectoryObject? {
+		guard let url = Bundle.main.url(
+			forResource: StringConstants.aboutPath,
+			withExtension: StringConstants.mdExtension
+		) else { return nil }
+		return getDirectoryObject(url: url)
 	}
 }
