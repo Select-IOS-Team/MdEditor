@@ -8,7 +8,7 @@
 enum StringConstants {
 	static let root = "SampleFiles"
 	static let aboutName = ".about"
-	static let aboutExtension = "md"
+	static let mdExtension = "md"
 	static var aboutPath: String {
 		return "\(root)/\(aboutName)"
 	}
