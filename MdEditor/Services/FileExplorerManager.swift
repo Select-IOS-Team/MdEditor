@@ -65,8 +65,10 @@ final class FileExplorerManager: IFileExplorerManager {
 
 		do {
 			let items = try fileManager.contentsOfDirectory(at: urlPath, includingPropertiesForKeys: nil)
-			items.forEach { item in
-				guard let file = getDirectoryObject(url: item) else { return }
+			for item in items {
+				guard let isHidden = try item.resourceValues(forKeys: [.isHiddenKey]).isHidden else { continue }
+				guard !isHidden else { continue }
+				guard let file = getDirectoryObject(url: item) else { continue }
 				if file.isFolder {
 					folders.append(file)
 				} else {
@@ -105,6 +107,6 @@ final class FileExplorerManager: IFileExplorerManager {
 			forResource: StringConstants.aboutPath,
 			withExtension: StringConstants.aboutExtension
 		) else { return nil }
-			return getDirectoryObject(url: url)
-		}
+		return getDirectoryObject(url: url)
+	}
 }
