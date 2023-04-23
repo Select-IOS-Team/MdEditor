@@ -34,12 +34,6 @@ final class StartSceneRouter: IStartSceneRouter {
 		}
 
 		guard let startSceneViewController = viewController else { return }
-		navigateToOpenDocumentViewController(source: startSceneViewController, destination: destinationViewController)
-	}
-
-	// MARK: - Private methods
-
-	private func navigateToOpenDocumentViewController(source: UIViewController, destination: UIViewController) {
-		source.show(destination, sender: nil)
+		startSceneViewController.show(destinationViewController, sender: nil)
 	}
 }

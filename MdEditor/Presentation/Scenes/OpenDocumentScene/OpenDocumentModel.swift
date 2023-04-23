@@ -11,9 +11,8 @@ import Foundation
 enum OpenDocumentModel {
 	struct OpenDocumentViewData: Equatable {
 		struct DirectoryObjectViewModel: Equatable {
-			let title: String
-			let imageName: String
 			let name: String
+			let imageName: String
 			let fullName: String
 			let menuItem: DirectoryObjectType
 		}
@@ -22,7 +21,7 @@ enum OpenDocumentModel {
 			case folder
 			case document
 		}
-
-		let objectsViewModel: [DirectoryObjectViewModel]
+		let title: String
+		var objectsViewModel: [DirectoryObjectViewModel]
 	}
 }

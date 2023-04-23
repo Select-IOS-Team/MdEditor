@@ -85,10 +85,8 @@ private extension MenuItemTableViewCell {
 	}
 
 	func setupLayout() {
-		contentView.snp.makeConstraints {
-			$0.edges.equalToSuperview()
-			$0.height.greaterThanOrEqualTo(Constants.contentViewMinimumHeight)
-		}
+		contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.contentViewMinimumHeight).isActive = true
+
 		iconImageView.snp.makeConstraints {
 			$0.centerY.equalToSuperview()
 			$0.leading.equalToSuperview().inset(Constants.contentHorizontalInset)

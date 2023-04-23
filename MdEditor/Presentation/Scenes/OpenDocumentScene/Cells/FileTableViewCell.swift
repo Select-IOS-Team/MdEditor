@@ -59,7 +59,7 @@ final class FileTableViewCell: UITableViewCell {
 extension FileTableViewCell: IConfigurableTableCell {
 
 	func configure(with model: ConfigurationModel) {
-		fileTitleLabel.text = model.title
+		fileTitleLabel.text = model.name
 		fileImageView.image = ImageAsset(name: model.imageName).image
 	}
 }
@@ -76,10 +76,7 @@ private extension FileTableViewCell {
 
 	func setupLayout() {
 
-		contentView.snp.makeConstraints {
-			$0.edges.equalToSuperview()
-			$0.height.lessThanOrEqualTo(Constants.contentViewHeight)
-		}
+		contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.contentViewHeight).isActive = true
 
 		fileImageView.snp.makeConstraints {
 			$0.width.height.equalTo(Constants.fileImageViewSize)

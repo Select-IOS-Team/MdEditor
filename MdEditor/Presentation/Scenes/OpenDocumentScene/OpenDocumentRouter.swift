@@ -28,15 +28,9 @@ final class OpenDocumentRouter: IOpenDocumentRoutingLogic {
 		case .folder:
 			let destinationViewController = OpenDocumentAssembly.assemble(currentPath: currentPath)
 			guard let sourceDocumentViewController = viewController else { return }
-			navigateToViewController(source: sourceDocumentViewController, destination: destinationViewController)
+			sourceDocumentViewController.show(destinationViewController, sender: nil)
 		default:
 			return
 		}
-	}
-
-	// MARK: - Private methods
-
-	private func navigateToViewController(source: UIViewController, destination: OpenDocumentViewController) {
-		source.show(destination, sender: nil)
 	}
 }

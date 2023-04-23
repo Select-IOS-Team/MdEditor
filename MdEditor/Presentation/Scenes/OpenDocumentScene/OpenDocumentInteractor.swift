@@ -39,7 +39,8 @@ final class OpenDocumentInteractor: IOpenDocumentInteractor {
 
 	func fetchDirectoryObjects() {
 		let data = fileExplorerWorker.fillDirectoryObjects(path: currentPath)
-		let response = convertToResponseWorker.prepareViewModel(data: data)
+		guard let title = currentPath.split(separator: "/").last else { return }
+		let response = convertToResponseWorker.prepareViewModel(data: data, title: title.description)
 		presenter.presentData(response: response)
 	}
 }

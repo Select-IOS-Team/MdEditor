@@ -155,7 +155,6 @@
 		5E9BF21229EF97B800DC1AFD /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				850690F629F4F9C000C378B2 /* Managers */,
 				8548CBCF29F07A4900518090 /* Theme */,
 				5E9BF21B29EF9B9100DC1AFD /* Extensions */,
 				5E9BF21A29EF9B8300DC1AFD /* Protocols */,
@@ -201,12 +200,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		850690F629F4F9C000C378B2 /* Managers */ = {
+		850690F729F51F1B00C378B2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				8548CBBE29F0237700518090 /* FileExplorerManager.swift */,
 			);
-			path = Managers;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		8548CB2A29EE5CA100518090 = {
@@ -237,6 +236,7 @@
 				8548CB3629EE5CA100518090 /* AppDelegate.swift */,
 				8548CB5829EE5F6000518090 /* SwiftGen */,
 				8548CB5729EE5F4C00518090 /* SupportingFiles */,
+				850690F729F51F1B00C378B2 /* Services */,
 				5E9BF21129EF97A700DC1AFD /* Presentation */,
 			);
 			path = MdEditor;

@@ -33,14 +33,20 @@ protocol IFileExplorerManager {
 /// Класс файл менеджера
 final class FileExplorerManager: IFileExplorerManager {
 
-	// MARK: - Internal Properties
+	// MARK: - Private Properties
 
-	private var objects: [DirectoryObject] = []
+	private let fileManager: FileManager
+
+	// MARK: - Lifecycle
+
+	init(fileManager: FileManager = FileManager.default) {
+		self.fileManager = fileManager
+	}
 
 	// MARK: - Internal Methods
 
 	func fillDirectoryObjects(path: String) -> [DirectoryObject] {
-		objects.removeAll()
+		var objects: [DirectoryObject] = []
 		let fileManager = FileManager.default
 		var documents: [DirectoryObject] = []
 		var folders: [DirectoryObject] = []

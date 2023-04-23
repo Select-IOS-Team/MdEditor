@@ -11,7 +11,7 @@ import SnapKit
 /// Вью контроллер сцены выбора файлов и папок.
 protocol IOpenDocumentViewController: AnyObject {
 	/// Отображает данные, соответствующие переданной модели.
-	func render(viewData: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel])
+	func render(viewData: OpenDocumentModel.OpenDocumentViewData)
 }
 
 /// Вью контроллер сцены выбора файлов и папок.
@@ -19,13 +19,13 @@ final class OpenDocumentViewController: UIViewController {
 
 	// MARK: - Private properties
 
-	let interactor: IOpenDocumentInteractor
-	var router: IOpenDocumentRoutingLogic
+	private let interactor: IOpenDocumentInteractor
+	private var router: IOpenDocumentRoutingLogic
 	private lazy var tableView = makeTableView()
 
 	// MARK: - Internal properties
 
-	var viewData: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel] = []
+	var viewData = OpenDocumentModel.OpenDocumentViewData(title: "", objectsViewModel: [])
 
 	// MARK: - Lifecycle
 
@@ -53,7 +53,7 @@ final class OpenDocumentViewController: UIViewController {
 extension OpenDocumentViewController: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		viewData.count
+		viewData.objectsViewModel.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +62,7 @@ extension OpenDocumentViewController: UITableViewDataSource {
 			for: indexPath
 		) else { return UITableViewCell() }
 
-		let model = viewData[indexPath.row]
+		let model = viewData.objectsViewModel[indexPath.row]
 		cell.configure(with: model)
 		return cell
 	}
@@ -73,7 +73,7 @@ extension OpenDocumentViewController: UITableViewDataSource {
 extension OpenDocumentViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let model = viewData[indexPath.row]
+		let model = viewData.objectsViewModel[indexPath.row]
 		router.routeToViewController(menuItem: model.menuItem, currentPath: model.fullName)
 	}
 }
@@ -82,8 +82,9 @@ extension OpenDocumentViewController: UITableViewDelegate {
 
 extension OpenDocumentViewController: IOpenDocumentViewController {
 
-	func render(viewData: [OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel]) {
+	func render(viewData: OpenDocumentModel.OpenDocumentViewData) {
 		self.viewData = viewData
+		self.title = viewData.title
 		tableView.reloadData()
 	}
 }

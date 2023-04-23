@@ -28,8 +28,6 @@ enum OpenDocumentAssembly {
 		openDocumentPresenter.viewController = openDocumentViewController
 		openDocumentRouter.viewController = openDocumentViewController
 
-		guard let title = currentPath.split(separator: "/").last else { return openDocumentViewController }
-		openDocumentViewController.title = title.description
 		return openDocumentViewController
 	}
 }
