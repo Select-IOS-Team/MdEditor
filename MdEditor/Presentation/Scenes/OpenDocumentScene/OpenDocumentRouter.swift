@@ -20,7 +20,7 @@ final class OpenDocumentRouter: IOpenDocumentRoutingLogic {
 
 	weak var viewController: UIViewController?
 
-	// MARK: - IStartSceneRouter
+	// MARK: - IOpenDocumentRoutingLogic
 
 	func routeToViewController(menuItem: OpenDocumentModel.OpenDocumentViewData.DirectoryObjectType, currentPath: String) {
 

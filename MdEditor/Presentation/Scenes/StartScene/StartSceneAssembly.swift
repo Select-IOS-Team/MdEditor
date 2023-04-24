@@ -12,7 +12,8 @@ enum StartSceneAssembly {
 
 	static func assemble() -> StartSceneViewController {
 		let presenter = StartScenePresenter()
-		let interactor = StartSceneInteractor(presenter: presenter)
+		let fileExplorerManager = FileExplorerManager()
+		let interactor = StartSceneInteractor(presenter: presenter, fileExplorerManager: fileExplorerManager)
 		let router = StartSceneRouter()
 		let viewController = StartSceneViewController(interactor: interactor, router: router)
 

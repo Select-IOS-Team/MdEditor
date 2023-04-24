@@ -15,11 +15,11 @@ protocol IOpenDocumentInteractor: AnyObject {
 /// Класс интерактора
 final class OpenDocumentInteractor: IOpenDocumentInteractor {
 
-	// MARK: - Private Properties
+	// MARK: - Private properties
 
 	private let presenter: IOpenDocumentPresenter
 	private let convertToResponseWorker: IOpenDocumentWorker
-	private let fileExplorerWorker: IFileExplorerManager
+	private let fileExplorerManager: IFileExplorerManager
 
 	var currentPath = ""
 
@@ -28,19 +28,19 @@ final class OpenDocumentInteractor: IOpenDocumentInteractor {
 	init(
 		presenter: IOpenDocumentPresenter,
 		convertToResponseWorker: IOpenDocumentWorker,
-		fileExplorerWorker: IFileExplorerManager
+		fileExplorerManager: IFileExplorerManager
 	) {
 		self.presenter = presenter
 		self.convertToResponseWorker = convertToResponseWorker
-		self.fileExplorerWorker = fileExplorerWorker
+		self.fileExplorerManager = fileExplorerManager
 	}
 
-	// MARK: - IFileExplorerWorker
+	// MARK: - IOpenDocumentInteractor
 
 	func fetchDirectoryObjects() {
-		let data = fileExplorerWorker.fillDirectoryObjects(path: currentPath)
+		let data = fileExplorerManager.fillDirectoryObjects(path: currentPath)
 		guard let title = currentPath.split(separator: "/").last else { return }
-		let response = convertToResponseWorker.prepareViewModel(data: data, title: title.description)
+		let response = convertToResponseWorker.prepareViewModel(data: data, title: String(title))
 		presenter.presentData(response: response)
 	}
 }

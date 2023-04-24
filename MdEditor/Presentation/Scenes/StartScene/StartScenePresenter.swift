@@ -24,15 +24,34 @@ final class StartScenePresenter: IStartScenePresenter {
 	// MARK: - IStartScenePresenter
 
 	func presentData(response: StartSceneModel.Response) {
-		let viewData = StartSceneModel.ViewData.stubData
+		let menuItems: [StartSceneModel.ViewData.MenuItem] = [
+			StartSceneModel.ViewData.MenuItem(
+				icon: Asset.addFile,
+				title: L10n.StartScene.MenuItem.New.title,
+				menuType: .new(createAction: response.createFileAction)
+			),
+			StartSceneModel.ViewData.MenuItem(
+				icon: Asset.openFolder,
+				title: L10n.StartScene.MenuItem.Open.title,
+				menuType: .open
+			),
+			StartSceneModel.ViewData.MenuItem(
+				icon: Asset.about,
+				title: L10n.StartScene.MenuItem.About.title,
+				menuType: .about
+			)
+		]
+		let recentFileItems = StartSceneModel.ViewData.stubRecentFileItems
+		let viewData = StartSceneModel.ViewData(recentFileItems: recentFileItems, menuItems: menuItems)
+
 		viewController?.render(viewData: viewData)
 	}
 }
 
 private extension StartSceneModel.ViewData {
 
-	static var stubData: StartSceneModel.ViewData {
-		let recentFileItems: [StartSceneModel.ViewData.RecentFileItem] = [
+	static var stubRecentFileItems: [StartSceneModel.ViewData.RecentFileItem] {
+		[
 			StartSceneModel.ViewData.RecentFileItem(
 				fileName: "File 1.md",
 				text: "Подготавливает и передаёт вью данные о недавно открытых файлах и элементах меню.",
@@ -49,11 +68,5 @@ private extension StartSceneModel.ViewData {
 				color: .blue.withAlphaComponent(0.3)
 			)
 		]
-		let menuItems: [StartSceneModel.ViewData.MenuItem] = [
-			StartSceneModel.ViewData.MenuItem(icon: Asset.addFile, title: "New", menuType: .new),
-			StartSceneModel.ViewData.MenuItem(icon: Asset.openFolder, title: "Open", menuType: .open),
-			StartSceneModel.ViewData.MenuItem(icon: Asset.about, title: "About", menuType: .about)
-		]
-		return StartSceneModel.ViewData(recentFileItems: recentFileItems, menuItems: menuItems)
 	}
 }
