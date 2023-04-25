@@ -7,3 +7,11 @@
 */
 
 "StartScene.Title" = "Main";
+"StartScene.MenuItem.New.Title" = "New";
+"StartScene.MenuItem.Open.Title" = "Open";
+"StartScene.MenuItem.About.Title" = "About App";
+"StartScene.NewFileAlert.Title" = "New file";
+"StartScene.NewFileAlert.TextField.Placeholder" = "Enter file name";
+
+"AlertController.Action.Create.Title" = "Create";
+"AlertController.Action.Cancel.Title" = "Cancel";

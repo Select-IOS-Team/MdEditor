@@ -11,13 +11,13 @@ import Foundation
 enum OpenDocumentAssembly {
 	static func assemble(currentPath: String) -> OpenDocumentViewController {
 
-		let fileExplorerWorker = FileExplorerManager()
+		let fileExplorerManager = FileExplorerManager()
 		let convertToResponseWorker = OpenDocumentWorker()
 		let openDocumentPresenter = OpenDocumentPresenter()
 		let openDocumentInteractor = OpenDocumentInteractor(
 			presenter: openDocumentPresenter,
 			convertToResponseWorker: convertToResponseWorker,
-			fileExplorerWorker: fileExplorerWorker
+			fileExplorerManager: fileExplorerManager
 		)
 		openDocumentInteractor.currentPath = currentPath
 		let openDocumentRouter = OpenDocumentRouter()

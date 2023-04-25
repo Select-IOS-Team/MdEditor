@@ -21,11 +21,8 @@ final class OpenDocumentViewController: UIViewController {
 
 	private let interactor: IOpenDocumentInteractor
 	private var router: IOpenDocumentRoutingLogic
+	private var viewData = OpenDocumentModel.OpenDocumentViewData(title: "", objectsViewModel: [])
 	private lazy var tableView = makeTableView()
-
-	// MARK: - Internal properties
-
-	var viewData = OpenDocumentModel.OpenDocumentViewData(title: "", objectsViewModel: [])
 
 	// MARK: - Lifecycle
 

@@ -10,7 +10,9 @@ import UIKit
 /// Модель стартовой сцены.
 enum StartSceneModel {
 
-	struct Response {}
+	struct Response {
+		let createFileAction: (String) -> Void
+	}
 
 	struct ViewData {
 
@@ -27,7 +29,7 @@ enum StartSceneModel {
 		}
 
 		enum MenuItemType {
-			case new
+			case new(createAction: (String) -> Void)
 			case open
 			case about
 		}

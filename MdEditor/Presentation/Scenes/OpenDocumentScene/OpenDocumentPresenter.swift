@@ -15,7 +15,7 @@ protocol IOpenDocumentPresenter {
 /// Класс презентера
 final class OpenDocumentPresenter: IOpenDocumentPresenter {
 
-	// MARK: - Internal Properties
+	// MARK: - Internal properties
 
 	weak var viewController: IOpenDocumentViewController?
 
