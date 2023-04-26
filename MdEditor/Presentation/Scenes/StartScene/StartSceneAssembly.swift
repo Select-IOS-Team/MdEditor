@@ -18,11 +18,8 @@ enum StartSceneAssembly {
 			presenter: presenter,
 			fileExplorerManager: fileExplorerManager
 		)
-		let router = StartSceneRouter()
-		let viewController = StartSceneViewController(interactor: interactor, router: router)
-
+		let viewController = StartSceneViewController(interactor: interactor)
 		presenter.viewController = viewController
-		router.viewController = viewController
 
 		return viewController
 	}

@@ -20,15 +20,13 @@ final class OpenDocumentViewController: UIViewController {
 	// MARK: - Private properties
 
 	private let interactor: IOpenDocumentInteractor
-	private var router: IOpenDocumentRoutingLogic
 	private var viewData = OpenDocumentModel.OpenDocumentViewData(title: "", objectsViewModel: [])
 	private lazy var tableView = makeTableView()
 
 	// MARK: - Lifecycle
 
-	init(interactor: IOpenDocumentInteractor, router: IOpenDocumentRoutingLogic) {
+	init(interactor: IOpenDocumentInteractor) {
 		self.interactor = interactor
-		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -73,14 +71,13 @@ extension OpenDocumentViewController: UITableViewDelegate {
 		let model = viewData.objectsViewModel[indexPath.row]
 		guard let navigationController = self.navigationController else { return }
 		let coordinator: IOpenDocumentCoordinator = OpenDocumentCoordinator(
-			currentPath: StringConstants.root,
+			currentPath: model.fullName,
 			navigationController: navigationController
 		)
 		coordinator.mainFlowType = StartSceneModel.ViewData.MenuItemType.open
 		coordinator.currentPath = model.fullName
 		coordinator.objectType = model.menuItem
 		interactor.coordinate(openDocumentCoordinator: coordinator)
-		// router.routeToViewController(menuItem: model.menuItem, currentPath: model.fullName)
 	}
 }
 

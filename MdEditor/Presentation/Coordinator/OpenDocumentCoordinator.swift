@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Координатор сцен открытия объектов (файлов/каталогов)
 protocol IOpenDocumentCoordinator: ICoordinator {
 	var currentPath: String { get set }
 	var mainFlowType: StartSceneModel.ViewData.MenuItemType? { get set }
@@ -16,7 +17,10 @@ protocol IOpenDocumentCoordinator: ICoordinator {
 	func showNewFileScene(createAction: @escaping (String) -> Void)
 }
 
+/// Координатор сцен открытия объектов (файлов/каталогов)
 final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
+
+	// MARK: Internal properties
 
 	var currentPath: String
 	var mainFlowType: StartSceneModel.ViewData.MenuItemType?
@@ -25,10 +29,14 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
 
+	// MARK: Lificycle
+
 	init(currentPath: String, navigationController: UINavigationController) {
 		self.currentPath = currentPath
 		self.navigationController = navigationController
 	}
+
+	// MARK: IOpenDocumentCoordinator
 
 	func showOpenDocumentScene() {
 
@@ -37,7 +45,7 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 			let openDocumentViewController = OpenDocumentAssembly.assemble(currentPath: currentPath)
 			navigationController.pushViewController(openDocumentViewController, animated: true)
 		case .document:
-			navigationController.pushViewController(UIViewController(), animated: true)
+			return
 		case .none:
 			fatalError("Ошибка. Не передано обязательное значение objectType")
 		}
@@ -69,6 +77,8 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 
 		navigationController.present(alertController, animated: true)
 	}
+
+	// MARK: ICoordinator
 
 	func start() {
 		switch self.mainFlowType {

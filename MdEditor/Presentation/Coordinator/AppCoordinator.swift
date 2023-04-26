@@ -7,12 +7,16 @@
 
 import UIKit
 
+/// Координатор сценариев
 protocol IAppCoordinator: ICoordinator {
 	var currentPath: String { get set }
 	func showMainFlow()
 }
 
+/// Координатор сценариев
 final class AppCoordinator: IAppCoordinator {
+
+	// MARK: Internal properties
 
 	var currentPath: String
 	var finishDelegate: ICoordinatorFinishDelegate?
@@ -24,11 +28,15 @@ final class AppCoordinator: IAppCoordinator {
 		self.currentPath = currentPath
 	}
 
+	// MARK: IAppCoordinator
+
 	func showMainFlow() {
 		let mainCoordinator = MainCoordinator(currentPath: currentPath, navigationController: navigationController)
 		childCoordinators.append(mainCoordinator)
 		mainCoordinator.start()
 	}
+
+	// MARK: ICoordinator
 
 	func start() {
 		showMainFlow()

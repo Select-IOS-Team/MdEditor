@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Координатор главного потока
 protocol IMainCoordinator: ICoordinator {
 	var currentPath: String { get set }
 	var mainFlowType: StartSceneModel.ViewData.MenuItemType? { get set }
@@ -14,7 +15,10 @@ protocol IMainCoordinator: ICoordinator {
 	func showOpenDocumentFlow()
 }
 
+/// Координатор главного потока
 final class MainCoordinator: IMainCoordinator {
+
+	// MARK: Internal properties
 
 	var currentPath: String
 	var mainFlowType: StartSceneModel.ViewData.MenuItemType?
@@ -22,10 +26,14 @@ final class MainCoordinator: IMainCoordinator {
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
 
+	// MARK: Lificycle
+
 	init(currentPath: String, navigationController: UINavigationController) {
 		self.currentPath = currentPath
 		self.navigationController = navigationController
 	}
+
+	// MARK: ICoordinator
 
 	func start() {
 
@@ -35,6 +43,8 @@ final class MainCoordinator: IMainCoordinator {
 			showOpenDocumentFlow()
 		}
 	}
+
+	// MARK: IMainCoordinator
 
 	func showStartSceneFlow() {
 		let startSceneCoordinator = StartSceneCoordinator(navigationController: navigationController)

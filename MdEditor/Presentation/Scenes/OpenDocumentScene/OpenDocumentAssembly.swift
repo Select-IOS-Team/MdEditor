@@ -21,13 +21,8 @@ enum OpenDocumentAssembly {
 			fileExplorerManager: fileExplorerManager
 		)
 		openDocumentInteractor.currentPath = currentPath
-		let openDocumentRouter = OpenDocumentRouter()
-		let openDocumentViewController = OpenDocumentViewController(
-			interactor: openDocumentInteractor,
-			router: openDocumentRouter
-		)
+		let openDocumentViewController = OpenDocumentViewController(interactor: openDocumentInteractor)
 		openDocumentPresenter.viewController = openDocumentViewController
-		openDocumentRouter.viewController = openDocumentViewController
 
 		return openDocumentViewController
 	}
