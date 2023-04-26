@@ -71,7 +71,16 @@ extension OpenDocumentViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let model = viewData.objectsViewModel[indexPath.row]
-		router.routeToViewController(menuItem: model.menuItem, currentPath: model.fullName)
+		guard let navigationController = self.navigationController else { return }
+		let coordinator: IOpenDocumentCoordinator = OpenDocumentCoordinator(
+			currentPath: StringConstants.root,
+			navigationController: navigationController
+		)
+		coordinator.mainFlowType = StartSceneModel.ViewData.MenuItemType.open
+		coordinator.currentPath = model.fullName
+		coordinator.objectType = model.menuItem
+		interactor.coordinate(openDocumentCoordinator: coordinator)
+		// router.routeToViewController(menuItem: model.menuItem, currentPath: model.fullName)
 	}
 }
 

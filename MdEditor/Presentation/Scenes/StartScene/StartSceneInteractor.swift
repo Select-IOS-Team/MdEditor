@@ -11,6 +11,8 @@ import Foundation
 protocol IStartSceneInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
+	/// Выполняет навигацию
+	func coordinate(startSceneCoordinator: IMainCoordinator)
 }
 
 /// Интерактор стартовой сцены.
@@ -23,7 +25,10 @@ final class StartSceneInteractor: IStartSceneInteractor {
 
 	// MARK: - Lificycle
 
-	init(presenter: IStartScenePresenter, fileExplorerManager: IFileExplorerManager) {
+	init(
+		presenter: IStartScenePresenter,
+		fileExplorerManager: IFileExplorerManager
+	) {
 		self.presenter = presenter
 		self.fileExplorerManager = fileExplorerManager
 	}
@@ -43,5 +48,9 @@ final class StartSceneInteractor: IStartSceneInteractor {
 			)
 		}
 		presenter.presentData(response: response)
+	}
+
+	func coordinate(startSceneCoordinator: IMainCoordinator) {
+		startSceneCoordinator.start()
 	}
 }

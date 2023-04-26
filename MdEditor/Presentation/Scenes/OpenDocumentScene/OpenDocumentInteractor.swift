@@ -10,6 +10,7 @@ import Foundation
 /// Интерактор сцены открытия файлов и папок.
 protocol IOpenDocumentInteractor: AnyObject {
 	func fetchDirectoryObjects()
+	func coordinate(openDocumentCoordinator: IOpenDocumentCoordinator)
 }
 
 /// Класс интерактора
@@ -42,5 +43,9 @@ final class OpenDocumentInteractor: IOpenDocumentInteractor {
 		guard let title = currentPath.split(separator: "/").last else { return }
 		let response = convertToResponseWorker.prepareViewModel(data: data, title: String(title))
 		presenter.presentData(response: response)
+	}
+
+	func coordinate(openDocumentCoordinator: IOpenDocumentCoordinator) {
+		openDocumentCoordinator.start()
 	}
 }

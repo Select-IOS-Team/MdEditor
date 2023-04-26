@@ -164,7 +164,14 @@ private extension StartSceneViewController {
 	}
 
 	func handleMenuItemTap(at index: Int) {
-		router.routeToViewController(menuItem: viewData.menuItems[index].menuType)
+		guard let navigationController = self.navigationController else { return }
+		let coordinator: IMainCoordinator = MainCoordinator(
+			currentPath: StringConstants.root,
+			navigationController: navigationController
+		)
+		coordinator.mainFlowType = viewData.menuItems[index].menuType
+		interactor.coordinate(startSceneCoordinator: coordinator)
+		// router.routeToViewController(menuItem: viewData.menuItems[index].menuType)
 	}
 }
 
