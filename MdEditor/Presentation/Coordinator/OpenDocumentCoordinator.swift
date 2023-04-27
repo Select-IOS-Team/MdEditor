@@ -7,11 +7,17 @@
 
 import UIKit
 
+// Виды объектов открываемых координатором
+enum OpenCoordinatorObjectType {
+	case document
+	case folder
+}
+
 /// Координатор сцен открытия объектов (файлов/каталогов)
 protocol IOpenDocumentCoordinator: ICoordinator {
 	var currentPath: String { get set }
-	var mainFlowType: StartSceneModel.ViewData.MenuItemType? { get set }
-	var objectType: OpenDocumentModel.OpenDocumentViewData.DirectoryObjectType? { get set }
+	var mainFlowType: MainFlowType? { get set }
+	var objectType: OpenCoordinatorObjectType? { get set }
 	func showOpenDocumentScene()
 	func showAboutScene()
 	func showNewFileScene(createAction: @escaping (String) -> Void)
@@ -23,8 +29,8 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 	// MARK: Internal properties
 
 	var currentPath: String
-	var mainFlowType: StartSceneModel.ViewData.MenuItemType?
-	var objectType: OpenDocumentModel.OpenDocumentViewData.DirectoryObjectType? = .folder
+	var mainFlowType: MainFlowType?
+	var objectType: OpenCoordinatorObjectType? = .folder
 	var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
@@ -42,7 +48,10 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 
 		switch self.objectType {
 		case .folder:
-			let openDocumentViewController = OpenDocumentAssembly.assemble(currentPath: currentPath)
+			let openDocumentViewController = OpenDocumentAssembly.assemble(
+				currentPath: currentPath,
+				navigationController: navigationController
+			)
 			navigationController.pushViewController(openDocumentViewController, animated: true)
 		case .document:
 			return

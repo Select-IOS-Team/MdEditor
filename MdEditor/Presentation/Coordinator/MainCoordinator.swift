@@ -7,10 +7,17 @@
 
 import UIKit
 
+// Варианты открытия главного потока
+enum MainFlowType {
+	case new(createAction: (String) -> Void)
+	case open
+	case about
+}
+
 /// Координатор главного потока
 protocol IMainCoordinator: ICoordinator {
 	var currentPath: String { get set }
-	var mainFlowType: StartSceneModel.ViewData.MenuItemType? { get set }
+	var mainFlowType: MainFlowType? { get set }
 	func showStartSceneFlow()
 	func showOpenDocumentFlow()
 }
@@ -21,7 +28,7 @@ final class MainCoordinator: IMainCoordinator {
 	// MARK: Internal properties
 
 	var currentPath: String
-	var mainFlowType: StartSceneModel.ViewData.MenuItemType?
+	var mainFlowType: MainFlowType?
 	var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []

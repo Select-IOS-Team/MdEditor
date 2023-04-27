@@ -162,13 +162,7 @@ private extension StartSceneViewController {
 	}
 
 	func handleMenuItemTap(at index: Int) {
-		guard let navigationController = self.navigationController else { return }
-		let coordinator: IMainCoordinator = MainCoordinator(
-			currentPath: StringConstants.root,
-			navigationController: navigationController
-		)
-		coordinator.mainFlowType = viewData.menuItems[index].menuType
-		interactor.coordinate(startSceneCoordinator: coordinator)
+		interactor.coordinate(menuType: viewData.menuItems[index].menuType)
 	}
 }
 

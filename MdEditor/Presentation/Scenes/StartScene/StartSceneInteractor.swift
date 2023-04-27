@@ -12,7 +12,7 @@ protocol IStartSceneInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
 	/// Выполняет навигацию
-	func coordinate(startSceneCoordinator: IMainCoordinator)
+	func coordinate(menuType: StartSceneModel.ViewData.MenuItemType)
 }
 
 /// Интерактор стартовой сцены.
@@ -22,15 +22,18 @@ final class StartSceneInteractor: IStartSceneInteractor {
 
 	private let presenter: IStartScenePresenter
 	private let fileExplorerManager: IFileExplorerManager
+	private let coordinator: IMainCoordinator
 
 	// MARK: - Lificycle
 
 	init(
 		presenter: IStartScenePresenter,
-		fileExplorerManager: IFileExplorerManager
+		fileExplorerManager: IFileExplorerManager,
+		coordinator: IMainCoordinator
 	) {
 		self.presenter = presenter
 		self.fileExplorerManager = fileExplorerManager
+		self.coordinator = coordinator
 	}
 
 	// MARK: - IStartSceneInteractor
@@ -50,7 +53,17 @@ final class StartSceneInteractor: IStartSceneInteractor {
 		presenter.presentData(response: response)
 	}
 
-	func coordinate(startSceneCoordinator: IMainCoordinator) {
-		startSceneCoordinator.start()
+	func coordinate(menuType: StartSceneModel.ViewData.MenuItemType) {
+
+		switch menuType {
+		case .new(let createAction):
+			coordinator.mainFlowType = .new(createAction: createAction)
+		case .open:
+			coordinator.mainFlowType = .open
+		case .about:
+			coordinator.mainFlowType = .about
+		}
+
+		coordinator.start()
 	}
 }
