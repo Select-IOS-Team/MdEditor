@@ -22,18 +22,18 @@ final class StartSceneInteractor: IStartSceneInteractor {
 
 	private let presenter: IStartScenePresenter
 	private let fileExplorerManager: IFileExplorerManager
-	private let coordinator: IMainCoordinator
+	private let appCoordinator: IAppCoordinator
 
 	// MARK: - Lificycle
 
 	init(
 		presenter: IStartScenePresenter,
 		fileExplorerManager: IFileExplorerManager,
-		coordinator: IMainCoordinator
+		appCoordinator: IAppCoordinator
 	) {
 		self.presenter = presenter
 		self.fileExplorerManager = fileExplorerManager
-		self.coordinator = coordinator
+		self.appCoordinator = appCoordinator
 	}
 
 	// MARK: - IStartSceneInteractor
@@ -57,13 +57,13 @@ final class StartSceneInteractor: IStartSceneInteractor {
 
 		switch menuType {
 		case .createDocument(let createAction):
-			coordinator.mainFlowOption = .createDocument(createAction: createAction)
+			appCoordinator.mainFlowOption = .createDocument(createAction: createAction)
 		case .openDirectoryObject:
-			coordinator.mainFlowOption = .openDirectoryObject
+			appCoordinator.mainFlowOption = .openDirectoryObject
 		case .aboutApp:
-			coordinator.mainFlowOption = .aboutApp
+			appCoordinator.mainFlowOption = .aboutApp
 		}
 
-		coordinator.start()
+		appCoordinator.start()
 	}
 }

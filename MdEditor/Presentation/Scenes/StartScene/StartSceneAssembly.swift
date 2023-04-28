@@ -11,13 +11,13 @@ import Foundation
 /// Сборщик стартовой сцены.
 enum StartSceneAssembly {
 
-	static func assemble(mainCoordinator: MainCoordinator) -> StartSceneViewController {
+	static func assemble(appCoordinator: AppCoordinator) -> StartSceneViewController {
 		let presenter = StartScenePresenter()
 		let fileExplorerManager = FileExplorerManager()
 		let interactor = StartSceneInteractor(
 			presenter: presenter,
 			fileExplorerManager: fileExplorerManager,
-			coordinator: mainCoordinator
+			appCoordinator: appCoordinator
 		)
 		let viewController = StartSceneViewController(interactor: interactor)
 		presenter.viewController = viewController

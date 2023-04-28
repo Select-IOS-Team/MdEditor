@@ -32,9 +32,9 @@ final class StartSceneCoordinator: ICoordinator {
 // MARK: Private methods
 private extension StartSceneCoordinator {
 	func showStartScene() {
-		let mainCoordinator = MainCoordinator(navigationController: navigationController)
-		childCoordinators.append(mainCoordinator)
-		let startSceneViewController = StartSceneAssembly.assemble(mainCoordinator: mainCoordinator)
+		let appCoordinator = AppCoordinator(navigationController: navigationController)
+		childCoordinators.append(appCoordinator)
+		let startSceneViewController = StartSceneAssembly.assemble(appCoordinator: appCoordinator)
 		navigationController.pushViewController(startSceneViewController, animated: true)
 	}
 }
