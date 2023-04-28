@@ -17,7 +17,7 @@ final class AppCoordinator: IAppCoordinator {
 
 	// MARK: Internal properties
 
-	var finishDelegate: ICoordinatorFinishDelegate?
+	weak var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
 

@@ -29,9 +29,9 @@ enum StartSceneModel {
 		}
 
 		enum MenuItemType {
-			case new(createAction: (String) -> Void)
-			case open
-			case about
+			case createDocument(createAction: (String) -> Void)
+			case openDirectoryObject
+			case aboutApp
 		}
 
 		let recentFileItems: [RecentFileItem]

@@ -7,32 +7,33 @@
 
 import UIKit
 
-// Виды объектов открываемых координатором
-enum OpenCoordinatorObjectType {
-	case document
-	case folder
-}
-
 /// Координатор сцен открытия объектов (файлов/каталогов)
 protocol IOpenDocumentCoordinator: ICoordinator {
 	var currentPath: String { get set }
-	var mainFlowType: MainFlowType? { get set }
-	var objectType: OpenCoordinatorObjectType? { get set }
+	var mainFlowType: MainFlowOption? { get set }
 	func showOpenDocumentScene()
 	func showAboutScene()
 	func showNewFileScene(createAction: @escaping (String) -> Void)
-	func prepareToStart(currentPath: String, mainFlowType: MainFlowType?)
+	func openDocument(currentPath: String, mainFlowType: MainFlowOption?)
+	func openFolder(currentPath: String, mainFlowType: MainFlowOption?)
 }
 
 /// Координатор сцен открытия объектов (файлов/каталогов)
 final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 
+	// MARK: - Nested types
+
+	enum OpenCoordinatorObjectType {
+		case document
+		case folder
+	}
+
 	// MARK: Internal properties
 
 	var currentPath: String
-	var mainFlowType: MainFlowType?
+	var mainFlowType: MainFlowOption?
 	var objectType: OpenCoordinatorObjectType? = .folder
-	var finishDelegate: ICoordinatorFinishDelegate?
+	weak var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
 
@@ -88,24 +89,36 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 		navigationController.present(alertController, animated: true)
 	}
 
-	func prepareToStart(currentPath: String, mainFlowType: MainFlowType?) {
-		self.currentPath = currentPath
-		self.mainFlowType = mainFlowType
-		start()
+	func openDocument(currentPath: String, mainFlowType: MainFlowOption?) {
+		prepareToStart(currentPath: currentPath, mainFlowType: mainFlowType, objectType: .document)
+	}
+	func openFolder(currentPath: String, mainFlowType: MainFlowOption?) {
+		prepareToStart(currentPath: currentPath, mainFlowType: mainFlowType, objectType: .folder)
 	}
 
 	// MARK: ICoordinator
 
 	func start() {
 		switch self.mainFlowType {
-		case .new(let createAction):
+		case .createDocument(let createAction):
 			showNewFileScene(createAction: createAction)
-		case .open:
+		case .openDirectoryObject:
 			showOpenDocumentScene()
-		case .about:
+		case .aboutApp:
 			showAboutScene()
 		case .none:
 			fatalError("Ошибка. Не передано обязательное значение mainFlowType")
 		}
+	}
+}
+
+// MARK: Private methods
+
+private extension OpenDocumentCoordinator {
+	func prepareToStart(currentPath: String, mainFlowType: MainFlowOption?, objectType: OpenCoordinatorObjectType) {
+		self.currentPath = currentPath
+		self.mainFlowType = mainFlowType
+		self.objectType = objectType
+		start()
 	}
 }

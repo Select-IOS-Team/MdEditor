@@ -8,15 +8,15 @@
 import UIKit
 
 // Варианты открытия главного потока
-enum MainFlowType {
-	case new(createAction: (String) -> Void)
-	case open
-	case about
+enum MainFlowOption {
+	case createDocument(createAction: (String) -> Void)
+	case openDirectoryObject
+	case aboutApp
 }
 
 /// Координатор главного потока
 protocol IMainCoordinator: ICoordinator {
-	var mainFlowType: MainFlowType? { get set }
+	var mainFlowOption: MainFlowOption? { get set }
 	func showStartSceneFlow()
 	func showOpenDocumentFlow()
 }
@@ -26,8 +26,8 @@ final class MainCoordinator: IMainCoordinator {
 
 	// MARK: Internal properties
 
-	var mainFlowType: MainFlowType?
-	var finishDelegate: ICoordinatorFinishDelegate?
+	var mainFlowOption: MainFlowOption?
+	weak var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
 
@@ -41,7 +41,7 @@ final class MainCoordinator: IMainCoordinator {
 
 	func start() {
 
-		if self.mainFlowType == nil {
+		if self.mainFlowOption == nil {
 			showStartSceneFlow()
 		} else {
 			showOpenDocumentFlow()
@@ -59,7 +59,7 @@ final class MainCoordinator: IMainCoordinator {
 	func showOpenDocumentFlow() {
 		let openDocumentCoordinator = OpenDocumentCoordinator(navigationController: navigationController)
 		childCoordinators.append(openDocumentCoordinator)
-		openDocumentCoordinator.mainFlowType = mainFlowType
+		openDocumentCoordinator.mainFlowType = mainFlowOption
 		openDocumentCoordinator.start()
 	}
 }

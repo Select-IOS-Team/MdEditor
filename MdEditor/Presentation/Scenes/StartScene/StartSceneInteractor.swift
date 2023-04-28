@@ -56,12 +56,12 @@ final class StartSceneInteractor: IStartSceneInteractor {
 	func handleSelectedMenuItem(menuType: StartSceneModel.ViewData.MenuItemType) {
 
 		switch menuType {
-		case .new(let createAction):
-			coordinator.mainFlowType = .new(createAction: createAction)
-		case .open:
-			coordinator.mainFlowType = .open
-		case .about:
-			coordinator.mainFlowType = .about
+		case .createDocument(let createAction):
+			coordinator.mainFlowOption = .createDocument(createAction: createAction)
+		case .openDirectoryObject:
+			coordinator.mainFlowOption = .openDirectoryObject
+		case .aboutApp:
+			coordinator.mainFlowOption = .aboutApp
 		}
 
 		coordinator.start()

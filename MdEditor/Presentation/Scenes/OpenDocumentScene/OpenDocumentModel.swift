@@ -12,6 +12,11 @@ enum OpenDocumentModel {
 
 	struct OpenDocumentViewData {
 
+		enum DirectoryObjectType {
+			case folder
+			case document
+		}
+
 		struct DirectoryObjectViewModel {
 
 			let name: String
@@ -20,10 +25,6 @@ enum OpenDocumentModel {
 			let menuItem: DirectoryObjectType
 		}
 
-		enum DirectoryObjectType {
-			case folder
-			case document
-		}
 		let title: String
 		var objectsViewModel: [DirectoryObjectViewModel]
 	}

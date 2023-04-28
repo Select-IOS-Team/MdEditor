@@ -8,16 +8,11 @@
 import UIKit
 
 /// Координатор открытия стартовой сцены приложения
-protocol IStartSceneCoordinator: ICoordinator {
-	func showStartScene()
-}
-
-/// Координатор открытия стартовой сцены приложения
-final class StartSceneCoordinator: IStartSceneCoordinator {
+final class StartSceneCoordinator: ICoordinator {
 
 	// MARK: Internal properties
 
-	var finishDelegate: ICoordinatorFinishDelegate?
+	weak var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
 
@@ -27,18 +22,19 @@ final class StartSceneCoordinator: IStartSceneCoordinator {
 		self.navigationController = navigationController
 	}
 
-	// MARK: IStartSceneCoordinator
+	// MARK: ICoordinator
 
+	func start() {
+		showStartScene()
+	}
+}
+
+// MARK: Private methods
+private extension StartSceneCoordinator {
 	func showStartScene() {
 		let mainCoordinator = MainCoordinator(navigationController: navigationController)
 		childCoordinators.append(mainCoordinator)
 		let startSceneViewController = StartSceneAssembly.assemble(mainCoordinator: mainCoordinator)
 		navigationController.pushViewController(startSceneViewController, animated: true)
-	}
-
-	// MARK: ICoordinator
-
-	func start() {
-		showStartScene()
 	}
 }
