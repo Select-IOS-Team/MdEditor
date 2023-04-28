@@ -25,8 +25,7 @@
 		8506910429F5312E00C378B2 /* AboutSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850690FE29F5312E00C378B2 /* AboutSceneInteractor.swift */; };
 		8506910A29F5382200C378B2 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506910929F5382200C378B2 /* StringConstants.swift */; };
 		8506918F29F90ACB00C378B2 /* ICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506918E29F90ACB00C378B2 /* ICoordinator.swift */; };
-		8506919229F9115600C378B2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506919129F9115600C378B2 /* AppCoordinator.swift */; };
-		8506919429F9119A00C378B2 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506919329F9119A00C378B2 /* MainCoordinator.swift */; };
+		8506919429F9119A00C378B2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506919329F9119A00C378B2 /* AppCoordinator.swift */; };
 		8506919829F9153200C378B2 /* OpenDocumentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506919729F9153200C378B2 /* OpenDocumentCoordinator.swift */; };
 		8506919A29F9199100C378B2 /* StartSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506919929F9199100C378B2 /* StartSceneCoordinator.swift */; };
 		8548CB3729EE5CA100518090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548CB3629EE5CA100518090 /* AppDelegate.swift */; };
@@ -91,8 +90,7 @@
 		850690FE29F5312E00C378B2 /* AboutSceneInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSceneInteractor.swift; sourceTree = "<group>"; };
 		8506910929F5382200C378B2 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		8506918E29F90ACB00C378B2 /* ICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICoordinator.swift; sourceTree = "<group>"; };
-		8506919129F9115600C378B2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		8506919329F9119A00C378B2 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		8506919329F9119A00C378B2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8506919729F9153200C378B2 /* OpenDocumentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocumentCoordinator.swift; sourceTree = "<group>"; };
 		8506919929F9199100C378B2 /* StartSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneCoordinator.swift; sourceTree = "<group>"; };
 		8548CB3329EE5CA100518090 /* MdEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MdEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,8 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				8506918E29F90ACB00C378B2 /* ICoordinator.swift */,
-				8506919129F9115600C378B2 /* AppCoordinator.swift */,
-				8506919329F9119A00C378B2 /* MainCoordinator.swift */,
+				8506919329F9119A00C378B2 /* AppCoordinator.swift */,
 				8506919729F9153200C378B2 /* OpenDocumentCoordinator.swift */,
 				8506919929F9199100C378B2 /* StartSceneCoordinator.swift */,
 			);
@@ -566,7 +563,6 @@
 				8548CBC929F0237700518090 /* OpenDocumentInteractor.swift in Sources */,
 				8548CB6729EE688200518090 /* StartSceneInteractor.swift in Sources */,
 				5E9BF22229EFB40900DC1AFD /* IConfigurableCollectionCell.swift in Sources */,
-				8506919229F9115600C378B2 /* AppCoordinator.swift in Sources */,
 				8548CBCE29F0237700518090 /* OpenDocumentAssembly.swift in Sources */,
 				8506910429F5312E00C378B2 /* AboutSceneInteractor.swift in Sources */,
 				8548CBCA29F0237700518090 /* OpenDocumentWorker.swift in Sources */,
@@ -585,7 +581,7 @@
 				5E7EE7CC29F5116D00BD700C /* ZoomingPressGestureRecognizer.swift in Sources */,
 				8548CBD129F07A6600518090 /* Palette.swift in Sources */,
 				8548CB6D29EE68DE00518090 /* StartSceneModel.swift in Sources */,
-				8506919429F9119A00C378B2 /* MainCoordinator.swift in Sources */,
+				8506919429F9119A00C378B2 /* AppCoordinator.swift in Sources */,
 				8548CB6229EE642D00518090 /* Assets.swift in Sources */,
 				8548CB3929EE5CA100518090 /* SceneDelegate.swift in Sources */,
 				8506910329F5312E00C378B2 /* AboutSceneModel.swift in Sources */,

@@ -13,8 +13,13 @@ protocol IOpenDocumentCoordinator: ICoordinator {
 	var mainFlowType: MainFlowOption? { get set }
 	func showOpenDocumentScene()
 	func showAboutScene()
+	/// - Parameter createAction: Замыкание `(String) -> Void)`.
 	func showNewFileScene(createAction: @escaping (String) -> Void)
+	/// - Parameter currentPath: `String`.
+	/// - Parameter mainFlowType: Перечисление `MainFlowOption`.
 	func openDocument(currentPath: String, mainFlowType: MainFlowOption?)
+	/// - Parameter currentPath: `String`.
+	/// - Parameter mainFlowType: Перечисление `MainFlowOption`.
 	func openFolder(currentPath: String, mainFlowType: MainFlowOption?)
 }
 
