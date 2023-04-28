@@ -11,8 +11,8 @@ import Foundation
 protocol IStartSceneInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
-	/// Выполняет навигацию
-	func coordinate(menuType: StartSceneModel.ViewData.MenuItemType)
+	/// Выполняет навигацию в зависимости от выбора элемента в меню
+	func handleSelectedMenuItem(menuType: StartSceneModel.ViewData.MenuItemType)
 }
 
 /// Интерактор стартовой сцены.
@@ -41,10 +41,10 @@ final class StartSceneInteractor: IStartSceneInteractor {
 	func fetchData() {
 		let response = StartSceneModel.Response { [weak self] fileName in
 			guard let self = self,
-				  let documentDirectoryURL = self.fileExplorerManager.documentDirectoryURL else { return }
+				  let defaultDirectoryURL = self.fileExplorerManager.defaultDirectoryURL else { return }
 
 			self.fileExplorerManager.createFile(
-				in: documentDirectoryURL,
+				in: defaultDirectoryURL,
 				fileName: fileName,
 				fileExtension: StringConstants.mdExtension,
 				withContent: ""
@@ -53,7 +53,7 @@ final class StartSceneInteractor: IStartSceneInteractor {
 		presenter.presentData(response: response)
 	}
 
-	func coordinate(menuType: StartSceneModel.ViewData.MenuItemType) {
+	func handleSelectedMenuItem(menuType: StartSceneModel.ViewData.MenuItemType) {
 
 		switch menuType {
 		case .new(let createAction):

@@ -21,6 +21,7 @@ protocol IOpenDocumentCoordinator: ICoordinator {
 	func showOpenDocumentScene()
 	func showAboutScene()
 	func showNewFileScene(createAction: @escaping (String) -> Void)
+	func prepareToStart(currentPath: String, mainFlowType: MainFlowType?)
 }
 
 /// Координатор сцен открытия объектов (файлов/каталогов)
@@ -37,7 +38,7 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 
 	// MARK: Lificycle
 
-	init(currentPath: String, navigationController: UINavigationController) {
+	init(currentPath: String = StringConstants.root, navigationController: UINavigationController) {
 		self.currentPath = currentPath
 		self.navigationController = navigationController
 	}
@@ -50,7 +51,7 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 		case .folder:
 			let openDocumentViewController = OpenDocumentAssembly.assemble(
 				currentPath: currentPath,
-				navigationController: navigationController
+				openDocumentCoordinator: self
 			)
 			navigationController.pushViewController(openDocumentViewController, animated: true)
 		case .document:
@@ -85,6 +86,12 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 		alertController.addAction(cancelAction)
 
 		navigationController.present(alertController, animated: true)
+	}
+
+	func prepareToStart(currentPath: String, mainFlowType: MainFlowType?) {
+		self.currentPath = currentPath
+		self.mainFlowType = mainFlowType
+		start()
 	}
 
 	// MARK: ICoordinator

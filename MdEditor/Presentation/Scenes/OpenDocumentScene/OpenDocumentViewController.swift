@@ -69,7 +69,7 @@ extension OpenDocumentViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let model = viewData.objectsViewModel[indexPath.row]
-		interactor.coordinate(currentPath: model.fullName, objectType: model.menuItem)
+		interactor.handleSelectedDirectoryObject(currentPath: model.fullName, objectType: model.menuItem)
 	}
 }
 

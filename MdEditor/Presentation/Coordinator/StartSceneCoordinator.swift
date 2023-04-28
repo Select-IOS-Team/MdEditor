@@ -30,7 +30,9 @@ final class StartSceneCoordinator: IStartSceneCoordinator {
 	// MARK: IStartSceneCoordinator
 
 	func showStartScene() {
-		let startSceneViewController = StartSceneAssembly.assemble(navigationController: navigationController)
+		let mainCoordinator = MainCoordinator(navigationController: navigationController)
+		childCoordinators.append(mainCoordinator)
+		let startSceneViewController = StartSceneAssembly.assemble(mainCoordinator: mainCoordinator)
 		navigationController.pushViewController(startSceneViewController, animated: true)
 	}
 

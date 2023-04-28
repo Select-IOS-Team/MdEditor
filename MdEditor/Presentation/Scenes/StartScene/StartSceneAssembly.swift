@@ -11,17 +11,13 @@ import Foundation
 /// Сборщик стартовой сцены.
 enum StartSceneAssembly {
 
-	static func assemble(navigationController: UINavigationController) -> StartSceneViewController {
+	static func assemble(mainCoordinator: MainCoordinator) -> StartSceneViewController {
 		let presenter = StartScenePresenter()
 		let fileExplorerManager = FileExplorerManager()
-		let coordinator = MainCoordinator(
-			currentPath: StringConstants.root,
-			navigationController: navigationController
-		)
 		let interactor = StartSceneInteractor(
 			presenter: presenter,
 			fileExplorerManager: fileExplorerManager,
-			coordinator: coordinator
+			coordinator: mainCoordinator
 		)
 		let viewController = StartSceneViewController(interactor: interactor)
 		presenter.viewController = viewController

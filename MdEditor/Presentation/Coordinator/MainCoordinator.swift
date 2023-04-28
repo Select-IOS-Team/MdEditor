@@ -16,7 +16,6 @@ enum MainFlowType {
 
 /// Координатор главного потока
 protocol IMainCoordinator: ICoordinator {
-	var currentPath: String { get set }
 	var mainFlowType: MainFlowType? { get set }
 	func showStartSceneFlow()
 	func showOpenDocumentFlow()
@@ -27,7 +26,6 @@ final class MainCoordinator: IMainCoordinator {
 
 	// MARK: Internal properties
 
-	var currentPath: String
 	var mainFlowType: MainFlowType?
 	var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
@@ -35,8 +33,7 @@ final class MainCoordinator: IMainCoordinator {
 
 	// MARK: Lificycle
 
-	init(currentPath: String, navigationController: UINavigationController) {
-		self.currentPath = currentPath
+	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
 
@@ -60,10 +57,7 @@ final class MainCoordinator: IMainCoordinator {
 	}
 
 	func showOpenDocumentFlow() {
-		let openDocumentCoordinator = OpenDocumentCoordinator(
-			currentPath: currentPath,
-			navigationController: navigationController
-		)
+		let openDocumentCoordinator = OpenDocumentCoordinator(navigationController: navigationController)
 		childCoordinators.append(openDocumentCoordinator)
 		openDocumentCoordinator.mainFlowType = mainFlowType
 		openDocumentCoordinator.start()

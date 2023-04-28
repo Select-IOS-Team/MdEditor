@@ -20,7 +20,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		window = UIWindow(windowScene: windowScene)
 		let navigationController = UINavigationController()
-		let appCoordinator = AppCoordinator(currentPath: StringConstants.root, navigationController: navigationController)
+		let appCoordinator = AppCoordinator(navigationController: navigationController)
 		window?.rootViewController = navigationController
 		window?.makeKeyAndVisible()
 		appCoordinator.start()

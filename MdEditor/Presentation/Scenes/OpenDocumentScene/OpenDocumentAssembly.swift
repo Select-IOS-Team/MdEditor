@@ -10,20 +10,19 @@ import Foundation
 
 /// Сборщик сцены OpenDocumentScene.
 enum OpenDocumentAssembly {
-	static func assemble(currentPath: String, navigationController: UINavigationController) -> OpenDocumentViewController {
+	static func assemble(
+		currentPath: String,
+		openDocumentCoordinator: OpenDocumentCoordinator
+	) -> OpenDocumentViewController {
 
 		let fileExplorerManager = FileExplorerManager()
 		let convertToResponseWorker = OpenDocumentWorker()
 		let openDocumentPresenter = OpenDocumentPresenter()
-		let coordinator = OpenDocumentCoordinator(
-			currentPath: currentPath,
-			navigationController: navigationController
-		)
 		let openDocumentInteractor = OpenDocumentInteractor(
 			presenter: openDocumentPresenter,
 			convertToResponseWorker: convertToResponseWorker,
 			fileExplorerManager: fileExplorerManager,
-			coordinator: coordinator
+			openDocumentCoordinator: openDocumentCoordinator
 		)
 		openDocumentInteractor.currentPath = currentPath
 		let openDocumentViewController = OpenDocumentViewController(interactor: openDocumentInteractor)

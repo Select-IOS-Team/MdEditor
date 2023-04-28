@@ -162,7 +162,7 @@ private extension StartSceneViewController {
 	}
 
 	func handleMenuItemTap(at index: Int) {
-		interactor.coordinate(menuType: viewData.menuItems[index].menuType)
+		interactor.handleSelectedMenuItem(menuType: viewData.menuItems[index].menuType)
 	}
 }
 

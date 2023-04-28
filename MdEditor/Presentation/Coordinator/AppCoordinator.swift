@@ -9,7 +9,6 @@ import UIKit
 
 /// Координатор сценариев
 protocol IAppCoordinator: ICoordinator {
-	var currentPath: String { get set }
 	func showMainFlow()
 }
 
@@ -18,20 +17,18 @@ final class AppCoordinator: IAppCoordinator {
 
 	// MARK: Internal properties
 
-	var currentPath: String
 	var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
 	var childCoordinators: [ICoordinator] = []
 
-	init(currentPath: String, navigationController: UINavigationController) {
+	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
-		self.currentPath = currentPath
 	}
 
 	// MARK: IAppCoordinator
 
 	func showMainFlow() {
-		let mainCoordinator = MainCoordinator(currentPath: currentPath, navigationController: navigationController)
+		let mainCoordinator = MainCoordinator(navigationController: navigationController)
 		childCoordinators.append(mainCoordinator)
 		mainCoordinator.start()
 	}

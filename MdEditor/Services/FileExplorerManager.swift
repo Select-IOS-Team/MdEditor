@@ -36,8 +36,8 @@ struct DirectoryObject {
 
 /// Файл менеджер
 protocol IFileExplorerManager {
-	/// URL директории Documents.
-	var documentDirectoryURL: URL? { get }
+	/// URL директории SampleFiles.
+	var defaultDirectoryURL: URL? { get }
 	func fillDirectoryObjects(path: String) -> [DirectoryObject]
 	func getDirectoryObject(url: URL) -> DirectoryObject?
 	func getAboutFile() -> DirectoryObject?
@@ -53,8 +53,8 @@ protocol IFileExplorerManager {
 /// Класс файл менеджера
 final class FileExplorerManager: IFileExplorerManager {
 
-	var documentDirectoryURL: URL? {
-		fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+	var defaultDirectoryURL: URL? {
+		URL(string: StringConstants.root, relativeTo: Bundle.main.resourceURL)
 	}
 
 	// MARK: - Private properties
@@ -119,7 +119,7 @@ final class FileExplorerManager: IFileExplorerManager {
 	}
 
 	func createFile(in directory: URL, fileName: String, fileExtension: String, withContent content: String) {
-		let path = directory.path + "/" + fileName + fileExtension
+		let path = directory.path + "/" + fileName + "." + fileExtension
 		let data: Data? = content.data(using: .utf8)
 		fileManager.createFile(atPath: path, contents: data, attributes: nil)
 	}
