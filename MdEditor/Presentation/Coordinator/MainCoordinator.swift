@@ -1,5 +1,5 @@
 //
-//  OpenDocumentCoordinator.swift
+//  MainCoordinator.swift
 //  MdEditor
 //
 //  Created by Evgeni Meleshin on 26.04.2023.
@@ -8,9 +8,9 @@
 import UIKit
 
 /// Координатор сцен открытия объектов (файлов/каталогов)
-protocol IOpenDocumentCoordinator: ICoordinator {
+protocol IMainCoordinator: ICoordinator {
 	var currentPath: String { get set }
-	var mainFlowType: MainFlowOption? { get set }
+	var mainFlowOption: MainFlowOption? { get set }
 	func showOpenDocumentScene()
 	func showAboutScene()
 	/// - Parameter createAction: Замыкание `(String) -> Void)`.
@@ -24,7 +24,7 @@ protocol IOpenDocumentCoordinator: ICoordinator {
 }
 
 /// Координатор сцен открытия объектов (файлов/каталогов)
-final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
+final class MainCoordinator: IMainCoordinator {
 
 	// MARK: - Nested types
 
@@ -36,7 +36,7 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 	// MARK: Internal properties
 
 	var currentPath: String
-	var mainFlowType: MainFlowOption?
+	var mainFlowOption: MainFlowOption?
 	var objectType: OpenCoordinatorObjectType? = .folder
 	weak var finishDelegate: ICoordinatorFinishDelegate?
 	var navigationController: UINavigationController
@@ -104,7 +104,7 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 	// MARK: ICoordinator
 
 	func start() {
-		switch self.mainFlowType {
+		switch self.mainFlowOption {
 		case .createDocument(let createAction):
 			showNewFileScene(createAction: createAction)
 		case .openDirectoryObject:
@@ -119,10 +119,10 @@ final class OpenDocumentCoordinator: IOpenDocumentCoordinator {
 
 // MARK: Private methods
 
-private extension OpenDocumentCoordinator {
+private extension MainCoordinator {
 	func prepareToStart(currentPath: String, mainFlowType: MainFlowOption?, objectType: OpenCoordinatorObjectType) {
 		self.currentPath = currentPath
-		self.mainFlowType = mainFlowType
+		self.mainFlowOption = mainFlowType
 		self.objectType = objectType
 		start()
 	}

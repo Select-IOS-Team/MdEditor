@@ -7,22 +7,22 @@
 
 import UIKit
 
-/// Делегат завершения работы координатора
+/// Делегат завершения работы координатора.
 protocol ICoordinatorFinishDelegate: AnyObject {
-	/// - Parameter coordinator: Протокол `ICoordinator`.
+	/// - Parameter coordinator: Координатор завершенного сценария.
 	func didFinish(_ coordinator: ICoordinator)
 }
 
-/// Координатор
+/// Координатор.
 protocol ICoordinator: AnyObject {
-	/// Делегат завершения
+	/// Делегат завершения.
 	var finishDelegate: ICoordinatorFinishDelegate? { get set }
 	var navigationController: UINavigationController { get set }
-	/// Дочерние координаторы
+	/// Дочерние координаторы.
 	var childCoordinators: [ICoordinator] { get set }
-	/// Стартует сценарий
+	/// Стартует сценарий.
 	func start()
-	/// Освобождает все дочерние координаторы
+	/// Освобождает все дочерние координаторы.
 	func finish()
 }
 

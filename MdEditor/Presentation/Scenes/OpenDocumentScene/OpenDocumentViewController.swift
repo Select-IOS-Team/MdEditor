@@ -20,7 +20,7 @@ final class OpenDocumentViewController: UIViewController {
 	// MARK: - Private properties
 
 	private let interactor: IOpenDocumentInteractor
-	private var viewData = OpenDocumentModel.OpenDocumentViewData(title: "", objectsViewModel: [])
+	private var viewData = OpenDocumentModel.OpenDocumentViewData(title: "", objectViewModels: [])
 	private lazy var tableView = makeTableView()
 
 	// MARK: - Lifecycle
@@ -48,7 +48,7 @@ final class OpenDocumentViewController: UIViewController {
 extension OpenDocumentViewController: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		viewData.objectsViewModel.count
+		viewData.objectViewModels.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +57,7 @@ extension OpenDocumentViewController: UITableViewDataSource {
 			for: indexPath
 		) else { return UITableViewCell() }
 
-		let model = viewData.objectsViewModel[indexPath.row]
+		let model = viewData.objectViewModels[indexPath.row]
 		cell.configure(with: model)
 		return cell
 	}
@@ -68,8 +68,8 @@ extension OpenDocumentViewController: UITableViewDataSource {
 extension OpenDocumentViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let model = viewData.objectsViewModel[indexPath.row]
-		interactor.handleSelectedDirectoryObject(currentPath: model.fullName, objectType: model.menuItem)
+		let model = viewData.objectViewModels[indexPath.row]
+		interactor.handleSelectedDirectoryObject(currentPath: model.fullName, objectType: model.objectType)
 	}
 }
 

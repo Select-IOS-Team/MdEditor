@@ -11,7 +11,7 @@ import Foundation
 protocol IStartSceneInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
-	/// Выполняет навигацию в зависимости от выбора элемента в меню
+	/// Обработать выбор элемента в меню.
 	func handleSelectedMenuItem(menuType: StartSceneModel.ViewData.MenuItemType)
 }
 
@@ -22,18 +22,18 @@ final class StartSceneInteractor: IStartSceneInteractor {
 
 	private let presenter: IStartScenePresenter
 	private let fileExplorerManager: IFileExplorerManager
-	private let appCoordinator: IAppCoordinator
+	private let mainCoordinator: IMainCoordinator
 
 	// MARK: - Lificycle
 
 	init(
 		presenter: IStartScenePresenter,
 		fileExplorerManager: IFileExplorerManager,
-		appCoordinator: IAppCoordinator
+		mainCoordinator: IMainCoordinator
 	) {
 		self.presenter = presenter
 		self.fileExplorerManager = fileExplorerManager
-		self.appCoordinator = appCoordinator
+		self.mainCoordinator = mainCoordinator
 	}
 
 	// MARK: - IStartSceneInteractor
@@ -57,13 +57,13 @@ final class StartSceneInteractor: IStartSceneInteractor {
 
 		switch menuType {
 		case .createDocument(let createAction):
-			appCoordinator.mainFlowOption = .createDocument(createAction: createAction)
+			mainCoordinator.mainFlowOption = .createDocument(createAction: createAction)
 		case .openDirectoryObject:
-			appCoordinator.mainFlowOption = .openDirectoryObject
+			mainCoordinator.mainFlowOption = .openDirectoryObject
 		case .aboutApp:
-			appCoordinator.mainFlowOption = .aboutApp
+			mainCoordinator.mainFlowOption = .aboutApp
 		}
 
-		appCoordinator.start()
+		mainCoordinator.start()
 	}
 }

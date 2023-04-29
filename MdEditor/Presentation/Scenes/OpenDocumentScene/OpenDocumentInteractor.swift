@@ -24,9 +24,8 @@ final class OpenDocumentInteractor: IOpenDocumentInteractor {
 	private let presenter: IOpenDocumentPresenter
 	private let convertToResponseWorker: IOpenDocumentWorker
 	private let fileExplorerManager: IFileExplorerManager
-	private let openDocumentCoordinator: IOpenDocumentCoordinator
-
-	var currentPath = ""
+	private let openDocumentCoordinator: IMainCoordinator
+	private var currentPath = ""
 
 	// MARK: - Lifecycle
 
@@ -34,12 +33,14 @@ final class OpenDocumentInteractor: IOpenDocumentInteractor {
 		presenter: IOpenDocumentPresenter,
 		convertToResponseWorker: IOpenDocumentWorker,
 		fileExplorerManager: IFileExplorerManager,
-		openDocumentCoordinator: IOpenDocumentCoordinator
+		openDocumentCoordinator: IMainCoordinator,
+		currentPath: String
 	) {
 		self.presenter = presenter
 		self.convertToResponseWorker = convertToResponseWorker
 		self.fileExplorerManager = fileExplorerManager
 		self.openDocumentCoordinator = openDocumentCoordinator
+		self.currentPath = currentPath
 	}
 
 	// MARK: - IOpenDocumentInteractor

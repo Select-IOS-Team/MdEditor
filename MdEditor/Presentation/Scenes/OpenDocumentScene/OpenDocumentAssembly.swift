@@ -12,7 +12,7 @@ import Foundation
 enum OpenDocumentAssembly {
 	static func assemble(
 		currentPath: String,
-		openDocumentCoordinator: OpenDocumentCoordinator
+		openDocumentCoordinator: MainCoordinator
 	) -> OpenDocumentViewController {
 
 		let fileExplorerManager = FileExplorerManager()
@@ -22,9 +22,9 @@ enum OpenDocumentAssembly {
 			presenter: openDocumentPresenter,
 			convertToResponseWorker: convertToResponseWorker,
 			fileExplorerManager: fileExplorerManager,
-			openDocumentCoordinator: openDocumentCoordinator
+			openDocumentCoordinator: openDocumentCoordinator,
+			currentPath: currentPath
 		)
-		openDocumentInteractor.currentPath = currentPath
 		let openDocumentViewController = OpenDocumentViewController(interactor: openDocumentInteractor)
 		openDocumentPresenter.viewController = openDocumentViewController
 

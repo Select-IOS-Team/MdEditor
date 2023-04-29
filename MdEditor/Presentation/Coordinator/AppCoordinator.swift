@@ -20,8 +20,6 @@ protocol IAppCoordinator: ICoordinator {
 	var mainFlowOption: MainFlowOption? { get set }
 	/// Показывает сценарий стартовой сцены
 	func showStartSceneFlow()
-	/// Показывает сценарий открытия каталогов и файлов
-	func showOpenDocumentFlow()
 }
 
 /// Координатор приложения
@@ -43,12 +41,7 @@ final class AppCoordinator: IAppCoordinator {
 	// MARK: ICoordinator
 
 	func start() {
-
-		if self.mainFlowOption == nil {
-			showStartSceneFlow()
-		} else {
-			showOpenDocumentFlow()
-		}
+		showStartSceneFlow()
 	}
 
 	// MARK: IMainCoordinator
@@ -57,12 +50,5 @@ final class AppCoordinator: IAppCoordinator {
 		let startSceneCoordinator = StartSceneCoordinator(navigationController: navigationController)
 		childCoordinators.append(startSceneCoordinator)
 		startSceneCoordinator.start()
-	}
-
-	func showOpenDocumentFlow() {
-		let openDocumentCoordinator = OpenDocumentCoordinator(navigationController: navigationController)
-		childCoordinators.append(openDocumentCoordinator)
-		openDocumentCoordinator.mainFlowType = mainFlowOption
-		openDocumentCoordinator.start()
 	}
 }

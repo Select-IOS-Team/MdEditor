@@ -21,15 +21,15 @@ final class OpenDocumentWorker: IOpenDocumentWorker {
 	// MARK: - IOpenDocumentWorker
 
 	func prepareViewModel(data: [DirectoryObject], title: String) -> OpenDocumentModel.OpenDocumentViewData {
-		var response = OpenDocumentModel.OpenDocumentViewData(title: title, objectsViewModel: [])
+		var response = OpenDocumentModel.OpenDocumentViewData(title: title, objectViewModels: [])
 		data.forEach { item in
 			let fileViewModel = OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel(
 				name: item.name,
 				image: item.isFolder ? Asset.folder : Asset.document,
 				fullName: item.path,
-				menuItem: item.isFolder ? .folder : .document
+				objectType: item.isFolder ? .folder : .document
 			)
-			response.objectsViewModel.append(fileViewModel)
+			response.objectViewModels.append(fileViewModel)
 		}
 		return response
 	}

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Модель вью
+/// Модель сцены открытия объектов.
 enum OpenDocumentModel {
 
 	struct OpenDocumentViewData {
@@ -22,10 +22,10 @@ enum OpenDocumentModel {
 			let name: String
 			let image: ImageAsset
 			let fullName: String
-			let menuItem: DirectoryObjectType
+			let objectType: DirectoryObjectType
 		}
 
 		let title: String
-		var objectsViewModel: [DirectoryObjectViewModel]
+		var objectViewModels: [DirectoryObjectViewModel]
 	}
 }
