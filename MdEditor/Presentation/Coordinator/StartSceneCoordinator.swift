@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol IStartSceneCoordinator {
+protocol IStartSceneCoordinator: ICoordinator {
 	/// Показывает сценарий стартовой сцены.
 	func showStartSceneFlow()
 }
 
 /// Координатор открытия стартовой сцены приложения.
-final class StartSceneCoordinator: ICoordinator {
+final class StartSceneCoordinator: IStartSceneCoordinator {
 
 	// MARK: Internal properties
 
@@ -30,13 +30,10 @@ final class StartSceneCoordinator: ICoordinator {
 	// MARK: ICoordinator
 
 	func start() {
-		showStartScene()
+		showStartSceneFlow()
 	}
-}
 
-// MARK: Private methods
-private extension StartSceneCoordinator {
-	func showStartScene() {
+	func showStartSceneFlow() {
 		let mainCoordinator = MainCoordinator(navigationController: navigationController)
 		childCoordinators.append(mainCoordinator)
 		let startSceneViewController = StartSceneAssembly.assemble(mainCoordinator: mainCoordinator)

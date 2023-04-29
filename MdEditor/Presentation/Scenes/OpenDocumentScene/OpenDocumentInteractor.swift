@@ -58,9 +58,9 @@ final class OpenDocumentInteractor: IOpenDocumentInteractor {
 	) {
 		switch objectType {
 		case .folder:
-			openDocumentCoordinator.openFolder(currentPath: currentPath, mainFlowType: MainFlowOption.openDirectoryObject)
+			openDocumentCoordinator.openFolder(currentPath: currentPath, mainFlowOption: MainFlowOption.openDirectoryObject)
 		case .document:
-			openDocumentCoordinator.openDocument(currentPath: currentPath, mainFlowType: MainFlowOption.openDirectoryObject)
+			openDocumentCoordinator.openDocument(currentPath: currentPath, mainFlowOption: MainFlowOption.openDirectoryObject)
 		}
 	}
 }

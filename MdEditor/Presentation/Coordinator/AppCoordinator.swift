@@ -44,7 +44,7 @@ final class AppCoordinator: IAppCoordinator {
 		showStartSceneFlow()
 	}
 
-	// MARK: IMainCoordinator
+	// MARK: IAppCoordinator
 
 	func showStartSceneFlow() {
 		let startSceneCoordinator = StartSceneCoordinator(navigationController: navigationController)

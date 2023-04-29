@@ -17,10 +17,10 @@ protocol IMainCoordinator: ICoordinator {
 	func showNewFileScene(createAction: @escaping (String) -> Void)
 	/// - Parameter currentPath: `String`.
 	/// - Parameter mainFlowType: Перечисление `MainFlowOption`.
-	func openDocument(currentPath: String, mainFlowType: MainFlowOption?)
+	func openDocument(currentPath: String, mainFlowOption: MainFlowOption?)
 	/// - Parameter currentPath: `String`.
 	/// - Parameter mainFlowType: Перечисление `MainFlowOption`.
-	func openFolder(currentPath: String, mainFlowType: MainFlowOption?)
+	func openFolder(currentPath: String, mainFlowOption: MainFlowOption?)
 }
 
 /// Координатор сцен открытия объектов (файлов/каталогов)
@@ -94,11 +94,11 @@ final class MainCoordinator: IMainCoordinator {
 		navigationController.present(alertController, animated: true)
 	}
 
-	func openDocument(currentPath: String, mainFlowType: MainFlowOption?) {
-		prepareToStart(currentPath: currentPath, mainFlowType: mainFlowType, objectType: .document)
+	func openDocument(currentPath: String, mainFlowOption: MainFlowOption?) {
+		prepareToStart(currentPath: currentPath, mainFlowOption: mainFlowOption, objectType: .document)
 	}
-	func openFolder(currentPath: String, mainFlowType: MainFlowOption?) {
-		prepareToStart(currentPath: currentPath, mainFlowType: mainFlowType, objectType: .folder)
+	func openFolder(currentPath: String, mainFlowOption: MainFlowOption?) {
+		prepareToStart(currentPath: currentPath, mainFlowOption: mainFlowOption, objectType: .folder)
 	}
 
 	// MARK: ICoordinator
@@ -112,7 +112,7 @@ final class MainCoordinator: IMainCoordinator {
 		case .aboutApp:
 			showAboutScene()
 		case .none:
-			fatalError("Ошибка. Не передано обязательное значение mainFlowType")
+			fatalError("Ошибка. Не передано обязательное значение mainFlowOption")
 		}
 	}
 }
@@ -120,9 +120,9 @@ final class MainCoordinator: IMainCoordinator {
 // MARK: Private methods
 
 private extension MainCoordinator {
-	func prepareToStart(currentPath: String, mainFlowType: MainFlowOption?, objectType: OpenCoordinatorObjectType) {
+	func prepareToStart(currentPath: String, mainFlowOption: MainFlowOption?, objectType: OpenCoordinatorObjectType) {
 		self.currentPath = currentPath
-		self.mainFlowOption = mainFlowType
+		self.mainFlowOption = mainFlowOption
 		self.objectType = objectType
 		start()
 	}
