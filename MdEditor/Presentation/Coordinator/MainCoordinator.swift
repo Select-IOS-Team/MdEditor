@@ -95,10 +95,10 @@ final class MainCoordinator: IMainCoordinator {
 	}
 
 	func openDocument(currentPath: String, mainFlowOption: MainFlowOption?) {
-		prepareToStart(currentPath: currentPath, mainFlowOption: mainFlowOption, objectType: .document)
+		prepareToOpen(currentPath: currentPath, mainFlowOption: mainFlowOption, objectType: .document)
 	}
 	func openFolder(currentPath: String, mainFlowOption: MainFlowOption?) {
-		prepareToStart(currentPath: currentPath, mainFlowOption: mainFlowOption, objectType: .folder)
+		prepareToOpen(currentPath: currentPath, mainFlowOption: mainFlowOption, objectType: .folder)
 	}
 
 	// MARK: ICoordinator
@@ -120,10 +120,10 @@ final class MainCoordinator: IMainCoordinator {
 // MARK: Private methods
 
 private extension MainCoordinator {
-	func prepareToStart(currentPath: String, mainFlowOption: MainFlowOption?, objectType: OpenCoordinatorObjectType) {
+	func prepareToOpen(currentPath: String, mainFlowOption: MainFlowOption?, objectType: OpenCoordinatorObjectType) {
 		self.currentPath = currentPath
 		self.mainFlowOption = mainFlowOption
 		self.objectType = objectType
-		start()
+		showOpenDocumentScene()
 	}
 }
