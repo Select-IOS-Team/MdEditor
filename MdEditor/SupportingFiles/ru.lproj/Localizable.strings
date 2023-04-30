@@ -7,9 +7,9 @@
 */
 
 "StartScene.Title" = "Главная";
-"StartScene.MenuItem.New.Title" = "Новый";
-"StartScene.MenuItem.Open.Title" = "Открыть";
-"StartScene.MenuItem.About.Title" = "О приложении";
+"StartScene.MenuItem.NewFile.Title" = "Новый файл";
+"StartScene.MenuItem.OpenFile.Title" = "Открыть файл";
+"StartScene.MenuItem.AboutApp.Title" = "О приложении";
 "StartScene.NewFileAlert.Title" = "Новый файл";
 "StartScene.NewFileAlert.TextField.Placeholder" = "Введите имя файла";
 

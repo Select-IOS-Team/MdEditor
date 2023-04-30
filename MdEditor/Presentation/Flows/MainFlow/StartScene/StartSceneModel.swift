@@ -28,13 +28,13 @@ enum StartSceneModel {
 			let menuType: MenuItemType
 		}
 
-		enum MenuItemType {
-			case new(createAction: (String) -> Void)
-			case open
-			case about
-		}
-
 		let recentFileItems: [RecentFileItem]
 		let menuItems: [MenuItem]
+	}
+
+	enum MenuItemType {
+		case newFile(createAction: (String) -> Void)
+		case openFile
+		case aboutApp
 	}
 }

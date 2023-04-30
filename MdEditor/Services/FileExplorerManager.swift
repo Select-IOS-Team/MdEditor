@@ -23,14 +23,9 @@ struct DirectoryObject {
 		return "\(path)/\(name)"
 	}
 
-	func getFileText(fullPath: String) -> String {
-		var text = ""
-		do {
-			text = try String(contentsOfFile: fullPath, encoding: String.Encoding.utf8)
-		} catch {
-		}
-
-		return text
+	func getFileText() -> String? {
+		guard let fileText = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) else { return nil }
+		return fileText
 	}
 }
 
@@ -70,7 +65,7 @@ final class FileExplorerManager: IFileExplorerManager {
 	// MARK: - Internal methods
 
 	func fillDirectoryObjects(path: String) -> [DirectoryObject] {
-		var documents: [DirectoryObject] = []
+		var files: [DirectoryObject] = []
 		var folders: [DirectoryObject] = []
 		guard let urlPath = URL(string: path, relativeTo: Bundle.main.resourceURL) else { return [] }
 
@@ -79,17 +74,17 @@ final class FileExplorerManager: IFileExplorerManager {
 			for item in items {
 				guard let isHidden = try item.resourceValues(forKeys: [.isHiddenKey]).isHidden else { continue }
 				guard !isHidden else { continue }
-				guard let file = getDirectoryObject(url: item) else { continue }
-				if file.isFolder {
-					folders.append(file)
+				guard let object = getDirectoryObject(url: item) else { continue }
+				if object.isFolder {
+					folders.append(object)
 				} else {
-					documents.append(file)
+					files.append(object)
 				}
 			}
 		} catch let error as NSError {
 			fatalError(error.localizedDescription)
 		}
-		return folders + documents
+		return folders + files
 	}
 
 	func getDirectoryObject(url: URL) -> DirectoryObject? {
@@ -112,14 +107,14 @@ final class FileExplorerManager: IFileExplorerManager {
 
 	func getAboutFile() -> DirectoryObject? {
 		guard let url = Bundle.main.url(
-			forResource: StringConstants.aboutPath,
+			forResource: StringConstants.aboutAppFilePath,
 			withExtension: StringConstants.mdExtension
 		) else { return nil }
 		return getDirectoryObject(url: url)
 	}
 
 	func createFile(in directory: URL, fileName: String, fileExtension: String, withContent content: String) {
-		let path = directory.path + "/" + fileName + fileExtension
+		let path = directory.path + "/" + fileName + "." + fileExtension
 		let data: Data? = content.data(using: .utf8)
 		fileManager.createFile(atPath: path, contents: data, attributes: nil)
 	}

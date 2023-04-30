@@ -1,5 +1,5 @@
 //
-//  AboutSceneViewController.swift
+//  AboutAppSceneViewController.swift
 //  MdEditor
 //
 //  Created by Evgeni Meleshin on 20.04.2023.
@@ -8,13 +8,14 @@
 import UIKit
 import SnapKit
 
-/// Контроллер сцены с информацией о приложении
-protocol IAboutSceneViewController: AnyObject {
-	func render(viewData: AboutSceneModel.ViewData)
+/// Вью контроллер сцены с информацией о приложении.
+protocol IAboutAppSceneViewController: AnyObject {
+	/// Отображает данные, соответствующие переданной модели.
+	func render(viewData: AboutAppSceneModel.ViewData)
 }
 
-/// Контроллер сцены с информацией о приложении
-final class AboutSceneViewController: UIViewController {
+/// Вью контроллер сцены с информацией о приложении.
+final class AboutAppSceneViewController: UIViewController {
 
 	// MARK: - Nested types
 
@@ -25,8 +26,8 @@ final class AboutSceneViewController: UIViewController {
 
 	// MARK: - Private properties
 
-	private let interactor: IAboutSceneInteractor
-	private var viewData = AboutSceneModel.ViewData(information: "")
+	private let interactor: IAboutAppSceneInteractor
+	private var viewData = AboutAppSceneModel.ViewData(information: "")
 	private lazy var aboutLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -39,7 +40,7 @@ final class AboutSceneViewController: UIViewController {
 
 	// MARK: - Lifecycle
 
-	init(interactor: IAboutSceneInteractor) {
+	init(interactor: IAboutAppSceneInteractor) {
 		self.interactor = interactor
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -56,18 +57,18 @@ final class AboutSceneViewController: UIViewController {
 	}
 }
 
-// MARK: - IAboutSceneViewController
+// MARK: - IAboutAppSceneViewController
 
-extension AboutSceneViewController: IAboutSceneViewController {
+extension AboutAppSceneViewController: IAboutAppSceneViewController {
 
-	func render(viewData: AboutSceneModel.ViewData) {
+	func render(viewData: AboutAppSceneModel.ViewData) {
 		aboutLabel.text = viewData.information
 	}
 }
 
 // MARK: - Private methods
 
-private extension AboutSceneViewController {
+private extension AboutAppSceneViewController {
 
 	func setupUI() {
 		view.addSubview(aboutLabel)
