@@ -1,5 +1,5 @@
 //
-//  ConfigurableTableCell.swift
+//  IConfigurableTableCell.swift
 //  MdEditor
 //
 //  Created by Evgeniy Novgorodov on 19.04.2023.

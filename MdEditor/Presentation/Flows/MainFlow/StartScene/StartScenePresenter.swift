@@ -26,19 +26,19 @@ final class StartScenePresenter: IStartScenePresenter {
 	func presentData(response: StartSceneModel.Response) {
 		let menuItems: [StartSceneModel.ViewData.MenuItem] = [
 			StartSceneModel.ViewData.MenuItem(
-				icon: Asset.addFile,
-				title: L10n.StartScene.MenuItem.New.title,
-				menuType: .new(createAction: response.createFileAction)
+				icon: Asset.newFile,
+				title: L10n.StartScene.MenuItem.NewFile.title,
+				menuType: .newFile(createAction: response.createFileAction)
 			),
 			StartSceneModel.ViewData.MenuItem(
-				icon: Asset.openFolder,
-				title: L10n.StartScene.MenuItem.Open.title,
-				menuType: .open
+				icon: Asset.openFile,
+				title: L10n.StartScene.MenuItem.OpenFile.title,
+				menuType: .openFile
 			),
 			StartSceneModel.ViewData.MenuItem(
-				icon: Asset.about,
-				title: L10n.StartScene.MenuItem.About.title,
-				menuType: .about
+				icon: Asset.aboutApp,
+				title: L10n.StartScene.MenuItem.AboutApp.title,
+				menuType: .aboutApp
 			)
 		]
 		let recentFileItems = StartSceneModel.ViewData.stubRecentFileItems

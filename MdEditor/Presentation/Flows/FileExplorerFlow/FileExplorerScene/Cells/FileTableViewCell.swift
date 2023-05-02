@@ -20,7 +20,7 @@ final class FileTableViewCell: UITableViewCell {
 		static let fileImageViewSize: CGFloat = 32
 	}
 
-	typealias ConfigurationModel = OpenDocumentModel.OpenDocumentViewData.DirectoryObjectViewModel
+	typealias ConfigurationModel = FileExplorerSceneModel.ViewData.DirectoryObjectViewModel
 
 	// MARK: - Private properties
 

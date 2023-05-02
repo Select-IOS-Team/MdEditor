@@ -32,7 +32,6 @@ final class StartSceneViewController: UIViewController {
 	// MARK: - Private properties
 
 	private let interactor: IStartSceneInteractor
-	private let router: IStartSceneRouter
 	private var viewData: StartSceneModel.ViewData = StartSceneModel.ViewData(recentFileItems: [], menuItems: [])
 
 	private lazy var scrollView: UIScrollView = {
@@ -62,9 +61,8 @@ final class StartSceneViewController: UIViewController {
 
 	// MARK: - Lifecycle
 
-	init(interactor: IStartSceneInteractor, router: IStartSceneRouter) {
+	init(interactor: IStartSceneInteractor) {
 		self.interactor = interactor
-		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -164,7 +162,7 @@ private extension StartSceneViewController {
 	}
 
 	func handleMenuItemTap(at index: Int) {
-		router.routeToViewController(menuItem: viewData.menuItems[index].menuType)
+		interactor.didTapMenuItem(viewData.menuItems[index].menuType)
 	}
 }
 

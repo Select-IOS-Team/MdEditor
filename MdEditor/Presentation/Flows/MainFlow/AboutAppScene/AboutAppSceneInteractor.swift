@@ -1,5 +1,5 @@
 //
-//  AboutSceneInteractor.swift
+//  AboutAppSceneInteractor.swift
 //  MdEditor
 //
 //  Created by Evgeni Meleshin on 20.04.2023.
@@ -8,34 +8,34 @@
 import Foundation
 
 /// Интерактор сцены информации о приложении.
-protocol IAboutSceneInteractor: AnyObject {
+protocol IAboutAppSceneInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
 }
 
 /// Интерактор сцены информации о приложении.
-final class AboutSceneInteractor: IAboutSceneInteractor {
+final class AboutAppSceneInteractor: IAboutAppSceneInteractor {
 
 	// MARK: - Private properties
 
-	private let presenter: IAboutScenePresenter
+	private let presenter: IAboutAppScenePresenter
 	private let fileExplorerManager: IFileExplorerManager
 
 	// MARK: - Lificycle
 
 	init(
-		presenter: IAboutScenePresenter,
+		presenter: IAboutAppScenePresenter,
 		fileExplorerManager: IFileExplorerManager
 	) {
 		self.presenter = presenter
 		self.fileExplorerManager = fileExplorerManager
 	}
 
-	// MARK: - IAboutSceneInteractor
+	// MARK: - IAboutAppSceneInteractor
 
 	func fetchData() {
-		guard let aboutFile = fileExplorerManager.getAboutFile() else { return }
-		let response = AboutSceneModel.ViewData(information: aboutFile.getFileText(fullPath: aboutFile.path))
+		guard let fileText = fileExplorerManager.getAboutFile()?.getFileText() else { return }
+		let response = AboutAppSceneModel.Response(information: fileText)
 		presenter.presentData(response: response)
 	}
 }

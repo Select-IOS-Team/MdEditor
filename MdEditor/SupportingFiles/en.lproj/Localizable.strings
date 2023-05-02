@@ -7,9 +7,9 @@
 */
 
 "StartScene.Title" = "Main";
-"StartScene.MenuItem.New.Title" = "New";
-"StartScene.MenuItem.Open.Title" = "Open";
-"StartScene.MenuItem.About.Title" = "About App";
+"StartScene.MenuItem.NewFile.Title" = "New file";
+"StartScene.MenuItem.OpenFile.Title" = "Open file";
+"StartScene.MenuItem.AboutApp.Title" = "About Markdown Editor";
 "StartScene.NewFileAlert.Title" = "New file";
 "StartScene.NewFileAlert.TextField.Placeholder" = "Enter file name";
 

@@ -1,5 +1,5 @@
 //
-//  OpenDocumentViewController.swift
+//  FileExplorerSceneViewController.swift
 //  MdEditor
 //
 //  Created by Evgeni Meleshin on 18.04.2023.
@@ -8,27 +8,25 @@
 import UIKit
 import SnapKit
 
-/// Вью контроллер сцены выбора файлов и папок.
-protocol IOpenDocumentViewController: AnyObject {
+/// Вью контроллер сцены файлового менеджера.
+protocol IFileExplorerSceneViewController: AnyObject {
 	/// Отображает данные, соответствующие переданной модели.
-	func render(viewData: OpenDocumentModel.OpenDocumentViewData)
+	func render(viewData: FileExplorerSceneModel.ViewData)
 }
 
-/// Вью контроллер сцены выбора файлов и папок.
-final class OpenDocumentViewController: UIViewController {
+/// Вью контроллер сцены файлового менеджера.
+final class FileExplorerSceneViewController: UIViewController {
 
 	// MARK: - Private properties
 
-	private let interactor: IOpenDocumentInteractor
-	private var router: IOpenDocumentRoutingLogic
-	private var viewData = OpenDocumentModel.OpenDocumentViewData(title: "", objectsViewModel: [])
+	private let interactor: IFileExplorerSceneInteractor
+	private var viewData = FileExplorerSceneModel.ViewData(title: "", objectViewModels: [])
 	private lazy var tableView = makeTableView()
 
 	// MARK: - Lifecycle
 
-	init(interactor: IOpenDocumentInteractor, router: IOpenDocumentRoutingLogic) {
+	init(interactor: IFileExplorerSceneInteractor) {
 		self.interactor = interactor
-		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -47,10 +45,10 @@ final class OpenDocumentViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 
-extension OpenDocumentViewController: UITableViewDataSource {
+extension FileExplorerSceneViewController: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		viewData.objectsViewModel.count
+		viewData.objectViewModels.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +57,7 @@ extension OpenDocumentViewController: UITableViewDataSource {
 			for: indexPath
 		) else { return UITableViewCell() }
 
-		let model = viewData.objectsViewModel[indexPath.row]
+		let model = viewData.objectViewModels[indexPath.row]
 		cell.configure(with: model)
 		return cell
 	}
@@ -67,19 +65,18 @@ extension OpenDocumentViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension OpenDocumentViewController: UITableViewDelegate {
+extension FileExplorerSceneViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let model = viewData.objectsViewModel[indexPath.row]
-		router.routeToViewController(menuItem: model.menuItem, currentPath: model.fullName)
+		interactor.didChooseDirectoryObject(at: indexPath.row)
 	}
 }
 
-// MARK: - IOpenDocumentViewController
+// MARK: - IFileExplorerSceneViewController
 
-extension OpenDocumentViewController: IOpenDocumentViewController {
+extension FileExplorerSceneViewController: IFileExplorerSceneViewController {
 
-	func render(viewData: OpenDocumentModel.OpenDocumentViewData) {
+	func render(viewData: FileExplorerSceneModel.ViewData) {
 		self.viewData = viewData
 		self.title = viewData.title
 		tableView.reloadData()
@@ -88,7 +85,7 @@ extension OpenDocumentViewController: IOpenDocumentViewController {
 
 // MARK: - Private methods
 
-private extension OpenDocumentViewController {
+private extension FileExplorerSceneViewController {
 
 	func makeTableView() -> UITableView {
 		let tableView = UITableView()
