@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  MdEditor
+
+  Created by Evgeni Meleshin on 18.04.2023.
+  
+*/
+
+"StartScene.Title" = "Main";
+"StartScene.MenuItem.NewFile.Title" = "New file";
+"StartScene.MenuItem.OpenFile.Title" = "Open file";
+"StartScene.MenuItem.AboutApp.Title" = "About Markdown Editor";
+"StartScene.NewFileAlert.Title" = "New file";
+"StartScene.NewFileAlert.TextField.Placeholder" = "Enter file name";
+
+"AlertController.Action.Create.Title" = "Create";
+"AlertController.Action.Cancel.Title" = "Cancel";
