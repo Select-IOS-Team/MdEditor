@@ -81,7 +81,7 @@ private extension MdToHTMLConverter {
 
 private enum RegexPatterns {
 	// Абзац
-	static let paragraph = #"^(#|&gt;)"#
+	static let paragraph = #"^[^\S\r\n]*#[^#\S\r\n]*([^#\s]+.*)"#
 	// Заголовок
 	static let header = #"^#{1,6} "#
 	// Нумерованный список
@@ -99,7 +99,7 @@ private enum RegexPatterns {
 	// Жирный наклонный текст
 	static let boldItalicText = #"\*\*\*(.*?)\*\*\*"#
 	// Цитата
-	static let quote = #"^&gt; (.*)"#
+	static let quote = #"/(?:^>.+\n)+/m"#
 	// Встроенный блок кода
 	static let inlineCodeBlock = #"\`{1}([^\`]+)\`{1}"#
 	// Многострочный блок кода
