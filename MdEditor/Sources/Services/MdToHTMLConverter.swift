@@ -6,6 +6,8 @@
 //  Copyright © 2023 Evgeni Meleshin (Personal Team). All rights reserved.
 //
 
+import Foundation
+
 /// Конвертер файлов .md в формат html.
 protocol IMdToHTMLConverter {
 	/// Конвертирует текст в формат html.
@@ -51,7 +53,11 @@ private extension MdToHTMLConverter {
 	}
 
 	func parseParagraph(text: String) -> String? {
-		""
+		let pattern = RegexPatterns.paragraph
+		let regex = try? NSRegularExpression(pattern: pattern)
+		if let noParagraph = regex?.match(text), noParagraph == true { return nil }
+		let parsedText = parseText(text: text)
+		return "<p>\(parsedText)</p>"
 	}
 
 	func parseHeader(text: String) -> String? {
@@ -88,7 +94,11 @@ private extension MdToHTMLConverter {
 	}
 
 	func parseQuote(text: String) -> String? {
-		""
+		let pattern = RegexPatterns.quote
+		if let citeText = text.group(for: pattern) {
+			return "<cite>\(citeText)</cite>"
+		}
+		return nil
 	}
 
 	func parseInlineCodeBlock(text: String) -> String? {
@@ -102,11 +112,34 @@ private extension MdToHTMLConverter {
 	func parseHorizontalLine(text: String) -> String? {
 		""
 	}
+
+	func parseText(text: String) -> String {
+		var result = text.replacingOccurrences(
+			of: RegexPatterns.boldItalicText,
+			with: "<strong><em>$1</em></strong>",
+			options: .regularExpression
+		)
+
+		result = result.replacingOccurrences(
+			of: RegexPatterns.boldText,
+			with: "<strong>$1</strong>",
+			options: .regularExpression
+		)
+
+		result = result.replacingOccurrences(
+			of: RegexPatterns.italicText,
+			with: "<em>$1</em>",
+			options: .regularExpression
+		)
+
+		return result
+	}
 }
 
 private enum RegexPatterns {
 	// Абзац
-	static let paragraph = #"^[^\S\r\n]*#[^#\S\r\n]*([^#\s]+.*)"#
+//	static let paragraph = #"^[^\S\r\n]*#[^#\S\r\n]*([^#\s]+.*)"#
+	static let paragraph = #"^(#|&gt;)"#
 	// Заголовок
 	static let header = #"^#{1,6} "#
 	// Нумерованный список
@@ -124,7 +157,8 @@ private enum RegexPatterns {
 	// Жирный наклонный текст
 	static let boldItalicText = #"\*\*\*(.*?)\*\*\*"#
 	// Цитата
-	static let quote = #"/(?:^>.+\n)+/m"#
+//	static let quote = #"/(?:^>.+\n)+/m"#
+	static let quote = #"^&gt; (.*)"#
 	// Встроенный блок кода
 	static let inlineCodeBlock = #"\`{1}([^\`]+)\`{1}"#
 	// Многострочный блок кода
