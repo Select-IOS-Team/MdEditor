@@ -24,7 +24,6 @@ final class MdToHTMLConverter: IMdToHTMLConverter {
 	func convert(text: String) -> String {
 		""
 	}
-
 }
 
 // MARK: Private methods
@@ -38,6 +37,46 @@ private extension MdToHTMLConverter {
 	func parseHeader(text: String) -> String? {
 		""
 	}
+
+	func parseNumberedList(text: String) -> String? {
+		""
+	}
+
+	func parseUnorderedList(text: String) -> String? {
+		""
+	}
+
+	func parseReferenceMd(text: String) -> String? {
+		""
+	}
+
+	func parseBoldText(text: String) -> String? {
+		""
+	}
+
+	func parseItalicText(text: String) -> String? {
+		""
+	}
+
+	func parseBoldItalicText(text: String) -> String? {
+		""
+	}
+
+	func parseQuote(text: String) -> String? {
+		""
+	}
+
+	func parseInlineCodeBlock(text: String) -> String? {
+		""
+	}
+
+	func parseMultilineCodeBlock(text: String) -> String? {
+		""
+	}
+
+	func parseHorizontalLine(text: String) -> String? {
+		""
+	}
 }
 
 private enum RegexPatterns {
@@ -46,9 +85,9 @@ private enum RegexPatterns {
 	// Заголовок
 	static let header = #"^#{1,6} "#
 	// Нумерованный список
-	static let numberedList = #"(\d\.|\t\d\.?|\t\*?|\*|\-|\+)\s?(.*)"#
+	static let numberedList = #"^[0-9]+[ .][\s\S]*?\n{2}"#
 	// Список без нумерации
-	static let unorderedList = ""
+	static let unorderedList = #"^[*+-]+[ .][\s\S]*?\n{2}"#
 	// Ссылка в md файле
 	static let referenceMd = #"\[(.+)\]\((.+)\)"#
 	// Ссылка
@@ -66,5 +105,5 @@ private enum RegexPatterns {
 	// Многострочный блок кода
 	static let multilineCodeBlock = #"\`{3}(\w+)?\n([^\`]+)\n\`{3}"#
 	// Горизонтальная линия
-	static let horizontalLine = ""
+	static let horizontalLine = #"\-{3}"#
 }
