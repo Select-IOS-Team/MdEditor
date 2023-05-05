@@ -22,7 +22,17 @@ final class MdToHTMLConverter: IMdToHTMLConverter {
 	// MARK: IMdToHTMLConverter
 
 	func convert(text: String) -> String {
-		""
+		let lines = text.components(separatedBy: .newlines)
+		var html = [String?]()
+
+		lines.forEach { line in
+			let htmlLine = fixHtmlChar(text: line)
+			html.append(parseHeader(text: htmlLine))
+			html.append(parseQuote(text: htmlLine))
+			html.append(parseParagraph(text: htmlLine))
+		}
+
+		return insertToHTML(text: html.compactMap { $0 }.joined(separator: "\n"))
 	}
 }
 
@@ -30,12 +40,27 @@ final class MdToHTMLConverter: IMdToHTMLConverter {
 
 private extension MdToHTMLConverter {
 
+	func insertToHTML(text: String) -> String {
+		return "<!DOCTYPE html><html><head><style> body {font-size:300%;}</style></head><boby>\(text)</boby></html>"
+	}
+
+	func fixHtmlChar(text: String) -> String {
+		text
+			.replacingOccurrences(of: "<", with: "&lt;")
+			.replacingOccurrences(of: ">", with: "&gt;")
+	}
+
 	func parseParagraph(text: String) -> String? {
 		""
 	}
 
 	func parseHeader(text: String) -> String? {
-		""
+		if let headerRange = text.range(of: RegexPatterns.header, options: .regularExpression) {
+			let headerText = text[headerRange.upperBound...]
+			let headerLevel = text.filter { $0 == "#" }.count
+			return "<h\(headerLevel)>\(headerText)</h\(headerLevel)>"
+		}
+		return nil
 	}
 
 	func parseNumberedList(text: String) -> String? {

@@ -57,7 +57,12 @@ final class FileExplorerCoordinator: IFileExplorerCoordinator {
 	}
 
 	func openFile(_ file: DirectoryObject) {
-		let editFileCoordinator = EditFileCoordinator(
+//		let editFileCoordinator = EditFileCoordinator(
+//			navigationController: navigationController,
+//			finishDelegate: self,
+//			file: file
+//		)
+		let editFileCoordinator = BrowseHTMLCoordinator(
 			navigationController: navigationController,
 			finishDelegate: self,
 			file: file
