@@ -18,3 +18,14 @@
 - ***негативная ретроспективная проверка*** - `(?<!Y)Xo`
 
 ntcn **{n}** - символ по**вто**ряется ровно n ***раз*** user:name@*domen.ru.net* 
+
+1. Test numbered list first string
+ 1. Level 2
+2. Test numbered list second string
+ 2. Level 2
+  2. Level 3
+3. Test numbered list third string
+
+https://test.com
+
+[Текст ссылки](http://example.com/ "Необязательный заголовок ссылки")

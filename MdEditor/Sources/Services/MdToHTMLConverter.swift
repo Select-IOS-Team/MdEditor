@@ -32,6 +32,8 @@ final class MdToHTMLConverter: IMdToHTMLConverter {
 			html.append(parseHeader(text: htmlLine))
 			html.append(parseQuote(text: htmlLine))
 			html.append(parseParagraph(text: htmlLine))
+			html.append(parseNumberedList(text: htmlLine))
+			html.append(parseReferenceMd(text: htmlLine))
 		}
 
 		return insertToHTML(text: html.compactMap { $0 }.joined(separator: "\n"))
@@ -53,8 +55,7 @@ private extension MdToHTMLConverter {
 	}
 
 	func parseParagraph(text: String) -> String? {
-		let pattern = RegexPatterns.paragraph
-		let regex = try? NSRegularExpression(pattern: pattern)
+		let regex = try? NSRegularExpression(pattern: RegexPatterns.paragraph)
 		if let noParagraph = regex?.match(text), noParagraph == true { return nil }
 		let parsedText = parseText(text: text)
 		return "<p>\(parsedText)</p>"
@@ -70,7 +71,11 @@ private extension MdToHTMLConverter {
 	}
 
 	func parseNumberedList(text: String) -> String? {
-		""
+		if let range = text.range(of: RegexPatterns.numberedList, options: .regularExpression) {
+			let lineList = text[range.upperBound...]
+			return "<li>\(lineList)</li>"
+		}
+		return nil
 	}
 
 	func parseUnorderedList(text: String) -> String? {
@@ -78,7 +83,16 @@ private extension MdToHTMLConverter {
 	}
 
 	func parseReferenceMd(text: String) -> String? {
-		""
+////		<a href="url">link text</a>
+//		if let range = text.range(of: RegexPatterns.referenceMd, options: .regularExpression) {
+////			let ref = text[range.lowerBound...]
+//			let structURL = ParseURL.parse(rawValue: text, pattern: RegexPatterns.referenceMd)
+//			let aaa = 0
+////			// return "<a href=\(ref)</a>"
+////			return "<a href=https://example.com</a>"
+//		}
+////		return nil
+		return ""
 	}
 
 	func parseBoldText(text: String) -> String? {
@@ -143,11 +157,16 @@ private enum RegexPatterns {
 	// Заголовок
 	static let header = #"^#{1,6} "#
 	// Нумерованный список
-	static let numberedList = #"^[0-9]+[ .][\s\S]*?\n{2}"#
+	// static let numberedList = #"^[0-9]+[ .][\s\S]*?\n{2}"#
+	static let numberedList = #"^(\n|\t|\r)?\d+\. "#
 	// Список без нумерации
 	static let unorderedList = #"^[*+-]+[ .][\s\S]*?\n{2}"#
 	// Ссылка в md файле
-	static let referenceMd = #"\[(.+)\]\((.+)\)"#
+	// static let referenceMd = #"\[(.+)\]\((.+)\)"#
+	// static let referenceMd = #"(\[((?:\[[^\]]*\]|[^\[\]])*)\]\([ \t]*()
+	// <?((?:\([^)]*\)|[^()\s])*?)>?[ \t]*((['"])(.*?)\6[ \t]*)?\))"#
+	// static let referenceMd = #"\[[^\[\]]*?\]\(.*?\)|^\[*?\]\(.*?\)"#
+	static let referenceMd = #"(?<header>\[[^\[\]]*?\])(?<link>\(.*?\)|^\[*?\]\(.*?\))"#
 	// Ссылка
 	static let reference = #"[-a-zA-Z0-9@:%_\+.~#?&\/\/=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)?"#
 	// Жирный текст
