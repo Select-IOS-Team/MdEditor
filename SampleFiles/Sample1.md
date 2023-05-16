@@ -34,5 +34,5 @@ Multyline example
 let stringOne = "Hello"
 let stringTwo = "World"
 ```
-	
+
 [Текст ссылки](http://example.com/)
