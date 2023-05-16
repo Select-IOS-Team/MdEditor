@@ -14,13 +14,28 @@ extension Markdown {
 		func tokenize(input: String) -> [Token] {
 			let lines = input.components(separatedBy: .newlines)
 			var tokens = [Token?]()
+			var insideCodeBlock = false
 
 			for line in lines {
+
+				let tokenCodeBlockMarker = parseCodoBlockMarker(rawText: line)
+				if tokenCodeBlockMarker != nil {
+					tokens.append(tokenCodeBlockMarker)
+					insideCodeBlock = !insideCodeBlock
+					continue
+				}
+				if insideCodeBlock {
+					tokens.append(parseCodeBlockItem(rawText: line))
+					continue
+				}
+
 				tokens.append(parseLineBreak(rawText: line))
 				tokens.append(parseHeader(rawText: line))
 				tokens.append(parseQuote(rawText: line))
 				tokens.append(parseNumberedList(rawText: line))
 				tokens.append(parseUnorderedList(rawText: line))
+				tokens.append(parseLink(rawText: line))
+				tokens.append(parseInlineCode(rawText: line))
 				tokens.append(parseTextBlock(rawText: line))
 			}
 
@@ -82,6 +97,36 @@ private extension Markdown.Lexer {
 			}
 		}
 		return nil
+	}
+
+	func parseLink(rawText: String) -> Markdown.Token? {
+		let groups = rawText.groups(for: Markdown.RegexPatterns.referenceMd)
+		if !groups.isEmpty {
+			let group = groups[0]
+			let text = group[0]
+			let url = group[1]
+			return .link(url: url.removeLeftRightSymbols(), text: text.removeLeftRightSymbols())
+		}
+		return nil
+	}
+
+	func parseInlineCode(rawText: String) -> Markdown.Token? {
+		if let text = rawText.group(for: Markdown.RegexPatterns.inlineCodeBlock) {
+			return .codeLine(text: text)
+		}
+		return nil
+	}
+
+	func parseCodoBlockMarker(rawText: String) -> Markdown.Token? {
+		if let text = rawText.group(for: Markdown.RegexPatterns.multilineCodeBlockMarker) {
+			let lang = rawText.replacingOccurrences(of: text, with: "")
+			return .codeBlockMarker(level: 0, lang: lang)
+		}
+		return nil
+	}
+
+	func parseCodeBlockItem(rawText: String) -> Markdown.Token? {
+		return .text(text: parseText(rawText: rawText))
 	}
 
 	func parseTextBlock(rawText: String) -> Markdown.Token? {
