@@ -38,4 +38,11 @@ extension String {
 
 		return result
 	}
+
+	func removeLeftRightSymbols() -> String {
+		let start = self.index(self.startIndex, offsetBy: 1)
+		let end = self.index(self.endIndex, offsetBy: -1)
+		let range = start..<end
+		return String(self[range])
+	}
 }

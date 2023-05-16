@@ -26,6 +26,4 @@ ntcn **{n}** - символ по**вто**ряется ровно n ***раз***
   2. Level 3
 3. Test numbered list third string
 
-https://test.com
-
-[Текст ссылки](http://example.com/ "Необязательный заголовок ссылки")
+[Текст ссылки](http://example.com/)
