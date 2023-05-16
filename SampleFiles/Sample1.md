@@ -26,4 +26,13 @@ ntcn **{n}** - символ по**вто**ряется ровно n ***раз***
   2. Level 3
 3. Test numbered list third string
 
+Code line example `Hello world`
+
+Multyline example
+
+```swift
+let stringOne = "Hello"
+let stringTwo = "World"
+```
+	
 [Текст ссылки](http://example.com/)
