@@ -42,14 +42,6 @@ extension Markdown {
 
 			return tokens.compactMap { $0 }
 		}
-		func tokenizeToString(tokens: [Token]) -> String {
-			var tokensString = [String]()
-
-			tokens.forEach { _ in
-				tokensString.append("")
-			}
-			return tokensString.joined(separator: "\n")
-		}
 	}
 }
 

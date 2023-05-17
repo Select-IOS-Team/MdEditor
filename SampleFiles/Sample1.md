@@ -50,4 +50,3 @@ Link
 Simbols
 Simbols [Текст ссылки](http://example.com/)
 Simbols
-

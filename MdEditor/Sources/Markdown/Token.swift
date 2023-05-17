@@ -10,12 +10,7 @@ import Foundation
 
 extension Markdown {
 
-	enum Token: CustomStringConvertible {
-
-		var description: String {
-			return ""
-		}
-
+	enum Token {
 		case header(level: Int, text: Text)
 		case cite(level: Int, text: Text)
 		case text(text: Text)
