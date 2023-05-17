@@ -34,6 +34,7 @@ extension Markdown {
 				tokens.append(parseQuote(rawText: line))
 				tokens.append(parseNumberedList(rawText: line))
 				tokens.append(parseUnorderedList(rawText: line))
+				tokens.append(parseImage(rawText: line))
 				tokens.append(parseLink(rawText: line))
 				tokens.append(parseInlineCode(rawText: line))
 				tokens.append(parseTextBlock(rawText: line))
@@ -99,12 +100,23 @@ private extension Markdown.Lexer {
 		return nil
 	}
 
+	func parseImage(rawText: String) -> Markdown.Token? {
+		let groups = rawText.groups(for: Markdown.RegexPatterns.imageMd)
+		if !groups.isEmpty {
+			let group = groups[0]
+			let text = group[0].replacingOccurrences(of: "!", with: "")
+			let url = group[1]
+			return .image(url: url.removeLeftRightSymbols(), text: text.removeLeftRightSymbols())
+		}
+		return nil
+	}
+
 	func parseLink(rawText: String) -> Markdown.Token? {
 		let groups = rawText.groups(for: Markdown.RegexPatterns.referenceMd)
 		if !groups.isEmpty {
 			let group = groups[0]
 			let text = group[0]
-			let url = group[1]
+			let url = group[2]
 			return .link(url: url.removeLeftRightSymbols(), text: text.removeLeftRightSymbols())
 		}
 		return nil

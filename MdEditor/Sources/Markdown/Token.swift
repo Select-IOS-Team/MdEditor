@@ -22,7 +22,7 @@ extension Markdown {
 		case numberedListItem(level: Int, text: Text)
 		case unorderedListItem(level: Int, text: Text)
 		case link(url: String, text: String)
-		case image(url: String, size: String)
+		case image(url: String, text: String)
 		case lineBreak
 		case codeBlockMarker(level: Int, lang: String)
 		case codeLine(text: String)

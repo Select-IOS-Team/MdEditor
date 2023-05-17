@@ -10,8 +10,6 @@
 - **{m,n}** - символ повторяется в диапазоне от m до n раз
 - **{m,}** - символ повторяется минимум m раз (от m и более)
 
-[Текст ссылки](http://example.com/)
-
 ## Lookahead и lookbehind (опережающая и ретроспективная проверки)
 
 - **lookahead** - опережающая проверка - `X(?=Y)` - найти Х, при условии, что после него идет Y
@@ -37,4 +35,19 @@ let stringOne = "Hello"
 let stringTwo = "World"
 ```
 
+Image
+
+![Sample image](http://example.com/)
+
+Simbols
+Simbols ![Sample image](http://example.com/)
+Simbols
+
+Link
+
 [Текст ссылки](http://example.com/)
+
+Simbols
+Simbols [Текст ссылки](http://example.com/)
+Simbols
+
