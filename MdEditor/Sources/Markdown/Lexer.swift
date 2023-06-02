@@ -10,7 +10,14 @@ import Foundation
 
 extension Markdown {
 
+	/// Класс для лексического анализа текста.
 	final class Lexer {
+
+		// MARK: Internal methods
+
+		/// Преобразует текст в токен на основе имеющегося шаблона.
+		/// - Parameter input: Переданный текст.
+		/// - Returns `[Token]`: Массив подготовленных токенов.
 		func tokenize(input: String) -> [Token] {
 			let lines = input.components(separatedBy: .newlines)
 			var tokens = [Token?]()

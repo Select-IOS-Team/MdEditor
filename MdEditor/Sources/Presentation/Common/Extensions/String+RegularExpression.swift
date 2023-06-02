@@ -9,6 +9,10 @@
 import Foundation
 
 extension String {
+
+	/// Возвращает первую группу в найденном по шаблону тексте.
+	/// - Parameter regexPattern: Переданная строка текста.
+	/// - Returns `String`:  Строка, содержащая только подстроку из группы.
 	func group(for regexPattern: String) -> String? {
 		do {
 			let text = self
@@ -20,11 +24,14 @@ extension String {
 				return String(text[group])
 			}
 		} catch {
-//			print("invalid regex: \(error.localizedDescription)")
+			return nil
 		}
 		return nil
 	}
 
+	/// Возвращает найденный по шаблону тексте в виде массива групп.
+	/// - Parameter regexPattern: Переданная строка текста.
+	/// - Returns `[[String]]`:  Массив, содержащий в себе группы в найденном тексте.
 	func groups(for regexPattern: String) -> [[String]] {
 		let text = self as NSString
 		let range = NSRange(location: .zero, length: text.length)
@@ -39,6 +46,8 @@ extension String {
 		return result
 	}
 
+	/// Возвращает строку без начального и конечного символов.
+	/// - Returns `String`:  Строка без начального и конечного символов.
 	func removeLeftRightSymbols() -> String {
 		let start = self.index(self.startIndex, offsetBy: 1)
 		let end = self.index(self.endIndex, offsetBy: -1)

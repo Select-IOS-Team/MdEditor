@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Cтруктура url-ссылки.
 struct ParseURL {
 	let header: String
 	let url: String
@@ -32,11 +33,9 @@ struct ParseURL {
 		var _: String?
 
 		if let match = regex?.firstMatch(in: rawValue, range: range) {
-			// if let urlHeaderRange = Range(match.range(at: 1), in: rawValue) {
 			if let urlHeaderRange = Range(match.range(withName: "header"), in: rawValue) {
 				urlHeader = String(rawValue[urlHeaderRange])
 			}
-			// if let urlLinkRange = Range(match.range(at: 2), in: rawValue) {
 			if let urlLinkRange = Range(match.range(withName: "link"), in: rawValue) {
 				urlLink = String(rawValue[urlLinkRange])
 			}

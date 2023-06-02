@@ -44,8 +44,6 @@ final class BrowseHTMLInteractor: IBrowseHTMLInteractor {
 
 	func fetchData() {
 		guard let text = file.getFileText() else { return }
-		let lexer = Markdown.Lexer()
-		let tokens = lexer.tokenize(input: text)
 		let htmlText = converter.convert(text: text)
 		let response = BrowseHTMLModel.Response(text: text, htmlText: htmlText)
 		presenter.presentData(response: response)

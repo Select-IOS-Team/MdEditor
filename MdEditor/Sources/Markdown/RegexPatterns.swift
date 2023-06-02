@@ -41,9 +41,11 @@ extension Markdown {
 		static let italicText = #"^\*(.*?)\*"#
 		// Жирный наклонный текст
 		static let boldItalicText = #"^\*\*\*(.*?)\*\*\*"#
-
+		// Экранированный символ
 		static let escapedChar = #"^\\([\\\`\*\_\{\}\[\]\<\>\(\)\+\-\.\!\|#]){1}"#
+		// Обычный текст
 		static let normal = #"^(.*?)(?=[\*`\\]|$)"#
+		// Текст между символами "`"
 		static let inline = #"^`(.*?)`"#
 	}
 }
