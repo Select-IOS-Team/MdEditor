@@ -11,7 +11,7 @@ import UIKit
 /// Координатор сцены просмотра html-файла.
 protocol IBrowseHTMLCoordinator: ICoordinator {
 	/// Уведомляет о закрытии сцены просмотра html-файла.
-	func didCloseBrowseHTMLCoordinator()
+	func didCloseBrowseHTMLScene()
 }
 
 /// Координатор сцены просмотра html-файла.
@@ -39,7 +39,7 @@ final class BrowseHTMLCoordinator: IBrowseHTMLCoordinator {
 		self.file = file
 	}
 
-	func didCloseBrowseHTMLCoordinator() {
+	func didCloseBrowseHTMLScene() {
 		finish()
 	}
 

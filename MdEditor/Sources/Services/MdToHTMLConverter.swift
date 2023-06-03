@@ -83,7 +83,7 @@ private extension MdToHTMLConverter {
 	}
 
 	func parseReferenceMd(text: String) -> String? {
-		return ""
+		""
 	}
 
 	func parseBoldText(text: String) -> String? {

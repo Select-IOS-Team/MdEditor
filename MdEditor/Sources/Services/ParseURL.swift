@@ -30,7 +30,6 @@ struct ParseURL {
 
 		var urlHeader: String?
 		var urlLink: String?
-		var _: String?
 
 		if let match = regex?.firstMatch(in: rawValue, range: range) {
 			if let urlHeaderRange = Range(match.range(withName: "header"), in: rawValue) {

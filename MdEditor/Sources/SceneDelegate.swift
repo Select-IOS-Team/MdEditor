@@ -13,6 +13,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
 
+	// MARK: - Private properties
+
+	private var appCoordinator: ICoordinator?
+
 	// MARK: - Lifecycle
 
 	func scene(
@@ -24,9 +28,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		window = UIWindow(windowScene: windowScene)
 		let navigationController = UINavigationController()
-		let appCoordinator = AppCoordinator(navigationController: navigationController)
+		appCoordinator = AppCoordinator(navigationController: navigationController)
 		window?.rootViewController = navigationController
 		window?.makeKeyAndVisible()
-		appCoordinator.start()
+		appCoordinator?.start()
 	}
 }

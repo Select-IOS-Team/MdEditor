@@ -39,7 +39,7 @@ final class BrowseHTMLInteractor: IBrowseHTMLInteractor {
 	}
 
 	deinit {
-		coordinator.didCloseBrowseHTMLCoordinator()
+		coordinator.didCloseBrowseHTMLScene()
 	}
 
 	func fetchData() {

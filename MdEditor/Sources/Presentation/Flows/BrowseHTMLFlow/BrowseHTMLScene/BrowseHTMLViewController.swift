@@ -25,6 +25,7 @@ final class BrowseHTMLViewController: UIViewController {
 	private var viewData = BrowseHTMLModel.ViewData(text: "", htmlText: "")
 	private lazy var webView: WKWebView = {
 		let webView = WKWebView()
+		webView.navigationDelegate = self
 		return webView
 	}()
 
@@ -40,14 +41,11 @@ final class BrowseHTMLViewController: UIViewController {
 	}
 
 	override func loadView() {
-		setupUI()
+		view = webView
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//		let html = MdToHTMLConverter().convert(text: "")
-//		webView.loadHTMLString(html, baseURL: nil)
-//		webView.allowsBackForwardNavigationGestures = false
 		interactor.fetchData()
 	}
 }
@@ -64,15 +62,4 @@ extension BrowseHTMLViewController: IBrowseHTMLViewController {
 
 // MARK: WKNavigationDelegate
 
-extension BrowseHTMLViewController: WKNavigationDelegate { }
-
-// MARK: - Private methods
-
-private extension BrowseHTMLViewController {
-
-	func setupUI() {
-		webView = .init()
-		webView.navigationDelegate = self
-		view = webView
-	}
-}
+extension BrowseHTMLViewController: WKNavigationDelegate {}
