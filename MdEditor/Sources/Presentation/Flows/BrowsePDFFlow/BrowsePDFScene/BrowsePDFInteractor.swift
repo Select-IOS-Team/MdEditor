@@ -41,7 +41,7 @@ final class BrowsePDFInteractor: IBrowsePDFInteractor {
 	deinit {
 		coordinator.finish()
 	}
-	
+
 	// MARK: - Methods
 
 	/// Получает данные для отображения на вью.

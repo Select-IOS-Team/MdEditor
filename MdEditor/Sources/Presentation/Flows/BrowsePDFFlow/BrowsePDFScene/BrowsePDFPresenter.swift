@@ -21,7 +21,7 @@ final class BrowsePDFPresenter: IBrowsePDFPresenter {
 	weak var viewController: IBrowsePDFViewController?
 
 	// MARK: - Methods
-	
+
 	/// Подготавливает и передаёт вью данные файла.
 	/// - Parameter response: Модель `BrowsePDFSceneModel.Response`.
 	func presentData(response: BrowsePDFModel.Response) {

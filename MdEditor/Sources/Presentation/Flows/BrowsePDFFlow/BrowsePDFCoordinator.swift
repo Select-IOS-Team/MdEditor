@@ -39,7 +39,7 @@ final class BrowsePDFCoordinator: IBrowsePDFCoordinator {
 	}
 
 	// MARK: - ICoordinator
-	
+
 	/// Стартует сцену с просмотром pdf-документа.
 	func start() {
 		let browsePDFViewController = BrowsePDFAssembly.assemble(coordinator: self, file: file)

@@ -54,7 +54,7 @@ final class BrowsePDFViewController: UIViewController {
 // MARK: IBrowseHTMLViewController
 
 extension BrowsePDFViewController: IBrowsePDFViewController {
-	
+
 	/// Отображает данные, соответствующие переданной модели.
 	/// - Parameter viewData: Передается модель типа BrowsePDFModel.
 	func render(viewData: BrowsePDFModel.ViewData) {

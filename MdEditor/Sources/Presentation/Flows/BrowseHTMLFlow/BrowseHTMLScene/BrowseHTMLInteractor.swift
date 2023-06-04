@@ -50,7 +50,7 @@ final class BrowseHTMLInteractor: IBrowseHTMLInteractor {
 		let response = BrowseHTMLModel.Response(text: text, htmlText: htmlText)
 		presenter.presentData(response: response)
 	}
-	
+
 	/// Переход с помощью координатора на сцену с просмотром pdf-документа.
 	func showPdfScene() {
 		coordinator.openPdf(file)
