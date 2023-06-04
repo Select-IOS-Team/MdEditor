@@ -11,7 +11,8 @@ import Foundation
 extension Markdown {
 
 	struct Text {
-		let text: [Part]
+
+		// MARK: - Nested types
 
 		enum Part {
 			case boldItalic(text: String)
@@ -21,6 +22,12 @@ extension Markdown {
 			case inlineCode(code: String)
 			case escapedChar(char: String)
 		}
+
+		// MARK: - Internal properties
+
+		let text: [Part]
+
+		// MARK: - Lifecycle
 
 		init(text: [Part]) {
 			self.text = text

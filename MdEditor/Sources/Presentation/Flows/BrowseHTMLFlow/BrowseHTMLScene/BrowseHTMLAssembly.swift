@@ -6,8 +6,9 @@
 //  Copyright © 2023 Evgeni Meleshin (Personal Team). All rights reserved.
 //
 
-/// Сборщик сцены просмотра html-файла
+/// Сборщик сцены просмотра файла в виде HTML-страницы..
 enum BrowseHTMLAssembly {
+
 	static func assemble(coordinator: IBrowseHTMLCoordinator, file: DirectoryObject) -> BrowseHTMLViewController {
 		let converter = MdToHTMLConverter()
 		let presenter = BrowseHTMLPresenter()

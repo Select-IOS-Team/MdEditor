@@ -53,7 +53,7 @@ final class FileExplorerCoordinator: IFileExplorerCoordinator {
 	}
 
 	func openFile(_ file: DirectoryObject) {
-		startBrowseHTMLFlow(with: file)
+		startEditFileFlow(with: file)
 	}
 
 	func didCloseFileExplorerSceneScene() {

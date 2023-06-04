@@ -12,14 +12,14 @@ extension Markdown {
 
 	enum RegexPatterns {
 		// Абзац
-		static let paragraph = #"^(#|&gt;)"#
-		static let notParagraph = #"^[#>]"#
+		static let paragraph = #"^(#|&gt;|-)"#
+		static let notParagraph = #"^[#>-]"#
 		// Заголовок
 		static let header = #"^#{1,6} "#
 		// Нумерованный список
 		static let numberedList = #"^([ \t]*)[\d]+\.\s+(.*)"#
 		// Список без нумерации
-		static let unorderedList = #"^([ \t]*)-\s+(.*)"#
+		static let unorderedList = #"^[ \t]*-\s+(.*)"#
 		// Ссылка в md файле
 		static let referenceMd = #"((\s|^)\[[^\[\]]*?\])(\(.*?\)|^\[*?\]\(.*?\))"#
 		// Изображение
@@ -36,16 +36,16 @@ extension Markdown {
 		// Горизонтальная линия
 		static let horizontalLine = #"\-{3}"#
 		// Жирный текст
-		static let boldText = #"^\*\*(.*?)\*\*"#
+		static let boldText = #"\*\*(.*?)\*\*"#
 		// Наклонный текст
-		static let italicText = #"^\*(.*?)\*"#
+		static let italicText = #"\*(.*?)\*"#
 		// Жирный наклонный текст
-		static let boldItalicText = #"^\*\*\*(.*?)\*\*\*"#
+		static let boldItalicText = #"\*\*\*(.*?)\*\*\*"#
 		// Экранированный символ
 		static let escapedChar = #"^\\([\\\`\*\_\{\}\[\]\<\>\(\)\+\-\.\!\|#]){1}"#
 		// Обычный текст
-		static let normal = #"^(.*?)(?=[\*`\\]|$)"#
+		static let normal = #"(.*?)(?=[\*`\\]|$)"#
 		// Текст между символами "`"
-		static let inline = #"^`(.*?)`"#
+		static let inline = #"`(.*?)`"#
 	}
 }

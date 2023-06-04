@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Модель сцены просмотра html-файла.
 enum BrowseHTMLModel {
 
 	struct Response {

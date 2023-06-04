@@ -8,13 +8,13 @@
 
 import Foundation
 
-/// Интерактор сцены просмотра html-файла.
+/// Интерактор сцены просмотра файла в виде HTML-страницы..
 protocol IBrowseHTMLInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
 }
 
-/// Интерактор сцены просмотра html-файла.
+/// Интерактор сцены просмотра файла в виде HTML-страницы..
 final class BrowseHTMLInteractor: IBrowseHTMLInteractor {
 
 	// MARK: - Private properties

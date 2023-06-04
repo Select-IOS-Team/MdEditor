@@ -21,17 +21,20 @@ final class EditFileSceneInteractor: IEditFileSceneInteractor {
 	private let presenter: IEditFileScenePresenter
 	private let coordinator: IEditFileCoordinator
 	private let file: DirectoryObject
+	private let markdownTextParser: IMarkdownTextParser
 
 	// MARK: - Lificycle
 
 	init(
 		presenter: IEditFileScenePresenter,
 		coordinator: IEditFileCoordinator,
-		file: DirectoryObject
+		file: DirectoryObject,
+		markdownTextParser: IMarkdownTextParser
 	) {
 		self.presenter = presenter
 		self.coordinator = coordinator
 		self.file = file
+		self.markdownTextParser = markdownTextParser
 	}
 
 	deinit {
@@ -43,7 +46,8 @@ final class EditFileSceneInteractor: IEditFileSceneInteractor {
 	func fetchData() {
 		guard let text = file.getFileText() else { return }
 
-		let response = EditFileSceneModel.Response(text: text)
+		let attributedText = markdownTextParser.parse(text)
+		let response = EditFileSceneModel.Response(attributedText: attributedText)
 		presenter.presentData(response: response)
 	}
 }

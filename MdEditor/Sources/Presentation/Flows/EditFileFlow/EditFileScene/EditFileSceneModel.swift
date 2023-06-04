@@ -11,10 +11,10 @@ import Foundation
 enum EditFileSceneModel {
 
 	struct Response {
-		let text: String
+		let attributedText: NSAttributedString
 	}
 
 	struct ViewData {
-		let text: String
+		let attributedText: NSAttributedString
 	}
 }
