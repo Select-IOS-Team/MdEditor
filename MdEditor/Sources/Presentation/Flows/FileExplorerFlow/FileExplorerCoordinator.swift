@@ -28,6 +28,7 @@ final class FileExplorerCoordinator: IFileExplorerCoordinator {
 
 	// MARK: - Private properties
 
+	/// Количество открытых дочерних вью контроллеров. Необходимо для отслеживания необходимости финиша координатора.
 	private var childViewControllerCount = 0
 
 	// MARK: - Lifecycle
@@ -40,12 +41,7 @@ final class FileExplorerCoordinator: IFileExplorerCoordinator {
 	// MARK: - ICoordinator
 
 	func start() {
-		let fileExplorerViewController = FileExplorerSceneAssembly.assemble(
-			coordinator: self,
-			directoryPath: StringConstants.root
-		)
-		navigationController.show(fileExplorerViewController, sender: nil)
-		childViewControllerCount += 1
+		openDirectory(path: StringConstants.root)
 	}
 
 	// MARK: - IFileExplorerSceneCoordinator
@@ -57,6 +53,19 @@ final class FileExplorerCoordinator: IFileExplorerCoordinator {
 	}
 
 	func openFile(_ file: DirectoryObject) {
+		startBrowseHTMLFlow(with: file)
+	}
+
+	func didCloseFileExplorerSceneScene() {
+		childViewControllerCount -= 1
+		if childViewControllerCount == 0 {
+			finish()
+		}
+	}
+
+	// MARK: - Private methods
+
+	private func startEditFileFlow(with file: DirectoryObject) {
 		let editFileCoordinator = EditFileCoordinator(
 			navigationController: navigationController,
 			finishDelegate: self,
@@ -67,11 +76,15 @@ final class FileExplorerCoordinator: IFileExplorerCoordinator {
 		childViewControllerCount += 1
 	}
 
-	func didCloseFileExplorerSceneScene() {
-		childViewControllerCount -= 1
-		if childViewControllerCount == 0 {
-			finish()
-		}
+	private func startBrowseHTMLFlow(with file: DirectoryObject) {
+		let browseHTMLCoordinator = BrowseHTMLCoordinator(
+			navigationController: navigationController,
+			finishDelegate: self,
+			file: file
+		)
+		childCoordinators.append(browseHTMLCoordinator)
+		browseHTMLCoordinator.start()
+		childViewControllerCount += 1
 	}
 }
 
