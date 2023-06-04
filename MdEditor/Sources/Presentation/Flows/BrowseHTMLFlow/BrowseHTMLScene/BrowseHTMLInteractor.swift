@@ -12,6 +12,8 @@ import Foundation
 protocol IBrowseHTMLInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
+	/// Переход с помощью координатора на сцену с просмотром pdf-документа.
+	func showPdfScene()
 }
 
 /// Интерактор сцены просмотра файла в виде HTML-страницы..
@@ -47,5 +49,10 @@ final class BrowseHTMLInteractor: IBrowseHTMLInteractor {
 		let htmlText = converter.convert(text: text)
 		let response = BrowseHTMLModel.Response(text: text, htmlText: htmlText)
 		presenter.presentData(response: response)
+	}
+	
+	/// Переход с помощью координатора на сцену с просмотром pdf-документа.
+	func showPdfScene() {
+		coordinator.openPdf(file)
 	}
 }

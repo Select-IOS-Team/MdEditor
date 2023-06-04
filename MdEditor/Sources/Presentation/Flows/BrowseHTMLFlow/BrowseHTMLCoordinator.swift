@@ -12,6 +12,9 @@ import UIKit
 protocol IBrowseHTMLCoordinator: ICoordinator {
 	/// Уведомляет о закрытии сцены просмотра файла.
 	func didCloseBrowseHTMLScene()
+	/// Открывает документ в формате pdf в новом окне.
+	/// - Parameter file: Принимает файл для откыртия.
+	func openPdf(_ file: DirectoryObject)
 }
 
 /// Координатор флоу просмотра файла в виде HTML-страницы..
@@ -45,8 +48,31 @@ final class BrowseHTMLCoordinator: IBrowseHTMLCoordinator {
 
 	// MARK: - ICoordinator
 
+	/// Стартует сцену с просмотром документа в html.
 	func start() {
 		let browseHTMLViewController = BrowseHTMLAssembly.assemble(coordinator: self, file: file)
 		navigationController.show(browseHTMLViewController, sender: nil)
+	}
+
+	/// Открывает документ в формате pdf в новом окне.
+	/// - Parameter file: Принимает файл для откыртия.
+	func openPdf(_ file: DirectoryObject) {
+		let browsePdfCoordinator = BrowsePDFCoordinator(
+			navigationController: navigationController,
+			finishDelegate: self,
+			file: file
+		)
+		childCoordinators.append(browsePdfCoordinator)
+		browsePdfCoordinator.start()
+	}
+}
+
+// MARK: - ICoordinatorFinishDelegate
+
+extension BrowseHTMLCoordinator: ICoordinatorFinishDelegate {
+	/// Заканчивает просмотр сцены html.
+	/// - Parameter coordinator: Принимает координатор подписанный на протокол ICoordinator.
+	func didFinish(coordinator: ICoordinator) {
+		finish()
 	}
 }

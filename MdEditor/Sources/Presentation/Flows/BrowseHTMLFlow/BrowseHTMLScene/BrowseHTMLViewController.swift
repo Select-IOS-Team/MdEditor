@@ -42,6 +42,8 @@ final class BrowseHTMLViewController: UIViewController {
 
 	override func loadView() {
 		view = webView
+		setupUI()
+		setupNavigation()
 	}
 
 	override func viewDidLoad() {
