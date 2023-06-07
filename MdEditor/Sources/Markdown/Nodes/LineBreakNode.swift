@@ -8,4 +8,5 @@
 
 import Foundation
 
+/// Узел разрыва строки.
 final class LineBreakNode: BaseNode {}

@@ -8,10 +8,17 @@
 
 import Foundation
 
+/// Объект, производящий экспорт документа в подготовленный для отображения формат текста.
 final class AttributedTextExporter {
 
-	let visitor = AttributedTextVisitor()
+	// MARK: - Private properties
 
+	private let visitor = AttributedTextVisitor()
+
+	// MARK: - Internal methods
+
+	/// Экспорт данных из объекта `Document` в `NSMutableAttributedString`.
+	/// - Parameter document: Документ.
 	func export(document: Document) -> NSMutableAttributedString {
 		document.accept(visitor: visitor)
 	}

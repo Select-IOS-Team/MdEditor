@@ -8,10 +8,14 @@
 
 import Foundation
 
+/// Парсер, преобразующий текст в формате markdown в текст в `NSAttributedString`.
 protocol IMarkdownTextParser {
+	/// Преобразует текст в формате markdown в текст в `NSAttributedString`.
+	/// - Parameter markdownText: Текст в в формате markdown.
 	func parse(_ markdownText: String) -> NSAttributedString
 }
 
+/// Парсер, преобразующий текст в формате markdown в текст в `NSAttributedString`.
 final class MarkdownTextParser: IMarkdownTextParser {
 
 	// MARK: - Private properties

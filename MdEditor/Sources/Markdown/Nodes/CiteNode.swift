@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел цитаты.
 final class CiteNode: BaseNode {
 
 	let level: Int

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел ненумерованного списка.
 final class UnorderedListItemNode: BaseNode {
 
 	let level: Int

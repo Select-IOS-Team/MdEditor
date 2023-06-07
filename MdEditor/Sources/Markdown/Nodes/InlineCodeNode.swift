@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел кода внутри текста.
 final class InlineCodeNode: BaseNode {
 
 	let code: String
