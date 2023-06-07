@@ -24,7 +24,7 @@ final class EditFileScenePresenter: IEditFileScenePresenter {
 	// MARK: - IEditFileScenePresenter
 
 	func presentData(response: EditFileSceneModel.Response) {
-		let viewData = EditFileSceneModel.ViewData(text: response.text)
+		let viewData = EditFileSceneModel.ViewData(attributedText: response.attributedText)
 		viewController?.render(viewData: viewData)
 	}
 }

@@ -31,9 +31,9 @@ final class MdToHTMLConverter: IMdToHTMLConverter {
 			let htmlLine = fixHtmlChar(text: line)
 			html.append(parseHeader(text: htmlLine))
 			html.append(parseQuote(text: htmlLine))
-			html.append(parseParagraph(text: htmlLine))
+			html.append(parseUnorderedList(text: htmlLine))
 			html.append(parseNumberedList(text: htmlLine))
-			html.append(parseReferenceMd(text: htmlLine))
+			html.append(parseParagraph(text: htmlLine))
 		}
 
 		return insertToHTML(text: html.compactMap { $0 }.joined(separator: "\n"))
@@ -73,13 +73,19 @@ private extension MdToHTMLConverter {
 	func parseNumberedList(text: String) -> String? {
 		if let range = text.range(of: Markdown.RegexPatterns.numberedList, options: .regularExpression) {
 			let lineList = text[range.upperBound...]
-			return "<li>\(lineList)</li>"
+			let text = parseText(text: "\(lineList)")
+			return "<ol>\(text)</ol>"
 		}
 		return nil
 	}
 
 	func parseUnorderedList(text: String) -> String? {
-		""
+		if let range = text.range(of: Markdown.RegexPatterns.unorderedList, options: .regularExpression) {
+			let lineList = text[range.upperBound...]
+			let text = parseText(text: "\(lineList)")
+			return "<li>\(text)</li>"
+		}
+		return nil
 	}
 
 	func parseReferenceMd(text: String) -> String? {

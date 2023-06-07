@@ -10,13 +10,13 @@ import UIKit
 import RegexBuilder
 import WebKit
 
-// Вью контроллер сцены просмотра html-файла.
+/// Вью контроллер сцены просмотра файла в виде HTML-страницы..
 protocol IBrowseHTMLViewController: AnyObject {
 	/// Отображает данные, соответствующие переданной модели.
 	func render(viewData: BrowseHTMLModel.ViewData)
 }
 
-// Вью контроллер сцены просмотра html-файла.
+/// Вью контроллер сцены просмотра файла в виде HTML-страницы..
 final class BrowseHTMLViewController: UIViewController {
 
 	// MARK: - Private properties
@@ -50,7 +50,7 @@ final class BrowseHTMLViewController: UIViewController {
 	}
 }
 
-// MARK: IBrowseHTMLViewController
+// MARK: - IBrowseHTMLViewController
 
 extension BrowseHTMLViewController: IBrowseHTMLViewController {
 
@@ -60,6 +60,6 @@ extension BrowseHTMLViewController: IBrowseHTMLViewController {
 	}
 }
 
-// MARK: WKNavigationDelegate
+// MARK: - WKNavigationDelegate
 
 extension BrowseHTMLViewController: WKNavigationDelegate {}

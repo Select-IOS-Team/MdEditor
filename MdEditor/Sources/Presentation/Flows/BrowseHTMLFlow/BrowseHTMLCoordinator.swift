@@ -8,13 +8,13 @@
 
 import UIKit
 
-/// Координатор сцены просмотра html-файла.
+/// Координатор флоу просмотра файла в виде HTML-страницы..
 protocol IBrowseHTMLCoordinator: ICoordinator {
-	/// Уведомляет о закрытии сцены просмотра html-файла.
+	/// Уведомляет о закрытии сцены просмотра файла.
 	func didCloseBrowseHTMLScene()
 }
 
-/// Координатор сцены просмотра html-файла.
+/// Координатор флоу просмотра файла в виде HTML-страницы..
 final class BrowseHTMLCoordinator: IBrowseHTMLCoordinator {
 
 	// MARK: - Private properties

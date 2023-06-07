@@ -6,14 +6,14 @@
 //  Copyright © 2023 Evgeni Meleshin (Personal Team). All rights reserved.
 //
 
-/// Презентер сцены просмотра html-файла.
+/// Презентер сцены просмотра файла в виде HTML-страницы..
 protocol IBrowseHTMLPresenter {
 	/// Подготавливает и передаёт вью данные файла.
 	/// - Parameter response: Модель `BrowseHTMLSceneModel.Response`.
 	func presentData(response: BrowseHTMLModel.Response)
 }
 
-/// Презентер сцены просмотра html-файла.
+/// Презентер сцены просмотра файла в виде HTML-страницы..
 final class BrowseHTMLPresenter: IBrowseHTMLPresenter {
 
 	// MARK: - Internal properties

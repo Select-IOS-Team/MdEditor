@@ -20,7 +20,7 @@ final class EditFileSceneViewController: UIViewController {
 	// MARK: - Private properties
 
 	private let interactor: IEditFileSceneInteractor
-	private var viewData = EditFileSceneModel.ViewData(text: "")
+	private var viewData = EditFileSceneModel.ViewData(attributedText: NSAttributedString())
 	private lazy var textView: UITextView = {
 		let label = UITextView()
 		label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -51,7 +51,7 @@ final class EditFileSceneViewController: UIViewController {
 extension EditFileSceneViewController: IEditFileSceneViewController {
 
 	func render(viewData: EditFileSceneModel.ViewData) {
-		textView.text = viewData.text
+		textView.attributedText = viewData.attributedText
 	}
 }
 

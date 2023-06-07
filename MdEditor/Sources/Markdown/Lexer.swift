@@ -21,29 +21,29 @@ extension Markdown {
 		func tokenize(input: String) -> [Token] {
 			let lines = input.components(separatedBy: .newlines)
 			var tokens = [Token?]()
-			var insideCodeBlock = false
+//			var insideCodeBlock = false
 
 			for line in lines {
 
-				let tokenCodeBlockMarker = parseCodoBlockMarker(rawText: line)
-				if tokenCodeBlockMarker != nil {
-					tokens.append(tokenCodeBlockMarker)
-					insideCodeBlock = !insideCodeBlock
-					continue
-				}
-				if insideCodeBlock {
-					tokens.append(parseCodeBlockItem(rawText: line))
-					continue
-				}
+//				let tokenCodeBlockMarker = parseCodeBlockMarker(rawText: line)
+//				if tokenCodeBlockMarker != nil {
+//					tokens.append(tokenCodeBlockMarker)
+//					insideCodeBlock = !insideCodeBlock
+//					continue
+//				}
+//				if insideCodeBlock {
+//					tokens.append(parseCodeBlockItem(rawText: line))
+//					continue
+//				}
 
 				tokens.append(parseLineBreak(rawText: line))
 				tokens.append(parseHeader(rawText: line))
 				tokens.append(parseQuote(rawText: line))
-				tokens.append(parseNumberedList(rawText: line))
+//				tokens.append(parseNumberedList(rawText: line))
 				tokens.append(parseUnorderedList(rawText: line))
 				tokens.append(parseImage(rawText: line))
-				tokens.append(parseLink(rawText: line))
-				tokens.append(parseInlineCode(rawText: line))
+//				tokens.append(parseLink(rawText: line))
+//				tokens.append(parseInlineCode(rawText: line))
 				tokens.append(parseTextBlock(rawText: line))
 			}
 
@@ -53,6 +53,7 @@ extension Markdown {
 }
 
 private extension Markdown.Lexer {
+
 	func parseLineBreak(rawText: String) -> Markdown.Token? {
 		if rawText.trimmingCharacters(in: .whitespaces).isEmpty {
 			return .lineBreak
@@ -92,7 +93,7 @@ private extension Markdown.Lexer {
 		if let text = rawText.group(for: Markdown.RegexPatterns.unorderedList) {
 			if let firstNotSpace = rawText.first(where: { $0 != " " }),
 			   let firstNotSpaceIndex = rawText.firstIndex(of: firstNotSpace) {
-				let level = rawText.distance(from: rawText.startIndex, to: firstNotSpaceIndex)
+				let level = rawText.distance(from: rawText.startIndex, to: firstNotSpaceIndex) + 1
 				return .unorderedListItem(level: level, text: parseText(rawText: text))
 			}
 		}
@@ -128,7 +129,7 @@ private extension Markdown.Lexer {
 		return nil
 	}
 
-	func parseCodoBlockMarker(rawText: String) -> Markdown.Token? {
+	func parseCodeBlockMarker(rawText: String) -> Markdown.Token? {
 		if let text = rawText.group(for: Markdown.RegexPatterns.multilineCodeBlockMarker) {
 			let lang = rawText.replacingOccurrences(of: text, with: "")
 			return .codeBlockMarker(level: 0, lang: lang)
@@ -230,6 +231,7 @@ private extension Markdown.Lexer {
 }
 
 fileprivate extension String {
+
 	func indexOf(char: Character) -> Int? {
 		return firstIndex(of: char)?.utf16Offset(in: self)
 	}
