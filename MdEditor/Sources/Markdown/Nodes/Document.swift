@@ -11,9 +11,9 @@ import Foundation
 /// Узел документа.
 final class Document: BaseNode {}
 
-extension Document: IVisitable {
+extension Document {
 
-	func accept(visitor: IVisitor) -> NSMutableAttributedString {
+	func accept<T: IVisitor>(visitor: T) -> [T.Result] {
 		visitor.visit(node: self)
 	}
 }

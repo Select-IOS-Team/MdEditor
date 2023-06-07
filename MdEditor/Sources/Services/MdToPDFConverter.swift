@@ -22,41 +22,10 @@ protocol IMdToPDFConverter {
 	func convert(text: String, pdfAuthor: String, pdfTitle: String) -> Data
 }
 
-// Заглушка.
-private class Parser {
-	// Заглушка.
-	func parse(tokens: [Markdown.Token]) -> Document {
-		Document()
-	}
-}
-
-// Заглушка.
-private class Visitor: IVisitor {
-	// Заглушка.
-	func visit(node: Document) -> [NSMutableAttributedString] {
-		[NSMutableAttributedString()]
-	}
-}
-
-protocol IVisitor {
-	// Заглушка.
-	associatedtype Result
-	// Заглушка.
-	func visit(node: Document) -> [Result]
-}
-
-// Заглушка.
-class Document {
-	// Заглушка.
-	func accept<T: IVisitor>(visitor: T) -> [T.Result] {
-		visitor.visit(node: Document())
-	}
-}
-
 /// Класс реализации конвертера файлов .md в формат pdf.
 final class MdToPDFConverter: IMdToPDFConverter {
 	private let lexer = Markdown.Lexer()
-	private let parser = Parser()
+	private let parser = Markdown.Parser()
 
 	/// Конвертирует текст в формат pdf.
 	/// - Parameters:
@@ -69,7 +38,7 @@ final class MdToPDFConverter: IMdToPDFConverter {
 		let tokens = lexer.tokenize(input: text)
 		let document = parser.parse(tokens: tokens)
 
-		let visitor = Visitor()
+		let visitor = AttributedTextVisitor()
 		let lines = document.accept(visitor: visitor)
 
 		let pdfMetaData = [

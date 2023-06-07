@@ -42,6 +42,7 @@ final class EditFileSceneViewController: UIViewController {
 		super.viewDidLoad()
 		setupUI()
 		setupLayout()
+		setupNavigation()
 		interactor.fetchData()
 	}
 }
@@ -67,5 +68,25 @@ private extension EditFileSceneViewController {
 		textView.snp.makeConstraints {
 			$0.edges.equalToSuperview()
 		}
+	}
+}
+
+// MARK: - Private methods - navigation setup
+
+private extension EditFileSceneViewController {
+
+	private func setupNavigation() {
+		let barButtonItem = UIBarButtonItem(
+			image: UIImage(systemName: "printer.fill"),
+			style: .plain,
+			target: self,
+			action: #selector(showPdfScene)
+		)
+		navigationItem.setRightBarButton(barButtonItem, animated: true)
+	}
+
+	@objc
+	private func showPdfScene() {
+		interactor.showPdfScene()
 	}
 }

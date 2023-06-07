@@ -23,7 +23,6 @@ final class BrowsePDFViewController: UIViewController {
 	// MARK: - Private properties
 
 	private let interactor: IBrowsePDFInteractor
-	private var viewData = BrowsePDFModel.ViewData(text: "", pdfData: Data())
 	private lazy var pdfView: PDFView = {
 		let pdfView = PDFView()
 		return pdfView
@@ -42,7 +41,6 @@ final class BrowsePDFViewController: UIViewController {
 
 	override func loadView() {
 		setupUI()
-		setupPrintViewController()
 	}
 
 	override func viewDidLoad() {
@@ -61,6 +59,7 @@ extension BrowsePDFViewController: IBrowsePDFViewController {
 		pdfView.autoScales = true
 		pdfView.pageBreakMargins = UIEdgeInsets(top: 32, left: 16, bottom: 16, right: 16)
 		pdfView.document = PDFDocument(data: viewData.pdfData)
+		setupPrintViewController(with: viewData.pdfData)
 	}
 }
 
@@ -69,7 +68,6 @@ extension BrowsePDFViewController: IBrowsePDFViewController {
 private extension BrowsePDFViewController {
 
 	private func setupUI() {
-		pdfView = .init()
 		view = pdfView
 		if let navigationBarY = navigationController?.navigationBar.frame.maxY {
 			pdfView.frame = CGRect(
@@ -86,9 +84,9 @@ private extension BrowsePDFViewController {
 
 private extension BrowsePDFViewController {
 	// swiftlint:disable all
-	private func setupPrintViewController() {
+	private func setupPrintViewController(with pdfData: Data) {
 		let printController = UIPrintInteractionController.shared
-		printController.printingItem = viewData.pdfData
+		printController.printingItem = pdfData
 		printController.present(animated: true) { _, completed, error in
 
 			if completed {

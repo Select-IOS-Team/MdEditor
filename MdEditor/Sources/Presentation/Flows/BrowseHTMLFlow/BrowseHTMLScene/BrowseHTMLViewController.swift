@@ -42,8 +42,6 @@ final class BrowseHTMLViewController: UIViewController {
 
 	override func loadView() {
 		view = webView
-		setupUI()
-		setupNavigation()
 	}
 
 	override func viewDidLoad() {
@@ -65,29 +63,3 @@ extension BrowseHTMLViewController: IBrowseHTMLViewController {
 // MARK: - WKNavigationDelegate
 
 extension BrowseHTMLViewController: WKNavigationDelegate {}
-
-// MARK: - Private methods
-
-private extension BrowseHTMLViewController {
-
-	private func setupUI() {
-		webView = .init()
-		webView.navigationDelegate = self
-		view = webView
-	}
-
-	private func setupNavigation() {
-		let barButtonItem = UIBarButtonItem(
-			image: UIImage(systemName: "printer.fill"),
-			style: .plain,
-			target: self,
-			action: #selector(showPdfScene)
-		)
-		navigationItem.setRightBarButton(barButtonItem, animated: true)
-	}
-
-	@objc
-	private func showPdfScene() {
-		interactor.showPdfScene()
-	}
-}

@@ -18,10 +18,3 @@ final class HeaderNode: BaseNode {
 		super.init(children)
 	}
 }
-
-extension HeaderNode: IVisitable {
-
-	func accept(visitor: IVisitor) -> NSMutableAttributedString {
-		visitor.visit(node: self)
-	}
-}

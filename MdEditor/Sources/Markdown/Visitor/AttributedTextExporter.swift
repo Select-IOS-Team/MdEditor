@@ -20,6 +20,7 @@ final class AttributedTextExporter {
 	/// Экспорт данных из объекта `Document` в `NSMutableAttributedString`.
 	/// - Parameter document: Документ.
 	func export(document: Document) -> NSMutableAttributedString {
-		document.accept(visitor: visitor)
+		let result = document.accept(visitor: visitor)
+		return result.joined()
 	}
 }

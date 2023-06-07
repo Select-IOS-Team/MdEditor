@@ -10,6 +10,9 @@ import UIKit
 protocol IEditFileCoordinator: ICoordinator {
 	/// Уведомляет о закрытии сцены редактирования файла.
 	func didCloseEditFileScene()
+	/// Открывает документ в формате pdf в новом окне.
+	/// - Parameter file: Принимает файл для откыртия.
+	func openPdf(_ file: DirectoryObject)
 }
 
 final class EditFileCoordinator: IEditFileCoordinator {
@@ -41,6 +44,18 @@ final class EditFileCoordinator: IEditFileCoordinator {
 	func start() {
 		let editFileViewController = EditFileSceneAssembly.assemble(coordinator: self, file: file)
 		navigationController.show(editFileViewController, sender: nil)
+	}
+
+	/// Открывает документ в формате pdf в новом окне.
+	/// - Parameter file: Принимает файл для откыртия.
+	func openPdf(_ file: DirectoryObject) {
+		let browsePdfCoordinator = BrowsePDFCoordinator(
+			navigationController: navigationController,
+			finishDelegate: finishDelegate,
+			file: file
+		)
+		childCoordinators.append(browsePdfCoordinator)
+		browsePdfCoordinator.start()
 	}
 
 	// MARK: - IEditFileCoordinator
