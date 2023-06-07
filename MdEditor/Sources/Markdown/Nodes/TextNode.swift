@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел обычного текста.
 final class TextNode: BaseNode {
 
 	let text: String
@@ -17,6 +18,7 @@ final class TextNode: BaseNode {
 	}
 }
 
+/// Узел полужирного наклонного текста.
 final class BoldItalicTextNode: BaseNode {
 
 	let text: String
@@ -26,6 +28,7 @@ final class BoldItalicTextNode: BaseNode {
 	}
 }
 
+/// Узел полужирного текста.
 final class BoldTextNode: BaseNode {
 
 	let text: String
@@ -35,6 +38,7 @@ final class BoldTextNode: BaseNode {
 	}
 }
 
+/// Узел наклонного текста.
 final class ItalicTextNode: BaseNode {
 
 	let text: String

@@ -8,4 +8,5 @@
 
 import Foundation
 
+/// Узел параграфа.
 final class ParagraphNode: BaseNode {}

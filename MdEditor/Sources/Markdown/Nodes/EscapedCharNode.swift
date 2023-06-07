@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел экранируемого символа.
 final class EscapedCharNode: BaseNode {
 
 	let char: String

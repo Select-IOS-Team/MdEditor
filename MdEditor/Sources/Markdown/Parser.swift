@@ -8,6 +8,7 @@
 
 extension Markdown {
 
+	/// Объект, выполняющий парсинг токенов в узлы.
 	final class Parser {
 
 		// MARK: - Internal methods
@@ -67,7 +68,6 @@ extension Markdown {
 				guard let token = tokens.first else {
 					return nil
 				}
-				print(token)
 
 				if case let .text(text) = token {
 					tokens.removeFirst()

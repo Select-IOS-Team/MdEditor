@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел заголовка.
 final class HeaderNode: BaseNode {
 
 	let level: Int

@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// Объект, умеющий принимать посетителей преобразующих узлы в текст в формате `NSMutableAttributedString`.
 protocol IVisitable {
+	/// Принятие посетителя для преобразования данных.
+	/// - Parameter visitor: Посетитель.
+	/// - Returns: Текст в формате `NSMutableAttributedString`.
 	func accept(visitor: IVisitor) -> NSMutableAttributedString
 }

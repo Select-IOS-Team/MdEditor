@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел картинки.
 final class ImageNode: BaseNode {
 
 	let url: String

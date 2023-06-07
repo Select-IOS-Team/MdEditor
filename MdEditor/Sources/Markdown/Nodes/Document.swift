@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Узел документа.
 final class Document: BaseNode {}
 
 extension Document: IVisitable {

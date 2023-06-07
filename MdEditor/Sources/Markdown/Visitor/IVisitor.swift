@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Посетитель, преобразующий узлы в текст в формате `NSMutableAttributedString`.
 protocol IVisitor {
 	func visit(node: Document) -> NSMutableAttributedString
 	func visit(node: HeaderNode) -> NSMutableAttributedString
