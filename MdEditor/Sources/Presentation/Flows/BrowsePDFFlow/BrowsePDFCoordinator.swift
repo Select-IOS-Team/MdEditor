@@ -8,23 +8,23 @@
 
 import UIKit
 
-/// Координатор сцены просмотра pdf-файла.
+/// Координатор флоу просмотра pdf-файла.
 protocol IBrowsePDFCoordinator: ICoordinator {
 	//
 }
 
-/// Координатор сцены просмотра pdf-файла.
+/// Координатор флоу просмотра pdf-файла.
 final class BrowsePDFCoordinator: IBrowsePDFCoordinator {
 
-	// MARK: - Private properties
-
-	private let file: DirectoryObject
-
-	// MARK: Internal properties
+	// MARK: - Internal properties
 
 	var navigationController: UINavigationController
 	var childCoordinators = [ICoordinator]()
 	weak var finishDelegate: ICoordinatorFinishDelegate?
+
+	// MARK: - Private properties
+
+	private let file: DirectoryObject
 
 	// MARK: Lifecycle
 

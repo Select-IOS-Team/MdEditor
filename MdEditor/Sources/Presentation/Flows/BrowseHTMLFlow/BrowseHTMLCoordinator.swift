@@ -51,13 +51,3 @@ final class BrowseHTMLCoordinator: IBrowseHTMLCoordinator {
 		navigationController.show(browseHTMLViewController, sender: nil)
 	}
 }
-
-// MARK: - ICoordinatorFinishDelegate
-
-extension BrowseHTMLCoordinator: ICoordinatorFinishDelegate {
-	/// Заканчивает просмотр сцены html.
-	/// - Parameter coordinator: Принимает координатор подписанный на протокол ICoordinator.
-	func didFinish(coordinator: ICoordinator) {
-		finish()
-	}
-}

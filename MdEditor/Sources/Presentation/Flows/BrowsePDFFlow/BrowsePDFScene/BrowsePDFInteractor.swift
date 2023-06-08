@@ -42,13 +42,12 @@ final class BrowsePDFInteractor: IBrowsePDFInteractor {
 		coordinator.finish()
 	}
 
-	// MARK: - Methods
+	// MARK: - IBrowsePDFInteractor
 
-	/// Получает данные для отображения на вью.
 	func fetchData() {
 		guard let text = file.getFileText() else { return }
 		let pdfData = converter.convert(text: text, pdfAuthor: "Author", pdfTitle: "Some Title")
-		let response = BrowsePDFModel.Response(text: text, pdfData: pdfData)
+		let response = BrowsePDFModel.Response(pdfData: pdfData)
 		presenter.presentData(response: response)
 	}
 }

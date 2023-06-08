@@ -11,8 +11,8 @@ import Foundation
 protocol IEditFileSceneInteractor: AnyObject {
 	/// Получает данные для отображения на вью.
 	func fetchData()
-	/// Переход с помощью координатора на сцену с просмотром pdf-документа.
-	func showPdfScene()
+	/// Переход с помощью координатора на сцену с просмотром pdf-документа и его печати.
+	func printDocument()
 }
 
 /// Интерактор сцены редактирования файла.
@@ -53,8 +53,7 @@ final class EditFileSceneInteractor: IEditFileSceneInteractor {
 		presenter.presentData(response: response)
 	}
 
-	/// Переход с помощью координатора на сцену с просмотром pdf-документа.
-	func showPdfScene() {
+	func printDocument() {
 		coordinator.openPdf(file)
 	}
 }
