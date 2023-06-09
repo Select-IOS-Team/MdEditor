@@ -77,7 +77,7 @@ private extension EditFileSceneViewController {
 			target: self,
 			action: #selector(didTapPrintBarButton)
 		)
-		navigationItem.setRightBarButton(barButtonItem, animated: true)
+		navigationItem.setRightBarButton(barButtonItem, animated: false)
 	}
 
 	@objc

@@ -9,9 +9,7 @@
 import UIKit
 
 /// Координатор флоу просмотра pdf-файла.
-protocol IBrowsePDFCoordinator: ICoordinator {
-	//
-}
+protocol IBrowsePDFCoordinator: ICoordinator {}
 
 /// Координатор флоу просмотра pdf-файла.
 final class BrowsePDFCoordinator: IBrowsePDFCoordinator {
@@ -40,7 +38,6 @@ final class BrowsePDFCoordinator: IBrowsePDFCoordinator {
 
 	// MARK: - ICoordinator
 
-	/// Стартует сцену с просмотром pdf-документа.
 	func start() {
 		let browsePDFViewController = BrowsePDFAssembly.assemble(coordinator: self, file: file)
 		navigationController.show(browsePDFViewController, sender: nil)

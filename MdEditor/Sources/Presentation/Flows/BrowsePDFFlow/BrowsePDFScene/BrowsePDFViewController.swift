@@ -79,12 +79,11 @@ private extension BrowsePDFViewController {
 		}
 	}
 
-	// swiftlint:disable all
+	// swiftlint:disable print_using
 	private func setupPrintViewController(with pdfData: Data) {
 		let printController = UIPrintInteractionController.shared
 		printController.printingItem = pdfData
 		printController.present(animated: true) { _, completed, error in
-
 			if completed {
 				print("Completed")
 			} else if let error = error {
@@ -94,5 +93,5 @@ private extension BrowsePDFViewController {
 			}
 		}
 	}
-	// swiftlint:enable all
+	// swiftlint:enable print_using
 }
