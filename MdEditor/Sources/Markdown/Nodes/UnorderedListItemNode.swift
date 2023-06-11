@@ -18,10 +18,3 @@ final class UnorderedListItemNode: BaseNode {
 		super.init(children)
 	}
 }
-
-extension UnorderedListItemNode: IVisitable {
-
-	func accept(visitor: IVisitor) -> NSMutableAttributedString {
-		visitor.visit(node: self)
-	}
-}

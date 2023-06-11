@@ -12,8 +12,8 @@ import UIKit
 /// Посетитель, преобразующий узлы в текст в формате `NSMutableAttributedString`.
 final class AttributedTextVisitor: IVisitor {
 
-	func visit(node: Document) -> NSMutableAttributedString {
-		visitChildren(node).joined()
+	func visit(node: Document) -> [NSMutableAttributedString] {
+		visitChildren(node)
 	}
 
 	func visit(node: HeaderNode) -> NSMutableAttributedString {

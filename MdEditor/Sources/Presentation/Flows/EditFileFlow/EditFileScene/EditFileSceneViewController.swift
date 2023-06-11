@@ -42,6 +42,7 @@ final class EditFileSceneViewController: UIViewController {
 		super.viewDidLoad()
 		setupUI()
 		setupLayout()
+		setupPrintNavigationBarButton()
 		interactor.fetchData()
 	}
 }
@@ -67,5 +68,20 @@ private extension EditFileSceneViewController {
 		textView.snp.makeConstraints {
 			$0.edges.equalToSuperview()
 		}
+	}
+
+	func setupPrintNavigationBarButton() {
+		let barButtonItem = UIBarButtonItem(
+			image: UIImage(systemName: "printer.fill"),
+			style: .plain,
+			target: self,
+			action: #selector(didTapPrintBarButton)
+		)
+		navigationItem.setRightBarButton(barButtonItem, animated: false)
+	}
+
+	@objc
+	func didTapPrintBarButton() {
+		interactor.printDocument()
 	}
 }

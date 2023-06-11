@@ -45,6 +45,7 @@ final class BrowseHTMLCoordinator: IBrowseHTMLCoordinator {
 
 	// MARK: - ICoordinator
 
+	/// Стартует сцену с просмотром документа в html.
 	func start() {
 		let browseHTMLViewController = BrowseHTMLAssembly.assemble(coordinator: self, file: file)
 		navigationController.show(browseHTMLViewController, sender: nil)

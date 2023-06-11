@@ -10,24 +10,24 @@ import Foundation
 
 /// Посетитель, преобразующий узлы в текст в формате `NSMutableAttributedString`.
 protocol IVisitor {
-	func visit(node: Document) -> NSMutableAttributedString
-	func visit(node: HeaderNode) -> NSMutableAttributedString
-	func visit(node: CiteNode) -> NSMutableAttributedString
-	func visit(node: ParagraphNode) -> NSMutableAttributedString
-	func visit(node: TextNode) -> NSMutableAttributedString
-	func visit(node: BoldTextNode) -> NSMutableAttributedString
-	func visit(node: LineBreakNode) -> NSMutableAttributedString
-	func visit(node: ImageNode) -> NSMutableAttributedString
-	func visit(node: UnorderedListItemNode) -> NSMutableAttributedString
+	associatedtype Result
+
+	func visit(node: Document) -> [Result]
+	func visit(node: HeaderNode) -> Result
+	func visit(node: CiteNode) -> Result
+	func visit(node: ParagraphNode) -> Result
+	func visit(node: TextNode) -> Result
+	func visit(node: BoldTextNode) -> Result
+	func visit(node: LineBreakNode) -> Result
+	func visit(node: ImageNode) -> Result
+	func visit(node: UnorderedListItemNode) -> Result
 }
 
 extension IVisitor {
 
-	func visitChildren(_ node: INode) -> [NSMutableAttributedString] {
+	func visitChildren(_ node: INode) -> [Result] {
 		node.children.compactMap { child in
 			switch child {
-			case let child as Document:
-				return visit(node: child)
 			case let child as HeaderNode:
 				return visit(node: child)
 			case let child as CiteNode:

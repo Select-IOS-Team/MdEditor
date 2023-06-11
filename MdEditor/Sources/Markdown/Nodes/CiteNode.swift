@@ -18,10 +18,3 @@ final class CiteNode: BaseNode {
 		super.init(children)
 	}
 }
-
-extension CiteNode: IVisitable {
-
-	func accept(visitor: IVisitor) -> NSMutableAttributedString {
-		visitor.visit(node: self)
-	}
-}
