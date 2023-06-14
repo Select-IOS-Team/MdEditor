@@ -24,14 +24,14 @@ final class StartSceneInteractor: IStartSceneInteractor {
 	// MARK: - Private properties
 
 	private let presenter: IStartScenePresenter
-	private var coordinator: IAppCoordinator
+	private var coordinator: IStartCoordinator
 	private let fileExplorerManager: IFileExplorerManager
 
 	// MARK: - Lificycle
 
 	init(
 		presenter: IStartScenePresenter,
-		coordinator: IAppCoordinator,
+		coordinator: IStartCoordinator,
 		fileExplorerManager: IFileExplorerManager
 	) {
 		self.presenter = presenter

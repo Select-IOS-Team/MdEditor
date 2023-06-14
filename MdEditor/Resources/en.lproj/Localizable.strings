@@ -6,6 +6,12 @@
   
 */
 
+"AuthScene.signInButtonTitle" = "Sign in";
+"AuthScene.loginTextFieldPlaceholder" = "Enter login";
+"AuthScene.passwordTextFieldPlaceholder" = "Enter password";
+"AuthScene.AlertActions.OK" = "OK";
+"AuthScene.AlertActions.Error" = "Error";
+
 "StartScene.Title" = "Main";
 "StartScene.MenuItem.NewFile.Title" = "New file";
 "StartScene.MenuItem.OpenFile.Title" = "Open file";

@@ -10,7 +10,7 @@ import Foundation
 /// Сборщик стартовой сцены.
 enum StartSceneAssembly {
 
-	static func assemble(coordinator: IAppCoordinator) -> StartSceneViewController {
+	static func assemble(coordinator: IStartCoordinator) -> StartSceneViewController {
 		let presenter = StartScenePresenter()
 		let fileExplorerManager = FileExplorerManager()
 		let interactor = StartSceneInteractor(

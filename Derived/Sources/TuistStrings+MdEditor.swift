@@ -22,6 +22,22 @@ public enum L10n {
     }
   }
 
+  public enum AuthScene {
+    /// Enter login
+    public static let loginTextFieldPlaceholder = L10n.tr("Localizable", "AuthScene.loginTextFieldPlaceholder")
+    /// Enter password
+    public static let passwordTextFieldPlaceholder = L10n.tr("Localizable", "AuthScene.passwordTextFieldPlaceholder")
+    /// Sign in
+    public static let signInButtonTitle = L10n.tr("Localizable", "AuthScene.signInButtonTitle")
+
+    public enum AlertActions {
+      /// Error
+      public static let error = L10n.tr("Localizable", "AuthScene.AlertActions.Error")
+      /// OK
+      public static let ok = L10n.tr("Localizable", "AuthScene.AlertActions.OK")
+    }
+  }
+
   public enum StartScene {
     /// Main
     public static let title = L10n.tr("Localizable", "StartScene.Title")

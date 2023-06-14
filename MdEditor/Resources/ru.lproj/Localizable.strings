@@ -6,6 +6,12 @@
   
 */
 
+"AuthScene.signInButtonTitle" = "Войти";
+"AuthScene.loginTextFieldPlaceholder" = "Введите логин";
+"AuthScene.passwordTextFieldPlaceholder" = "Введите пароль";
+"AuthScene.AlertActions.OK" = "ОК";
+"AuthScene.AlertActions.Error" = "Ошибка";
+
 "StartScene.Title" = "Главная";
 "StartScene.MenuItem.NewFile.Title" = "Новый файл";
 "StartScene.MenuItem.OpenFile.Title" = "Открыть файл";

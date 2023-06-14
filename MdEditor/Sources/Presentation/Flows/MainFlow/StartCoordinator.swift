@@ -1,15 +1,14 @@
 //
-//  AppCoordinator.swift
+//  StartCoordinator.swift
 //  MdEditor
 //
-//  Created by Evgeniy Novgorodov on 27.04.2023.
+//  Created by Egor SAUSHKIN on 14.06.2023.
+//  Copyright © 2023 Evgeni Meleshin (Personal Team). All rights reserved.
 //
 
 import UIKit
 
-protocol IAppCoordinator: ICoordinator {
-	/// Показывает сцену редактирования файла.
-	func showEditFileScene()
+protocol IStartCoordinator: ICoordinator {
 	/// Показывает AlertController создания нового файла.
 	/// - Parameters:
 	///   - createAction: Действие, обрабатывающее создание файла.
@@ -20,7 +19,7 @@ protocol IAppCoordinator: ICoordinator {
 	func showAboutAppScene()
 }
 
-final class AppCoordinator: IAppCoordinator, ICoordinatorFinishDelegate {
+final class StartCoordinator: IStartCoordinator {
 
 	// MARK: - Internal properties
 
@@ -41,11 +40,7 @@ final class AppCoordinator: IAppCoordinator, ICoordinatorFinishDelegate {
 		navigationController.show(startViewController, sender: nil)
 	}
 
-	// MARK: - IAppCoordinator
-
-	func showEditFileScene() {
-		// Бедет реализовано позже
-	}
+	// MARK: - IStartCoordinator
 
 	func showNewFileAlertController(createAction: @escaping (String) -> Void) {
 		let alertController = UIAlertController(
@@ -72,7 +67,7 @@ final class AppCoordinator: IAppCoordinator, ICoordinatorFinishDelegate {
 	func showFileExplorerFlow() {
 		let fileExplorerCoordinator = FileExplorerCoordinator(
 			navigationController: navigationController,
-			finishDelegate: self
+			finishDelegate: finishDelegate
 		)
 		childCoordinators.append(fileExplorerCoordinator)
 		fileExplorerCoordinator.start()
